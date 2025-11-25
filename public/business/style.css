@@ -4,12 +4,12 @@
 ===========================*/
 :root {
   --font-family: "Inter", sans-serif;
-  --primary: #155bd5;
-  --primary-dark: #1c3ab6;
-  --primary-light: #e2f1ff;
-  --accent: #00d4d7;
-  --accent-dark: #00bac1;
-  --accent-light: #dff9f8;
+  --primary: #008080;
+  --primary-dark: #003E3F;
+  --primary-light: #00DCDC;
+  --accent: #8B4950;
+  --accent-dark: #73333B;
+  --accent-light: #A45F66;
   --success: #13d527;
   --success-dark: #00ae11;
   --success-light: #eafbe7;
@@ -487,7 +487,7 @@ p {
   display: flex;
   align-items: center;
   padding: 11px 16px;
-  color: var(--white);
+  color: var(--accent);
   text-transform: capitalize;
   position: relative;
   border-radius: 5px;
@@ -535,7 +535,7 @@ p {
   left: 0;
   top: 130%;
   width: 230px;
-  background-color: var(--white);
+  background-color: var(--accent-dark);
   border-radius: 5px;
   opacity: 0;
   visibility: hidden;

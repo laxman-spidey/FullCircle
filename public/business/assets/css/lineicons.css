@@ -21,7 +21,7 @@ Author: lineicons.com
 .lni {
   display: inline-block;
   font: normal normal normal 1em/1 "LineIcons";
-  color: inherit;
+  color: #FFFFFF !important;
   flex-shrink: 0;
   speak: none;
   text-transform: none;

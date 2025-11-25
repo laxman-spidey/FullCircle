@@ -47,9 +47,12 @@
       -webkit-backdrop-filter: blur(var(--glass-blur));
       border: 1px solid var(--glass-border);
       border-radius: 16px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
       position: relative;
       overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .liquid-glass::before {
@@ -59,9 +62,33 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 70%);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
       pointer-events: none;
       border-radius: 16px;
+    }
+
+    /* Consistent sizing for features section */
+    .features .feature {
+      height: 100%;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features .row {
+      gap: 14px;
+    }
+
+    /* Consistent sizing for how-it-works section */
+    .how .steps .step {
+      height: 100%;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .how .steps .row {
+      gap: 12px;
     }
 
     /* Enhanced header with liquid glass effect */
@@ -123,10 +150,13 @@
       -webkit-backdrop-filter: blur(var(--glass-blur));
       border: 1px solid var(--glass-border);
       border-radius: 16px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
       position: relative;
       overflow: hidden;
       transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .single-services::before {
@@ -143,7 +173,7 @@
 
     .single-services:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+      box-shadow: 0 8px 24px 0 rgba(31, 38, 135, 0.15);
       border-color: rgba(20, 184, 166, 0.3);
     }
 
@@ -153,6 +183,16 @@
       border-radius: 12px;
       position: relative;
       z-index: 1;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Liquid glass contact items */
@@ -162,9 +202,12 @@
       -webkit-backdrop-filter: blur(var(--glass-blur));
       border: 1px solid var(--glass-border);
       border-radius: 16px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
       position: relative;
       overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .contact-item::before {
@@ -186,9 +229,12 @@
       -webkit-backdrop-filter: blur(var(--glass-blur));
       border: 1px solid var(--glass-border);
       border-radius: 16px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
       position: relative;
       overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .footer-widget::before {
@@ -245,6 +291,7 @@
       border-radius: 16px;
     }
 
+    /* Text elements */
     .lni,
     .text-primary {
       color: var(--teal-500) !important;
@@ -253,6 +300,61 @@
     .section-title-five .content h2,
     .section-title-five .content h6 {
       color: var(--teal-900);
+    }
+
+    /* Text inside glass elements */
+    .liquid-glass *,
+    .single-services *,
+    .contact-item *,
+    .footer-widget *,
+    .sidebar-content * {
+      color: var(--teal-900);
+    }
+
+    /* Consistent card sizing for services section */
+    .services .container .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .services .single-services {
+      height: 100%;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .services .service-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Consistent card sizing for contact items */
+    .contact-item-wrapper .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .contact-item {
+      height: 100%;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Consistent card sizing for footer widgets */
+    .footer-top .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .footer-widget {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Override any default blue colors in the template */
@@ -269,6 +371,51 @@
       color: white;
     }
 
+    /* Liquid glass scroll-top button */
+    .scroll-top {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.12);
+    }
+
+    .scroll-top::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    .scroll-top:hover {
+      background: var(--glass-bg);
+      transform: translateY(-3px);
+      border-color: var(--teal-500);
+    }
+
+    .scroll-top i {
+      color: var(--teal-500);
+      font-size: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
     a,
     .nav-link {
       color: var(--teal-500);
@@ -279,9 +426,9 @@
       color: var(--teal-700);
     }
 
-    /* Navbar styling to match header */
+    /* Navbar styling - initially transparent or with light background */
     .navbar-nine {
-      background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+      background: transparent;
       color: white;
       transition: all 0.4s ease;
       position: fixed;
@@ -291,9 +438,10 @@
       z-index: 1000;
     }
 
-    /* Initial state when at top */
-    .navbar-nine {
+    /* Teal background when at top and not scrolled */
+    .navbar-nine:not(.scrolled) {
       background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+      color: white;
     }
 
     /* Liquid glass effect when scrolled */
@@ -301,7 +449,7 @@
       background: var(--glass-bg);
       backdrop-filter: blur(var(--glass-blur));
       -webkit-backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--glass-border);
+      border: 1px solid var(--teal-300);
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
       position: relative;
       overflow: hidden;
@@ -315,7 +463,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(20, 184, 166, 0.05) 70%);
       pointer-events: none;
     }
 
@@ -343,9 +491,12 @@
       -webkit-backdrop-filter: blur(var(--glass-blur));
       border-radius: 16px;
       border: 1px solid var(--glass-border);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
       position: relative;
       overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .sidebar-content::before {
@@ -624,7 +775,6 @@
         <div class="row">
           <div class="col-12">
             <div class="content">
-              <h6>Features</h6>
               <h2 class="fw-bold">Why Choose FullCircle</h2>
             </div>
           </div>
@@ -688,7 +838,6 @@
         <div class="row">
           <div class="col-12">
             <div class="content">
-              <h6>How it works</h6>
               <h2 class="fw-bold">Simple Process, Great Results</h2>
             </div>
           </div>
@@ -765,7 +914,6 @@
         <div class="row">
           <div class="col-12">
             <div class="content">
-              <h6>Services</h6>
               <h2 class="fw-bold">How We Can Help</h2>
               <p>
                 We connect you with trusted helpers for various tasks in your daily life.
@@ -1120,7 +1268,7 @@
   </footer>
   <!--/ End Footer Area -->
 
-  <a href="#" class="scroll-top btn-hover">
+  <a href="#" class="scroll-top">
     <i class="lni lni-chevron-up"></i>
   </a>
 
