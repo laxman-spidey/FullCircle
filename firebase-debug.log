@@ -1,0 +1,110 @@
+[debug] [2025-11-25T19:32:21.328Z] ----------------------------------------------------------------------
+[debug] [2025-11-25T19:32:21.332Z] Command:       /nix/store/ws50yvm6vzlzf7jzz6n7xh4szddrack1-nodejs-20.19.1/bin/node /home/user/.global_modules/bin/firebase deploy
+[debug] [2025-11-25T19:32:21.332Z] CLI Version:   14.26.0
+[debug] [2025-11-25T19:32:21.333Z] Platform:      linux
+[debug] [2025-11-25T19:32:21.333Z] Node Version:  v20.19.1
+[debug] [2025-11-25T19:32:21.333Z] Time:          Tue Nov 25 2025 19:32:21 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-11-25T19:32:21.333Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-25T19:32:21.856Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:21.856Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:21.861Z] >>> [apiv2][query] GET https://monospace-pa.googleapis.com/v1/workspaces/fullcircle-54318976 [none]
+[debug] [2025-11-25T19:32:22.814Z] <<< [apiv2][status] GET https://monospace-pa.googleapis.com/v1/workspaces/fullcircle-54318976 200
+[debug] [2025-11-25T19:32:22.814Z] <<< [apiv2][body] GET https://monospace-pa.googleapis.com/v1/workspaces/fullcircle-54318976 {"workspaceId":"fullcircle-54318976","name":"FullCircle","workspaceRedirectUrl":"firebase-fullcircle-1764089437358.cluster-cz5nqyh5nreq6ua6gaqd7okl7o.cloudworkstations.dev","status":"WORKSPACE_STATUS_RUNNING","lastAccessDatetime":"2025-11-25T19:05:34.509819Z","workspaceTemplate":"WORKSPACE_TEMPLATE_BLANK_WEB","owner":"SELF","serviceAccountEmail":"msp-3846494964068019803@monospace-1.iam.gserviceaccount.com","gitRepoUrl":"https://github.com/laxman-spidey/FullCircle","enableNix":true,"ownerEmail":"ourfullcircleservices@gmail.com","workstationAccessToken":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmdvb2dsZS5jb20vd29ya3N0YXRpb25zIiwiYXVkIjoiZmlyZWJhc2UtZnVsbGNpcmNsZS0xNzY0MDg5NDM3MzU4LmNsdXN0ZXItY3o1bnF5aDVucmVxNnVhNmdhcWQ3b2tsN28uY2xvdWR3b3Jrc3RhdGlvbnMuZGV2IiwiaWF0IjoxNzY0MDk5MTQyLCJleHAiOjE3NjQxODU1NDJ9.ruurpo31_Dz62k0sEg7PocowNVxW0-3sD69BK_6D7vnQBYwvqYHAYqcrOTUy94SvSrRK-o23Yytn0RxFu9DtBK66eWTbG-p1Mey_EfzD37lt-7r7ULw4p-QH376Enfaz1JL6OuuB979ZeVYFPrDBFj55zpQb-ZpbP-OBWE_la910NIs6auB5LkdP79LZs1eBnWbu_z6Lrz0hzbJrrFr73B4EzY8S0io05nE898mSP23h7UwQ8OpeJQlghErbkaoS_2CikuvcoVheQ6M9tO8WqMiu06qWAliDtbPHSv5Szm9se1BRwZv2zXvO2_dODVIysdFuOZBrGUBZAr5Uhho3ug","firebaseProjectId":"fullcircle-54318976-e71b7"}
+[info] Updating Studio Workspace active project to match Firebase CLI 'fullcircle-37f07'
+[debug] [2025-11-25T19:32:54.098Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:54.099Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:54.101Z] >>> [apiv2][query] PATCH https://monospace-pa.googleapis.com/v1/workspaces/fullcircle-54318976 updateMask=workspace.firebaseProjectId
+[debug] [2025-11-25T19:32:54.101Z] >>> [apiv2][body] PATCH https://monospace-pa.googleapis.com/v1/workspaces/fullcircle-54318976 {"firebaseProjectId":"fullcircle-37f07"}
+[debug] [2025-11-25T19:32:55.420Z] <<< [apiv2][status] PATCH https://monospace-pa.googleapis.com/v1/workspaces/fullcircle-54318976 200
+[debug] [2025-11-25T19:32:55.420Z] <<< [apiv2][body] PATCH https://monospace-pa.googleapis.com/v1/workspaces/fullcircle-54318976 {"workspaceId":"fullcircle-54318976","name":"FullCircle","workspaceRedirectUrl":"firebase-fullcircle-1764089437358.cluster-cz5nqyh5nreq6ua6gaqd7okl7o.cloudworkstations.dev","status":"WORKSPACE_STATUS_RUNNING","lastAccessDatetime":"2025-11-25T19:05:34.509819Z","workspaceTemplate":"WORKSPACE_TEMPLATE_BLANK_WEB","serviceAccountEmail":"msp-3846494964068019803@monospace-1.iam.gserviceaccount.com","gitRepoUrl":"https://github.com/laxman-spidey/FullCircle","enableNix":true,"firebaseProjectId":"fullcircle-37f07"}
+[debug] [2025-11-25T19:32:55.436Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2025-11-25T19:32:55.436Z] > authorizing via signed-in user (ourfullcircleservices@gmail.com)
+[debug] [2025-11-25T19:32:55.437Z] [iam] checking project fullcircle-37f07 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-11-25T19:32:55.437Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:55.438Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:55.438Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/fullcircle-37f07:testIamPermissions [none]
+[debug] [2025-11-25T19:32:55.438Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/fullcircle-37f07:testIamPermissions x-goog-quota-user=projects/fullcircle-37f07
+[debug] [2025-11-25T19:32:55.438Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fullcircle-37f07:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-25T19:32:56.209Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/fullcircle-37f07:testIamPermissions 200
+[debug] [2025-11-25T19:32:56.209Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/fullcircle-37f07:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-11-25T19:32:56.211Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:56.212Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:56.212Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fullcircle-37f07 [none]
+[debug] [2025-11-25T19:32:56.456Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fullcircle-37f07 200
+[debug] [2025-11-25T19:32:56.457Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fullcircle-37f07 {"projectId":"fullcircle-37f07","projectNumber":"191965811250","displayName":"FullCircle","name":"projects/fullcircle-37f07","resources":{"hostingSite":"fullcircle-37f07"},"state":"ACTIVE","etag":"1_2a969651-966b-49f2-a391-59bd67d1205d"}
+[info] 
+[info] === Deploying to 'fullcircle-37f07'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-11-25T19:32:56.470Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:56.470Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:56.470Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/versions [none]
+[debug] [2025-11-25T19:32:56.471Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase--project-idx"}}
+[debug] [2025-11-25T19:32:57.404Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/versions 200
+[debug] [2025-11-25T19:32:57.404Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/versions {"name":"projects/191965811250/sites/fullcircle-37f07/versions/1e1951455d5dd451","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase--project-idx"}}
+[info] i  hosting[fullcircle-37f07]: beginning deploy... 
+[info] i  hosting[fullcircle-37f07]: found 1 files in public 
+[debug] [2025-11-25T19:32:57.427Z] [hosting] uploading with 200 concurrency
+[debug] [2025-11-25T19:32:57.444Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:57.444Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:57.448Z] [hosting] hash cache [cHVibGlj] stored for 1 files
+[debug] [2025-11-25T19:32:57.448Z] [hosting][hash queue][FINAL] {"max":12,"min":12,"avg":12,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":18}
+[debug] [2025-11-25T19:32:57.449Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/191965811250/sites/fullcircle-37f07/versions/1e1951455d5dd451:populateFiles [none]
+[debug] [2025-11-25T19:32:57.449Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/191965811250/sites/fullcircle-37f07/versions/1e1951455d5dd451:populateFiles {"files":{"/index.html":"a533d42972665894b3b9a69ccc1334d2b93a8eb09231302e808b0508c90018fb"}}
+[debug] [2025-11-25T19:32:57.747Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/191965811250/sites/fullcircle-37f07/versions/1e1951455d5dd451:populateFiles 200
+[debug] [2025-11-25T19:32:57.748Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/191965811250/sites/fullcircle-37f07/versions/1e1951455d5dd451:populateFiles {"uploadRequiredHashes":["a533d42972665894b3b9a69ccc1334d2b93a8eb09231302e808b0508c90018fb"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/fullcircle-37f07/versions/1e1951455d5dd451/files"}
+[debug] [2025-11-25T19:32:57.749Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:57.750Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:57.750Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/fullcircle-37f07/versions/1e1951455d5dd451/files/a533d42972665894b3b9a69ccc1334d2b93a8eb09231302e808b0508c90018fb [none]
+[debug] [2025-11-25T19:32:57.750Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/fullcircle-37f07/versions/1e1951455d5dd451/files/a533d42972665894b3b9a69ccc1334d2b93a8eb09231302e808b0508c90018fb [stream]
+[debug] [2025-11-25T19:32:57.755Z] [hosting][populate queue][FINAL] {"max":307,"min":307,"avg":307,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":312}
+[debug] [2025-11-25T19:32:57.756Z] [hosting] uploads queued: 1
+[debug] [2025-11-25T19:32:58.709Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/fullcircle-37f07/versions/1e1951455d5dd451/files/a533d42972665894b3b9a69ccc1334d2b93a8eb09231302e808b0508c90018fb 200
+[debug] [2025-11-25T19:32:58.710Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/fullcircle-37f07/versions/1e1951455d5dd451/files/a533d42972665894b3b9a69ccc1334d2b93a8eb09231302e808b0508c90018fb [stream]
+[debug] [2025-11-25T19:32:58.710Z] [hosting][upload queue][FINAL] {"max":962,"min":962,"avg":962,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":962}
+[info] ✔  hosting[fullcircle-37f07]: file upload complete 
+[debug] [2025-11-25T19:32:58.712Z] [hosting] deploy completed after 1303ms
+[debug] [2025-11-25T19:32:58.712Z] [
+  {
+    "config": {
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "fullcircle-37f07"
+    },
+    "version": "projects/191965811250/sites/fullcircle-37f07/versions/1e1951455d5dd451"
+  }
+]
+[info] i  hosting[fullcircle-37f07]: finalizing version... 
+[debug] [2025-11-25T19:32:58.716Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:58.716Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:58.717Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/versions/1e1951455d5dd451 updateMask=status%2Cconfig
+[debug] [2025-11-25T19:32:58.717Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/versions/1e1951455d5dd451 {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2025-11-25T19:32:59.105Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/versions/1e1951455d5dd451 200
+[debug] [2025-11-25T19:32:59.106Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/versions/1e1951455d5dd451 {"name":"projects/191965811250/sites/fullcircle-37f07/versions/1e1951455d5dd451","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase--project-idx"},"createTime":"2025-11-25T19:32:56.834850Z","createUser":{"email":"ourfullcircleservices@gmail.com"},"finalizeTime":"2025-11-25T19:32:58.989404Z","finalizeUser":{"email":"ourfullcircleservices@gmail.com"}}
+[debug] [2025-11-25T19:32:59.106Z] [hosting] finalized version for fullcircle-37f07:[object Object]
+[info] ✔  hosting[fullcircle-37f07]: version finalized 
+[info] i  hosting[fullcircle-37f07]: releasing new version... 
+[debug] [2025-11-25T19:32:59.110Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:59.110Z] Checked if tokens are valid: true, expires at: 1764100085146
+[debug] [2025-11-25T19:32:59.110Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/channels/live/releases versionName=projects%2F191965811250%2Fsites%2Ffullcircle-37f07%2Fversions%2F1e1951455d5dd451
+[debug] [2025-11-25T19:32:59.110Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/channels/live/releases {}
+[debug] [2025-11-25T19:32:59.731Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/channels/live/releases 200
+[debug] [2025-11-25T19:32:59.732Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/fullcircle-37f07/channels/live/releases {"name":"projects/191965811250/sites/fullcircle-37f07/channels/live/releases/1764099179006000","version":{"name":"projects/191965811250/sites/fullcircle-37f07/versions/1e1951455d5dd451","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase--project-idx"},"createTime":"2025-11-25T19:32:56.834850Z","createUser":{"email":"ourfullcircleservices@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIEzfzioohxegorUcgkcfOLCIJdzGuEqHV4vOf2DRpWYi3pNw=mo"},"finalizeTime":"2025-11-25T19:32:58.989404Z","finalizeUser":{"email":"ourfullcircleservices@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIEzfzioohxegorUcgkcfOLCIJdzGuEqHV4vOf2DRpWYi3pNw=mo"}},"type":"DEPLOY","releaseTime":"2025-11-25T19:32:59.006Z","releaseUser":{"email":"ourfullcircleservices@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIEzfzioohxegorUcgkcfOLCIJdzGuEqHV4vOf2DRpWYi3pNw=mo"}}
+[debug] [2025-11-25T19:32:59.732Z] [hosting] release: {"name":"projects/191965811250/sites/fullcircle-37f07/channels/live/releases/1764099179006000","version":{"name":"projects/191965811250/sites/fullcircle-37f07/versions/1e1951455d5dd451","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase--project-idx"},"createTime":"2025-11-25T19:32:56.834850Z","createUser":{"email":"ourfullcircleservices@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIEzfzioohxegorUcgkcfOLCIJdzGuEqHV4vOf2DRpWYi3pNw=mo"},"finalizeTime":"2025-11-25T19:32:58.989404Z","finalizeUser":{"email":"ourfullcircleservices@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIEzfzioohxegorUcgkcfOLCIJdzGuEqHV4vOf2DRpWYi3pNw=mo"}},"type":"DEPLOY","releaseTime":"2025-11-25T19:32:59.006Z","releaseUser":{"email":"ourfullcircleservices@gmail.com","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIEzfzioohxegorUcgkcfOLCIJdzGuEqHV4vOf2DRpWYi3pNw=mo"}}
+[info] ✔  hosting[fullcircle-37f07]: release complete 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/fullcircle-37f07/overview
+[info] Hosting URL: https://fullcircle-37f07.web.app
