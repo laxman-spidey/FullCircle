@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FullCircle — Local Helping Network</title>
+  <meta name="description" content="FullCircle connects neighbours and helpers to get everyday tasks done — errands, companionship, odd jobs and more." />
+  <style>
+    :root{
+      --teal-900:#003d38;
+      --teal-700:#0ea39a;
+      --teal-500:#14b8a6;
+      --teal-300:#6ee7d8;
+      --bg:#f6fdfc;
+      --glass-bg: rgba(255,255,255,0.45);
+      --glass-border: rgba(255,255,255,0.6);
+      --muted:#5f6b6a;
+      --card:#ffffff;
+      --maxw:1200px;
+      --radius-lg:24px;
+      --radius-md:14px;
+      --elevation-1: 0 6px 20px rgba(18, 38, 37, 0.06);
+      --elevation-2: 0 12px 36px rgba(18, 38, 37, 0.08);
+      --glass-blur: 10px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg, #f0fdfa 0%, var(--bg) 100%);color:var(--teal-900);-webkit-font-smoothing:antialiased}
+
+    .site{max-width:var(--maxw);margin:28px auto;padding:28px}
+
+    header{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(135deg,var(--teal-700),var(--teal-500));padding:28px;box-shadow:var(--elevation-2)}
+    header::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0.03),transparent 40%);pointer-events:none}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:12px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.95);color:var(--teal-700);font-weight:800;font-size:20px;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
+    nav ul{display:flex;gap:12px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,0.06)}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
+    .hero h1{font-size:36px;line-height:1.05;margin:0;color:#ffffff;letter-spacing:-0.4px}
+    .hero p{color:rgba(255,255,255,0.92);margin-top:10px;font-size:16px}
+
+    .glass-card{background:var(--glass-bg);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--glass-border);padding:18px;border-radius:16px;color:var(--teal-900);box-shadow:var(--elevation-1)}
+
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .feature{background:linear-gradient(180deg,rgba(255,255,255,0.75),#ffffff);padding:18px;border-radius:12px;box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
+    .feature h3{margin:8px 0 6px}
+    .muted{color:var(--muted);font-size:14px}
+
+    .how{margin:42px 0}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{padding:18px;border-radius:12px;background:linear-gradient(180deg,#ffffff,rgba(255,255,255,0.9));box-shadow:0 10px 30px rgba(14,28,27,0.04);border:1px solid rgba(0,0,0,0.03);text-align:center}
+    .step .num{background:linear-gradient(180deg,var(--teal-300),var(--teal-500));width:44px;height:44px;border-radius:12px;display:inline-grid;place-items:center;font-weight:700;color:var(--teal-900);margin:0 auto 12px}
+
+    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .service-card{padding:18px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#f8fffd);box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
+
+    .contact{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:22px;align-items:start}
+    .contact-card{padding:20px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.85),#ffffff);box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
+
+    .cta-strip{margin:34px 0;padding:20px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(90deg,rgba(20,184,166,0.14),rgba(110,231,216,0.12));border:1px solid rgba(20,184,166,0.08)}
+
+    footer{margin-top:40px;padding:20px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0.9));display:flex;justify-content:space-between;align-items:center;gap:12px;box-shadow:var(--elevation-1)}
+
+    .pill{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.7);font-weight:700}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .services{grid-template-columns:1fr}
+      .nav{flex-direction:column;align-items:flex-start}
+      .contact{grid-template-columns:1fr}
+    }
+    @media (max-width:480px){
+      .site{padding:16px}
+      header{padding:18px}
+      .hero h1{font-size:22px}
+      .hero{gap:18px}
+    }
+
+    a.btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;background:var(--teal-900);color:white}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">FC</div>
+          <div style="color:rgba(255,255,255,0.95)">
+            <div style="font-size:18px;font-weight:700">FullCircle</div>
+            <div style="font-size:12px;opacity:0.92">Local helping network</div>
+          </div>
+        </div>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a class="pill" href="#">Get started</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <div>
+          <h1>Neighbours who help — real people, real help.</h1>
+          <p>Book short tasks or recurring help from trusted local helpers: errands, elderly support, deliveries, housekeeping and more — managed over WhatsApp and phone.</p>
+
+          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="#contact">Message on WhatsApp</a>
+            <a class="btn" href="#services" style="background:transparent;color:var(--teal-900);border:1px solid rgba(0,0,0,0.06)">See services</a>
+          </div>
+        </div>
+
+        <div class="glass-card" aria-hidden="false">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <strong>Quick match</strong>
+            <span class="muted">Verified helpers</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:12px;align-items:center">
+              <div style="width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.85),#fff);box-shadow:var(--elevation-1);font-weight:700;color:var(--teal-700)">A</div>
+              <div>
+                <div style="font-weight:700">Groceries pickup</div>
+                <div class="muted">Same-day options</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:center">
+              <div style="width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.95),#fff);box-shadow:var(--elevation-1);font-weight:700;color:var(--teal-700)">B</div>
+              <div>
+                <div style="font-weight:700">Elderly companion</div>
+                <div class="muted">Short visits or scheduled care</div>
+              </div>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <small class="muted">Only vetted helpers shown</small>
+              <a href="#services" style="text-decoration:none;font-weight:700;color:var(--teal-700)">Learn more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main style="margin-top:22px">
+      <section class="features" aria-label="Features">
+        <article class="feature">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L20 7v6c0 5-4 9-8 9s-8-4-8-9V7l8-5z" stroke="var(--teal-700)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Trusted helpers</h3>
+          <p class="muted">Profile checks, ratings and local references — pick someone you can trust.</p>
+        </article>
+
+        <article class="feature">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18" stroke="var(--teal-700)" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <h3>WhatsApp-first</h3>
+          <p class="muted">Book and message helpers using WhatsApp — no new app required.</p>
+        </article>
+
+        <article class="feature">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6v6l4 2" stroke="var(--teal-700)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Fast matches</h3>
+          <p class="muted">Short tasks matched to nearby helpers in minutes — or schedule ahead.</p>
+        </article>
+      </section>
+
+      <section id="how" class="how" aria-labelledby="how-heading">
+        <h2 id="how-heading">How it works</h2>
+        <div class="steps" role="list">
+          <div class="step" role="listitem">
+            <div class="num">1</div>
+            <h4 style="margin:8px 0 6px">Request</h4>
+            <p class="muted">Send a short WhatsApp message with your request, address and preferred time.</p>
+          </div>
+
+          <div class="step" role="listitem">
+            <div class="num">2</div>
+            <h4 style="margin:8px 0 6px">Match</h4>
+            <p class="muted">We assign a nearby vetted helper suitable for the task.</p>
+          </div>
+
+          <div class="step" role="listitem">
+            <div class="num">3</div>
+            <h4 style="margin:8px 0 6px">Confirm</h4>
+            <p class="muted">Confirm timing, price and any special instructions directly with the helper.</p>
+          </div>
+
+          <div class="step" role="listitem">
+            <div class="num">4</div>
+            <h4 style="margin:8px 0 6px">Complete</h4>
+            <p class="muted">Task completed — rate the helper and request them again if you liked the service.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="services" aria-labelledby="services-heading">
+        <div class="service-card">
+          <h3 id="services-heading">Errands & Deliveries</h3>
+          <p class="muted">Groceries, parcel pickup, pharmacy runs and quick deliveries — same-day options available.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Elderly Support</h3>
+          <p class="muted">Companionship, appointment escorts, medicine reminders and light household help.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Household Help</h3>
+          <p class="muted">Cleaning, assembly, heavy-lift assistance and quick repairs.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Child & Pet Care</h3>
+          <p class="muted">Short babysitting, pet walking and drop-in care.</p>
+        </div>
+      </section>
+
+      <div class="cta-strip">
+        <div>
+          <strong style="display:block">Ready to try FullCircle?</strong>
+          <div class="muted">Message us on WhatsApp with your request — we’ll match a helper nearby.</div>
+        </div>
+        <div style="display:flex;gap:12px">
+          <a class="btn" href="#contact">Message on WhatsApp</a>
+          <a class="btn" href="#services" style="background:transparent;color:var(--teal-900);border:1px solid rgba(0,0,0,0.06)">See services</a>
+        </div>
+      </div>
+
+      <section id="contact" class="contact" aria-labelledby="contact-heading">
+        <div class="contact-card">
+          <h2 id="contact-heading">Contact details</h2>
+          <p class="muted">We respond to WhatsApp messages and emails during business hours (Mon–Sat, 9:00–18:00).</p>
+          <div style="margin-top:12px"><strong>WhatsApp</strong><div class="muted">+91 98765 43210</div></div>
+          <div style="margin-top:8px"><strong>Email</strong><div class="muted">hello@fullcircle.example</div></div>
+          <div style="margin-top:8px"><strong>Phone</strong><div class="muted">+91 22 1234 5678</div></div>
+          <div style="margin-top:8px"><strong>Address</strong><div class="muted">Plot 12, Local Lane, Hyderabad, Telangana, India</div></div>
+        </div>
+
+        <aside class="glass-card" aria-label="Quick message template">
+          <h3 style="margin-top:0">Need help right away?</h3>
+          <p class="muted">Send a WhatsApp message with:</p>
+          <pre style="background:transparent;border:0;padding:0;margin:0;font-family:inherit;color:var(--muted)">Hi — I need [service] at [your address] today between [time]</pre>
+          <p class="muted" style="margin-top:10px"><em>Example: Hi — I need groceries pickup at 12 Green Street, today between 4–6pm</em></p>
+        </aside>
+      </section>
+
+      <footer>
+        <div>
+          <strong>FullCircle</strong>
+          <div class="muted">Connecting neighbours since 2025</div>
+        </div>
+        <div class="muted">© FullCircle — All rights reserved</div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
