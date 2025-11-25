@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FullCircle — Local Helping Network</title>
-  <meta name="description" content="FullCircle connects neighbours and helpers to get everyday tasks done — errands, companionship, odd jobs and more." />
+  <title>FullCircle - Local Helping Network</title>
+  <meta name="description" content="FullCircle connects neighbours and helpers to get everyday tasks done - errands, companionship, odd jobs and more." />
   <style>
     :root{
       --teal-900:#003d38;
@@ -26,68 +26,189 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:linear-gradient(180deg, #f0fdfa 0%, var(--bg) 100%);color:var(--teal-900);-webkit-font-smoothing:antialiased}
+    body{margin:0;background:linear-gradient(180deg, #f0fdfa 0%, var(--bg) 100%);color:var(--teal-900);-webkit-font-smoothing:antialiased;min-height:100vh}
 
-    .site{max-width:var(--maxw);margin:28px auto;padding:28px}
+    .site{max-width:var(--maxw);margin:0 auto;padding:16px}
 
-    header{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(135deg,var(--teal-700),var(--teal-500));padding:28px;box-shadow:var(--elevation-2)}
+    header{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(135deg,var(--teal-700),var(--teal-500));padding:20px;box-shadow:var(--elevation-2);margin-bottom:20px}
     header::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0.03),transparent 40%);pointer-events:none}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:56px;height:56px;border-radius:12px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.95);color:var(--teal-700);font-weight:800;font-size:20px;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
-    nav ul{display:flex;gap:12px;align-items:center;margin:0;padding:0;list-style:none}
-    nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px}
-    nav a:hover{background:rgba(255,255,255,0.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:10px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.95);color:var(--teal-700);font-weight:800;font-size:18px;box-shadow:0 4px 12px rgba(0,0,0,0.08);flex-shrink:0}
+    nav ul{display:flex;gap:8px;align-items:center;margin:0;padding:0;list-style:none;flex-wrap:wrap}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;padding:10px 12px;border-radius:10px;font-size:14px;transition:background 200ms ease;-webkit-user-select:none;user-select:none}
+    nav a:active,nav a:hover{background:rgba(255,255,255,0.12)}
 
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
-    .hero h1{font-size:36px;line-height:1.05;margin:0;color:#ffffff;letter-spacing:-0.4px}
-    .hero p{color:rgba(255,255,255,0.92);margin-top:10px;font-size:16px}
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;margin-top:12px}
+    .hero h1{font-size:32px;line-height:1.1;margin:0;color:#ffffff;letter-spacing:-0.4px}
+    .hero p{color:rgba(255,255,255,0.92);margin-top:8px;font-size:15px;line-height:1.5}
+    .hero > div:first-child{min-width:0}
 
-    .glass-card{background:var(--glass-bg);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--glass-border);padding:18px;border-radius:16px;color:var(--teal-900);box-shadow:var(--elevation-1)}
+    .glass-card{background:var(--glass-bg);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--glass-border);padding:16px;border-radius:14px;color:var(--teal-900);box-shadow:var(--elevation-1)}
 
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
-    .feature{background:linear-gradient(180deg,rgba(255,255,255,0.75),#ffffff);padding:18px;border-radius:12px;box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
-    .feature h3{margin:8px 0 6px}
-    .muted{color:var(--muted);font-size:14px}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    .feature{background:linear-gradient(180deg,rgba(255,255,255,0.75),#ffffff);padding:16px;border-radius:12px;box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
+    .feature svg{display:block;margin-bottom:8px}
+    .feature h3{margin:6px 0 4px;font-size:15px}
+    .feature p{margin:0}
+    .muted{color:var(--muted);font-size:13px;line-height:1.5}
 
-    .how{margin:42px 0}
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .step{padding:18px;border-radius:12px;background:linear-gradient(180deg,#ffffff,rgba(255,255,255,0.9));box-shadow:0 10px 30px rgba(14,28,27,0.04);border:1px solid rgba(0,0,0,0.03);text-align:center}
-    .step .num{background:linear-gradient(180deg,var(--teal-300),var(--teal-500));width:44px;height:44px;border-radius:12px;display:inline-grid;place-items:center;font-weight:700;color:var(--teal-900);margin:0 auto 12px}
+    .how{margin:32px 0}
+    .how h2{font-size:24px;margin-top:0}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .step{padding:14px;border-radius:10px;background:linear-gradient(180deg,#ffffff,rgba(255,255,255,0.9));box-shadow:0 6px 20px rgba(14,28,27,0.04);border:1px solid rgba(0,0,0,0.03);text-align:center}
+    .step .num{background:linear-gradient(180deg,var(--teal-300),var(--teal-500));width:40px;height:40px;border-radius:10px;display:inline-grid;place-items:center;font-weight:700;color:var(--teal-900);margin:0 auto 8px;font-size:16px}
+    .step h4{margin:6px 0 4px;font-size:14px}
+    .step p{margin:0}
 
-    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .service-card{padding:18px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#f8fffd);box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
+    #services{margin:32px 0}
+    #services > h2{font-size:24px;margin-top:0;margin-bottom:20px}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+    .service-card{padding:16px;border-radius:10px;background:linear-gradient(180deg,#ffffff,#f8fffd);box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
+    .service-card h3{margin:0 0 6px;font-size:15px}
+    .service-card p{margin:0}
 
-    .contact{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:22px;align-items:start}
-    .contact-card{padding:20px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.85),#ffffff);box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
-    .contact-row{display:flex;gap:12px;align-items:center;margin-top:10px}
-    .contact-label{min-width:90px;font-weight:700}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;align-items:start}
+    .contact-card{padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.85),#ffffff);box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
+    .contact-card h2{margin-top:0;font-size:20px}
+    .contact-row{display:flex;gap:12px;align-items:flex-start;margin-top:10px;flex-wrap:wrap}
+    .contact-label{min-width:85px;font-weight:700;font-size:13px}
+    .contact-value{flex:1;min-width:120px;word-break:break-word}
 
-    .cta-strip{margin:34px 0;padding:20px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(90deg,rgba(20,184,166,0.14),rgba(110,231,216,0.12));border:1px solid rgba(20,184,166,0.08)}
+    .cta-strip{margin:24px 0;padding:16px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(90deg,rgba(20,184,166,0.14),rgba(110,231,216,0.12));border:1px solid rgba(20,184,166,0.08);flex-wrap:wrap}
+    .cta-strip > div:first-child{flex:1;min-width:200px}
+    .cta-strip > div:last-child{display:flex;gap:10px;flex-wrap:wrap}
+    .cta-strip strong{display:block;font-size:15px}
 
-    footer{margin-top:40px;padding:20px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0.9));display:flex;justify-content:space-between;align-items:center;gap:12px;box-shadow:var(--elevation-1)}
+    footer{margin-top:32px;padding:16px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0.9));display:flex;justify-content:space-between;align-items:center;gap:12px;box-shadow:var(--elevation-1);flex-wrap:wrap}
+    footer > div:first-child{flex:1;min-width:150px}
+    footer > div:last-child{font-size:12px;text-align:right}
 
-    .pill{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.7);font-weight:700}
+    .pill{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.7);font-weight:700;font-size:13px}
 
     .highlight{animation:highlight-pulse 900ms cubic-bezier(.16,.84,.34,1)}
     @keyframes highlight-pulse{0%{transform:translateY(0) scale(1);box-shadow:0 0 0 rgba(20,184,166,0)}30%{transform:translateY(-6px) scale(1.02);box-shadow:0 18px 40px rgba(20,184,166,0.12)}100%{transform:translateY(0) scale(1);box-shadow:0 0 0 rgba(20,184,166,0)}}
 
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr}
-      .features{grid-template-columns:1fr}
-      .steps{grid-template-columns:repeat(2,1fr)}
-      .services{grid-template-columns:1fr}
-      .nav{flex-direction:column;align-items:flex-start}
-      .contact{grid-template-columns:1fr}
-    }
-    @media (max-width:480px){
-      .site{padding:16px}
+    a.btn{display:inline-block;padding:11px 16px;border-radius:10px;text-decoration:none;font-weight:600;background:var(--teal-900);color:white;font-size:13px;transition:opacity 200ms ease;-webkit-user-select:none;user-select:none;border:1px solid transparent;touch-action:manipulation}
+    a.btn:active,a.btn:hover{opacity:0.9}
+
+    @media (max-width:1024px){
+      .site{padding:14px}
       header{padding:18px}
-      .hero h1{font-size:22px}
-      .hero{gap:18px}
+      .hero{gap:16px}
+      .hero h1{font-size:28px}
+      .features{gap:12px}
+      .steps{gap:10px}
+      .services{gap:10px}
+      .contact{gap:14px}
     }
 
-    a.btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700;background:var(--teal-900);color:white}
+    @media (max-width:768px){
+      .site{padding:12px;margin:0}
+      header{padding:16px;border-radius:12px;margin-bottom:16px}
+      .logo{width:44px;height:44px;font-size:16px}
+      .brand div:last-child{font-size:16px}
+      .brand div:last-child > div:first-child{font-weight:700}
+      .brand div:last-child > div:last-child{font-size:11px}
+      nav a{padding:8px 10px;font-size:13px}
+      .pill{padding:6px 12px;font-size:12px}
+      .hero{grid-template-columns:1fr;gap:14px;margin-top:8px}
+      .hero h1{font-size:24px;line-height:1.15}
+      .hero p{font-size:14px}
+      .features{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+      .feature{padding:12px}
+      .feature h3{font-size:14px;margin:4px 0 2px}
+      .feature p{font-size:12px}
+      .how{margin:24px 0}
+      .how h2{font-size:20px}
+      .steps{grid-template-columns:repeat(2,1fr);gap:10px}
+      .step{padding:12px}
+      .step .num{width:36px;height:36px;font-size:14px;margin-bottom:6px}
+      .step h4{font-size:13px}
+      .step p{font-size:12px}
+      .services{grid-template-columns:1fr}
+      .service-card{padding:14px}
+      .service-card h3{font-size:14px}
+      .service-card p{font-size:12px}
+      .contact{grid-template-columns:1fr;gap:12px;margin-top:16px}
+      .contact-card{padding:14px}
+      .contact-card h2{font-size:18px}
+      .contact-row{margin-top:8px}
+      .contact-label{min-width:75px;font-size:12px}
+      .contact-value{font-size:13px}
+      .cta-strip{margin:16px 0;padding:12px;flex-direction:column;align-items:stretch}
+      .cta-strip > div{width:100%}
+      .cta-strip > div:last-child{flex-direction:column}
+      .cta-strip > div:last-child a{width:100%;text-align:center}
+      footer{flex-direction:column;align-items:flex-start;padding:12px;margin-top:24px}
+      footer > div:last-child{width:100%;text-align:left;font-size:11px;margin-top:8px}
+    }
+
+    @media (max-width:480px){
+      .site{padding:10px}
+      header{padding:12px;margin-bottom:12px}
+      .nav{gap:8px}
+      .logo{width:40px;height:40px;font-size:14px}
+      .brand{gap:8px}
+      .brand div:last-child{font-size:14px}
+      .brand div:last-child > div:first-child{font-weight:700}
+      .brand div:last-child > div:last-child{font-size:10px}
+      nav ul{gap:4px}
+      nav a{padding:6px 8px;font-size:12px}
+      .pill{padding:5px 10px;font-size:11px}
+      .hero{gap:12px;margin-top:6px}
+      .hero h1{font-size:20px;line-height:1.2}
+      .hero p{font-size:13px;margin-top:6px}
+      main{margin-top:12px}
+      .glass-card{padding:12px;border-radius:12px}
+      .features{grid-template-columns:1fr;gap:8px;margin-top:12px}
+      .feature{padding:10px}
+      .feature svg{width:32px;height:32px;margin-bottom:6px}
+      .feature h3{font-size:13px;margin:2px 0 2px}
+      .feature p{font-size:11px}
+      .muted{font-size:12px}
+      .how{margin:16px 0}
+      .how h2{font-size:18px;margin-bottom:12px}
+      .steps{grid-template-columns:1fr;gap:8px}
+      .step{padding:10px}
+      .step .num{width:32px;height:32px;font-size:12px;margin-bottom:4px}
+      .step h4{font-size:12px;margin:4px 0 2px}
+      .step p{font-size:11px}
+      .services{gap:8px}
+      .service-card{padding:10px}
+      .service-card h3{font-size:13px;margin-bottom:4px}
+      .service-card p{font-size:11px}
+      .contact{gap:10px;margin-top:12px}
+      .contact-card{padding:10px}
+      .contact-card h2{font-size:16px;margin-bottom:6px}
+      .contact-row{margin-top:6px;flex-wrap:wrap}
+      .contact-label{min-width:60px;font-size:11px}
+      .contact-value{font-size:12px}
+      .cta-strip{margin:12px 0;padding:10px}
+      .cta-strip strong{font-size:13px}
+      .cta-strip .muted{font-size:11px}
+      .cta-strip > div:last-child{gap:8px}
+      .cta-strip a.btn{padding:9px 12px;font-size:12px}
+      footer{padding:10px;margin-top:16px}
+      footer strong{display:block;font-size:13px}
+      footer .muted{font-size:11px}
+    }
+
+    @media (max-width:360px){
+      .site{padding:8px}
+      header{padding:10px}
+      .logo{width:36px;height:36px;font-size:12px}
+      .brand div:last-child{font-size:12px}
+      nav a{padding:5px 6px;font-size:11px}
+      .hero h1{font-size:18px}
+      .hero p{font-size:12px}
+      .feature h3{font-size:12px}
+      .feature p{font-size:10px}
+      .step h4{font-size:11px}
+      .contact-label{min-width:55px;font-size:10px}
+      .contact-value{font-size:11px}
+      a.btn{padding:8px 10px;font-size:11px}
+    }
   </style>
 </head>
 <body>
@@ -113,64 +234,64 @@
 
       <div class="hero">
         <div>
-          <h1>Neighbours who help — real people, real help.</h1>
-          <p>Book short tasks or recurring help from trusted local helpers: errands, elderly support, deliveries, housekeeping and more — managed over WhatsApp and phone.</p>
+          <h1>Neighbours who help - real people, real help.</h1>
+          <p>Book short tasks or recurring help from trusted local helpers: errands, elderly support, deliveries, housekeeping and more - managed over WhatsApp and phone.</p>
 
-          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
             <a class="btn nav-link" href="#contact">Message on WhatsApp</a>
             <a class="btn nav-link" href="#services" style="background:transparent;color:var(--teal-900);border:1px solid rgba(0,0,0,0.06)">See services</a>
           </div>
         </div>
 
         <div class="glass-card" aria-hidden="false">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-            <strong>Quick match</strong>
-            <span class="muted">Verified helpers</span>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:8px;flex-wrap:wrap">
+            <strong style="font-size:14px">Quick match</strong>
+            <span class="muted" style="font-size:12px">Verified helpers</span>
           </div>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="display:flex;gap:12px;align-items:center">
-              <div style="width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.85),#fff);box-shadow:var(--elevation-1);font-weight:700;color:var(--teal-700)">A</div>
-              <div>
-                <div style="font-weight:700">Groceries pickup</div>
-                <div class="muted">Same-day options</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:10px;align-items:center">
+              <div style="width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.85),#fff);box-shadow:var(--elevation-1);font-weight:700;color:var(--teal-700);flex-shrink:0;font-size:14px">A</div>
+              <div style="min-width:0">
+                <div style="font-weight:600;font-size:13px;word-break:break-word">Groceries pickup</div>
+                <div class="muted" style="font-size:12px">Same-day options</div>
               </div>
             </div>
 
-            <div style="display:flex;gap:12px;align-items:center">
-              <div style="width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.95),#fff);box-shadow:var(--elevation-1);font-weight:700;color:var(--teal-700)">B</div>
-              <div>
-                <div style="font-weight:700">Elderly companion</div>
-                <div class="muted">Short visits or scheduled care</div>
+            <div style="display:flex;gap:10px;align-items:center">
+              <div style="width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.95),#fff);box-shadow:var(--elevation-1);font-weight:700;color:var(--teal-700);flex-shrink:0;font-size:14px">B</div>
+              <div style="min-width:0">
+                <div style="font-weight:600;font-size:13px;word-break:break-word">Elderly companion</div>
+                <div class="muted" style="font-size:12px">Short visits or scheduled care</div>
               </div>
             </div>
 
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <small class="muted">Only vetted helpers shown</small>
-              <a href="#services" class="nav-link" style="text-decoration:none;font-weight:700;color:var(--teal-700)">Learn more</a>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;gap:8px;flex-wrap:wrap">
+              <small class="muted" style="font-size:11px">Only vetted helpers shown</small>
+              <a href="#services" class="nav-link" style="text-decoration:none;font-weight:600;color:var(--teal-700);font-size:12px;padding:0">Learn more</a>
             </div>
           </div>
         </div>
       </div>
     </header>
 
-    <main style="margin-top:22px">
+    <main style="margin-top:12px">
       <section class="features" aria-label="Features">
         <article class="feature">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L20 7v6c0 5-4 9-8 9s-8-4-8-9V7l8-5z" stroke="var(--teal-700)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>Trusted helpers</h3>
-          <p class="muted">Profile checks, ratings and local references — pick someone you can trust.</p>
+          <p class="muted">Profile checks, ratings and local references - pick someone you can trust.</p>
         </article>
 
         <article class="feature">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18" stroke="var(--teal-700)" stroke-width="1.4" stroke-linecap="round"/></svg>
           <h3>WhatsApp-first</h3>
-          <p class="muted">Book and message helpers using WhatsApp — no new app required.</p>
+          <p class="muted">Book and message helpers using WhatsApp - no new app required.</p>
         </article>
 
         <article class="feature">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6v6l4 2" stroke="var(--teal-700)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>Fast matches</h3>
-          <p class="muted">Short tasks matched to nearby helpers in minutes — or schedule ahead.</p>
+          <p class="muted">Short tasks matched to nearby helpers in minutes - or schedule ahead.</p>
         </article>
       </section>
 
@@ -198,39 +319,77 @@
           <div class="step" role="listitem">
             <div class="num">4</div>
             <h4 style="margin:8px 0 6px">Complete</h4>
-            <p class="muted">Task completed — rate the helper and request them again if you liked the service.</p>
+            <p class="muted">Task completed - rate the helper and request them again if you liked the service.</p>
           </div>
         </div>
       </section>
 
-      <section id="services" class="services" aria-labelledby="services-heading">
+      <section id="services" aria-labelledby="services-section-heading">
+        <h2 id="services-section-heading">How We Can Help</h2>
+        <div class="services">
         <div class="service-card">
-          <h3 id="services-heading">Errands & Deliveries</h3>
-          <p class="muted">Groceries, parcel pickup, pharmacy runs and quick deliveries — same-day options available.</p>
+          <h3 id="services-heading">Care & Companionship</h3>
+          <p class="muted">Elderly support, companionship visits, hospital visits, and motivational support (non-medical care).</p>
         </div>
 
         <div class="service-card">
-          <h3>Elderly Support</h3>
-          <p class="muted">Companionship, appointment escorts, medicine reminders and light household help.</p>
+          <h3>Children & Family Assistance</h3>
+          <p class="muted">Child supervision, school pick & drop, and family home errands support.</p>
         </div>
 
         <div class="service-card">
-          <h3>Household Help</h3>
-          <p class="muted">Cleaning, assembly, heavy-lift assistance and quick repairs.</p>
+          <h3>Emergency Support</h3>
+          <p class="muted">Medical emergency delivery, rescue assistance, blood pickup, and urgent item delivery.</p>
         </div>
 
         <div class="service-card">
-          <h3>Child & Pet Care</h3>
-          <p class="muted">Short babysitting, pet walking and drop-in care.</p>
+          <h3>Essential Errands</h3>
+          <p class="muted">Grocery runs, market visits, bulk transport, water cylinder pickup and gift delivery.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Event & Occasion Support</h3>
+          <p class="muted">Decoration help, event serving, guest management, and moving heavy items for occasions.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Financial & Administrative Help</h3>
+          <p class="muted">Bill payments, form filling, bank work assistance and administrative support.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>General On-field Assistance</h3>
+          <p class="muted">Queue standing, late-night pickup, photography services, and on-site supervision.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Home & Shop Support</h3>
+          <p class="muted">House watching, shop organizing, temporary supervision, and skill-based maintenance work.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Personal Productivity & Lifestyle</h3>
+          <p class="muted">Home setup, fitness buddy, wardrobe organization, and personal errands.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Pet Care Services</h3>
+          <p class="muted">Dog and cat walking, pet feeding, veterinary visit escorts, and pet transportation.</p>
+        </div>
+
+        <div class="service-card">
+          <h3>Transport & Mobility</h3>
+          <p class="muted">Passenger transport, personal chauffeur services for daily or planned trips.</p>
+        </div>
         </div>
       </section>
 
       <div class="cta-strip">
         <div>
-          <strong style="display:block">Ready to try FullCircle?</strong>
-          <div class="muted">Message us on WhatsApp with your request — we’ll match a helper nearby.</div>
+          <strong style="display:block;font-size:14px">Ready to try FullCircle?</strong>
+          <div class="muted" style="font-size:13px">Message us on WhatsApp with your request - we'll match a helper nearby.</div>
         </div>
-        <div style="display:flex;gap:12px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
           <a class="btn nav-link" href="#contact">Message on WhatsApp</a>
           <a class="btn nav-link" href="#services" style="background:transparent;color:var(--teal-900);border:1px solid rgba(0,0,0,0.06)">See services</a>
         </div>
@@ -247,10 +406,10 @@
         </div>
 
         <aside class="glass-card" aria-label="Quick message template">
-          <h3 style="margin-top:0">Need help right away?</h3>
-          <p class="muted">Send a WhatsApp message with:</p>
-          <pre style="background:transparent;border:0;padding:0;margin:0;font-family:inherit;color:var(--muted)">Hi — I need [service] at [your address] today between [time]</pre>
-          <p class="muted" style="margin-top:10px"><em>Example: Hi — I need groceries pickup at 12 Green Street, today between 4–6pm</em></p>
+          <h3 style="margin-top:0;font-size:15px">Need help right away?</h3>
+          <p class="muted" style="font-size:13px">Send a WhatsApp message with:</p>
+          <pre style="background:transparent;border:0;padding:0;margin:0;font-family:inherit;color:var(--muted);word-wrap:break-word;white-space:pre-wrap;font-size:12px;line-height:1.4">Hi - I need [service] at [your address] today between [time]</pre>
+          <p class="muted" style="margin-top:8px;font-size:12px"><em>Example: Hi - I need groceries pickup at 12 Green Street, today between 4–6pm</em></p>
         </aside>
       </section>
 
@@ -259,7 +418,7 @@
           <strong>FullCircle</strong>
           <div class="muted">Connecting neighbours since 2025</div>
         </div>
-        <div class="muted">© FullCircle — All rights reserved</div>
+        <div class="muted">© FullCircle - All rights reserved</div>
       </footer>
     </main>
   </div>
