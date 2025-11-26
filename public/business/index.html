@@ -774,11 +774,16 @@
         transform: translateX(-50%);
       }
 
-      .timeline-content {
-        width: 100%;
+           .timeline-content {
+        width: calc(100% - 80px);
         margin-left: 80px;
+        box-sizing: border-box;
       }
 
+      /* hide any accidental horizontal overflow inside the timeline on small screens */
+      .timeline-wrapper {
+        overflow-x: hidden;
+      }
       .step-number {
         width: 48px;
         height: 48px;
@@ -803,8 +808,11 @@
         left: 16px;
       }
 
+        /* Make sure timeline content fits within viewport on very small screens */
       .timeline-content {
+        width: calc(100% - 72px);
         margin-left: 72px;
+        box-sizing: border-box;
       }
 
       .timeline-card {
@@ -937,7 +945,7 @@
               more - managed over WhatsApp and phone.
             </p>
             <div class="button">
-                <a href="https://wa.me/919121346777" class="btn primary-btn" target="_blank">Message on Whatsapp</a>
+                <a href="#get-started" class="btn primary-btn page-scroll">Get Started</a>
             </div>
           </div>
         </div>
@@ -1035,82 +1043,6 @@
   </section>
   <!-- ===== feature section end ===== -->
 
-  <!-- ===== how it works section start ===== -->
-  <section id="how" class="services-area services-eight">
-    <!--======  Start Section Title Five ======-->
-    <div class="section-title-five">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              <h2 class="fw-bold">Simple Process, Great Results</h2>
-            </div>
-          </div>
-        </div>
-        <!-- row -->
-      </div>
-      <!-- container -->
-    </div>
-    <!--======  End Section Title Five ======-->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <div class="single-services">
-            <div class="service-icon">
-              <span style="font-size: 24px; font-weight: bold; display: block; line-height: 1;">1</span>
-            </div>
-            <div class="service-content">
-              <h4>Request</h4>
-              <p>
-                Send a short WhatsApp message with your request, address and preferred time.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-services">
-            <div class="service-icon">
-              <span style="font-size: 24px; font-weight: bold; display: block; line-height: 1;">2</span>
-            </div>
-            <div class="service-content">
-              <h4>Match</h4>
-              <p>
-                We assign a nearby vetted helper suitable for the task.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-services">
-            <div class="service-icon">
-              <span style="font-size: 24px; font-weight: bold; display: block; line-height: 1;">3</span>
-            </div>
-            <div class="service-content">
-              <h4>Confirm</h4>
-              <p>
-                Confirm timing, price and any special instructions directly with the helper.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-services">
-            <div class="service-icon">
-              <span style="font-size: 24px; font-weight: bold; display: block; line-height: 1;">4</span>
-            </div>
-            <div class="service-content">
-              <h4>Complete</h4>
-              <p>
-                Task completed - rate the helper and request them again if you liked the service.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ===== how it works section end ===== -->
-
   <!-- ===== How to Get Started section start ===== -->
   <section id="get-started" class="services-area services-eight">
     <!--======  Start Section Title Five ======-->
@@ -1127,7 +1059,7 @@
       </div>
     </div>
     <!--======  End Section Title Five ======-->
-    
+
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -1141,7 +1073,7 @@
               <div class="timeline-content">
                 <div class="timeline-card">
                   <h4>Save the Number</h4>
-                  <p><strong>+91 91213 46777</strong></p>
+                  <p><a href="tel:+919121346777"><strong>+91 91213 46777</strong></a></p>
                   <p class="timeline-description">Add our WhatsApp number to your contacts for quick access.</p>
                 </div>
               </div>
@@ -1184,7 +1116,7 @@
               <div class="timeline-content">
                 <div class="timeline-card">
                   <h4>Call Us Directly for Help</h4>
-                  <p><strong>+91 91213 46777</strong></p>
+                  <p><a href="tel:+919121346777"><strong>+91 91213 46777</strong></a></p>
                   <p class="timeline-description">Prefer to talk? Call us anytime for personalized assistance and quick support.</p>
                 </div>
               </div>
@@ -1420,8 +1352,8 @@
                 <span>© 2025 FullCircle.</span> All rights reserved.
               </p>
               <div class="text-center" style="color:var(--teal-900); font-weight:500;">
-                <p style="margin: 5px 0;">Phone: +91 91213 46777</p>
-                <p style="margin: 5px 0;">Email: ourfullcircleservices@gmail.com</p>
+                <p style="margin: 5px 0;">Phone: <a href="tel:+919121346777">+91 91213 46777</a></p>
+                <p style="margin: 5px 0;">Email: <a href="mailto:ourfullcircleservices@gmail.com">ourfullcircleservices@gmail.com</a></p>
               </div>
             </div>
             <!-- End Single Widget -->
