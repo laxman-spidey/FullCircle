@@ -462,10 +462,10 @@ p {
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .navbar-area.navbar-nine .navbar .navbar-collapse {
     position: absolute;
-    top: 116%;
-    left: 0;
-    width: 100%;
-    background-color: var(--primary);
+top: 116%;
+    left: -6%;
+    width: 112%;
+    background-color: var(--teal-700);
     z-index: 8;
     padding: 10px 16px;
   }
@@ -487,7 +487,7 @@ p {
   display: flex;
   align-items: center;
   padding: 11px 16px;
-  color: var(--accent);
+  color: var(--white);
   text-transform: capitalize;
   position: relative;
   border-radius: 5px;
@@ -1904,4 +1904,8 @@ p {
 .footer-eleven .newsletter-form .sub-btn:hover {
   color: var(--white);
   background-color: var(--primary-dark);
+}
+
+.hidden {
+  display: none !important;
 }

@@ -5,7 +5,8 @@
   <!--====== Required meta tags ======-->
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="description" content="FullCircle connects neighbours and helpers to get everyday tasks done - errands, companionship, odd jobs and more." />
+  <meta name="description"
+    content="FullCircle connects neighbours and helpers to get everyday tasks done - errands, companionship, odd jobs and more." />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!--====== Title ======-->
@@ -31,10 +32,11 @@
   <!-- Custom colors to match FullCircle branding with liquid glass effect -->
   <style>
     :root {
-      --teal-900: #003d38;
+      --teal-900-rgb: rgb(0, 61, 56) --teal-900: #003d38;
       --teal-700: #0ea39a;
       --teal-500: #14b8a6;
       --teal-300: #6ee7d8;
+      --glass-tinted-bg: rgba(14, 163, 154, 0.45);
       --glass-bg: rgba(255, 255, 255, 0.45);
       --glass-border: rgba(255, 255, 255, 0.6);
       --glass-blur: 10px;
@@ -178,15 +180,26 @@
     }
 
     .service-icon {
-      background: linear-gradient(135deg, var(--teal-700), var(--teal-500)) !important;
+      /* background: linear-gradient(135deg, var(--teal-700), var(--teal-500)) !important; */
       color: white;
       border-radius: 12px;
       position: relative;
       z-index: 1;
-      min-height: 80px;
+      min-height: 48px;
+      /* reduced from 60px */
+      width: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 6px;
+    }
+
+    /* icon sizing inside service-icon - prefer CSS over inline styles */
+    .service-icon i,
+    .service-icon svg {
+      font-size: 32px;
+      /* width: 20px;
+      height: 20px; */
     }
 
     .service-content {
@@ -315,14 +328,94 @@
     .services .container .row {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 8px;
+      /* tighter gap */
     }
 
     .services .single-services {
       height: 100%;
-      min-height: 320px;
+      min-height: 160px;
+      /* reduced more to make cards noticeably smaller */
       display: flex;
       flex-direction: column;
+      padding: 10px;
+      /* tighter padding */
+    }
+
+    /* subtle entrance animation and polished transitions */
+    .single-services {
+      opacity: 0;
+      transform: translateY(6px);
+      animation: fadeInUp .36s ease forwards;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Avoid motion for users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .single-services {
+        animation: none;
+        transition: none;
+      }
+    }
+
+    /* Hover effects only on devices that support hover */
+    @media (hover: hover) and (pointer: fine) {
+      .single-services:hover {
+        transform: translateY(-6px);
+      }
+    }
+
+    /* On very small screens reduce height and tighten spacing further */
+    @media (max-width: 576px) {
+      .services .single-services {
+        min-height: 130px;
+        padding: 8px;
+      }
+
+      .service-icon {
+        min-height: 40px;
+        width: 40px;
+      }
+
+      .service-icon i,
+      .service-icon svg {
+        font-size: 32px;
+        /* width: 18px;
+        height: 18px; */
+      }
+
+      /* tighter spacing and touch feedback on small screens */
+      .single-services {
+        margin-bottom: 6px;
+      }
+
+      .single-services:active {
+        transform: translateY(-2px) scale(0.995);
+      }
+    }
+
+    /* reduce text sizes inside the small cards */
+    .single-services .service-content h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .single-services .service-content p {
+      font-size: 0.9rem;
+      line-height: 1.2;
+      margin: 0;
     }
 
     .services .service-content {
@@ -440,13 +533,13 @@
 
     /* Teal background when at top and not scrolled */
     .navbar-nine:not(.scrolled) {
-      background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+      background: var(--teal-700);
       color: white;
     }
 
     /* Liquid glass effect when scrolled */
     .navbar-nine.scrolled {
-      background: var(--glass-bg);
+      background: var(--glass-tinted-bg);
       backdrop-filter: blur(var(--glass-blur));
       -webkit-backdrop-filter: blur(var(--glass-blur));
       border: 1px solid var(--teal-300);
@@ -522,10 +615,11 @@
       <div class="row">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 12px;">
               <img style="width:48px" src="assets/images/logo-dark.png" alt="#" />
+              <span style="color:white">FullCircle</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
+            <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
               aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
               <span class="toggler-icon"></span>
               <span class="toggler-icon"></span>
@@ -547,7 +641,7 @@
               </ul>
             </div>
 
-            <div class="navbar-btn d-none d-lg-inline-block">
+            <div class="navbar-btn d-none d-lg-inline-block hidden">
               <a class="menu-bar" href="#side-menu-left"><i class="lni lni-menu"></i></a>
             </div>
           </nav>
@@ -570,11 +664,13 @@
     <div class="sidebar-content">
       <div class="sidebar-logo">
         <a href="index.html">
-          <span style="display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--teal-700);color:white;font-weight:800;font-size:16px;">FC</span>
+          <span
+            style="display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--teal-700);color:white;font-weight:800;font-size:16px;">FC</span>
           <div style="color:var(--teal-900); font-weight:700; margin-top:8px;">FullCircle</div>
         </a>
       </div>
-      <p class="text">Connecting neighbors and helpers for everyday tasks - errands, companionship, odd jobs and more.</p>
+      <p class="text">Connecting neighbors and helpers for everyday tasks - errands, companionship, odd jobs and more.
+      </p>
       <!-- logo -->
       <div class="sidebar-menu">
         <h5 class="menu-title">Quick Links</h5>
@@ -589,7 +685,7 @@
         <h5 class="social-title">Follow Us On</h5>
         <ul>
           <li>
-            <a href="javascript:void(0)"><i class="lni lni-whatsapp"></i></a>
+            <a href="https://wa.me/919121346777" target="_blank"><i class="lni lni-whatsapp"></i></a>
           </li>
           <li>
             <a href="javascript:void(0)"><i class="lni lni-phone"></i></a>
@@ -612,7 +708,8 @@
           <div class="header-content">
             <h1>To make everyday work accessible to everyone</h1>
             <p>
-              Book short tasks help from trusted local helpers: errands, elderly support, deliveries, housekeeping and more - managed over WhatsApp and phone.
+              Book short tasks help from trusted local helpers: errands, elderly support, deliveries, housekeeping and
+              more - managed over WhatsApp and phone.
             </p>
             <div class="button">
               <a href="#contact" class="btn primary-btn">Get Started</a>
@@ -648,42 +745,63 @@
     <!--======  End Section Title Five ======-->
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="single-services">
             <div class="service-icon">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 7v6c0 5-4 9-8 9s-8-4-8-9V7l8-5z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <i class="lni lni-user"></i>
             </div>
             <div class="service-content">
-              <h4>Trusted helpers</h4>
-              <p>
-                Profile checks, ratings and local references - pick someone you can trust.
+              <h4>Trusted &amp; Verified Helpers</h4>
+              <p>Helpers are profile-checked, rated by neighbors, and locally referenced for peace of mind.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-shield"></i>
+            </div>
+            <div class="service-content">
+              <h4>Safety-First Approach</h4>
+              <p>We prioritize safety with clear guidelines, secure handoffs, and responsive support if issues arise.
               </p>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="single-services">
             <div class="service-icon">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M3 12h18" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <i class="lni lni-whatsapp"></i>
             </div>
             <div class="service-content">
-              <h4>WhatsApp-first</h4>
-              <p>
-                Book and message helpers using WhatsApp - no new app required.
-              </p>
+              <h4>Quick Response on WhatsApp</h4>
+              <p>Message us directly on WhatsApp for fast matches and real-time coordination—no new app needed.</p>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="single-services">
             <div class="service-icon">
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <i class="lni lni-wallet"></i>
             </div>
             <div class="service-content">
-              <h4>Fast matches</h4>
-              <p>
-                Short tasks matched to nearby helpers in minutes - or schedule ahead.
-              </p>
+              <h4>Simple Pricing</h4>
+              <p>Transparent, easy-to-understand pricing so you know the cost up front—no surprises.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-users"></i>
+            </div>
+            <div class="service-content">
+              <h4>Community-Driven Service</h4>
+              <p>Local helpers and neighbors shape our network—repeat bookings and local referrals build trust.</p>
             </div>
           </div>
         </div>
@@ -938,107 +1056,25 @@
   </section>
   <!-- ===== service-area end ===== -->
 
-  <!-- Start Cta Area -->
-  <section id="call-action" class="call-action">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9">
-          <div class="inner-content">
-            <h2>Connect with trusted helpers in your community</h2>
-            <p>
-              Message us on WhatsApp with your request - we'll match a helper nearby.
-            </p>
-            <div class="light-rounded-buttons">
-              <a href="#contact" class="btn primary-btn">Message on WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ End Cta Area -->
 
   <!-- ========================= contact-section start ========================= -->
-  <section id="contact" class="contact-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-4">
-          <div class="contact-item-wrapper">
-            <div class="row">
-              <div class="col-12 col-md-6 col-xl-12">
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="lni lni-whatsapp"></i>
-                  </div>
-                  <div class="contact-content">
-                    <h4>WhatsApp</h4>
-                    <p>+91 91213 46777</p>
-                    <p>Message anytime</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-xl-12">
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="lni lni-envelope"></i>
-                  </div>
-                  <div class="contact-content">
-                    <h4>Email</h4>
-                    <p>ourfullcircleservices@gmail.com</p>
-                    <p>Response within 24 hours</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-xl-12">
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="lni lni-phone"></i>
-                  </div>
-                  <div class="contact-content">
-                    <h4>Phone</h4>
-                    <p>+91 91213 46777</p>
-                    <p>Mon–Sat 06:00–23:00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-8">
-          <div class="contact-form-wrapper">
-            <div class="row">
-              <div class="col-xl-10 col-lg-8 mx-auto">
-                <div class="section-title text-center">
-                  <span> Get in Touch </span>
-                  <h2>
-                    Ready to Get Started
-                  </h2>
-                  <p>
-                    Send us a message about your needs and we'll connect you with a local helper.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
   <!-- ========================= contact-section end ========================= -->
 
   <!-- Start Footer Area -->
-  <footer class="footer-area footer-eleven">
+  <footer class="call-action">
     <!-- Start Footer Top -->
-    <div class="footer-top">
-      <div class="container">
+    <div class="container">
+      <div class="">
         <div class="inner-content">
           <div class="row">
             <div class="col-lg-4 col-md-6 col-12">
               <!-- Single Widget -->
-              <div class="footer-widget f-about">
+              <div class=" f-about">
                 <div class="logo">
                   <a href="index.html">
-                    <span style="display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--teal-700);color:white;font-weight:800;font-size:16px;">FC</span>
+                    <img style="width:48px" src="assets/images/logo-dark.png" alt="#" />
+
                     <div style="color:var(--teal-900); font-weight:700; margin-top:8px;">FullCircle</div>
                   </a>
                 </div>
@@ -1046,50 +1082,17 @@
                   To make everyday work accessible to everyone.
                 </p>
                 <p class="copyright-text">
-                  <span>© 2025 FullCircle.</span> Connecting neighbors and helpers.
+                  <span>© 2025 FullCircle.</span> All rights reserved.
                 </p>
-              </div>
-              <!-- End Single Widget -->
-            </div>
-            <div class="col-lg-2 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class="footer-widget f-link">
-                <h5>Quick Links</h5>
-                <ul>
-                  <li><a href="#how">How it works</a></li>
-                  <li><a href="#services">Services</a></li>
-                  <li><a href="#contact">Contact</a></li>
-                  <li><a href="#contact">Get Started</a></li>
-                </ul>
-              </div>
-              <!-- End Single Widget -->
-            </div>
-            <div class="col-lg-2 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class="footer-widget f-link">
-                <h5>Services</h5>
-                <ul>
-                  <li><a href="javascript:void(0)">Errands</a></li>
-                  <li><a href="javascript:void(0)">Elderly Care</a></li>
-                  <li><a href="javascript:void(0)">Housekeeping</a></li>
-                  <li><a href="javascript:void(0)">Transport</a></li>
-                </ul>
-              </div>
-              <!-- End Single Widget -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class="footer-widget newsletter">
-                <h5>Stay Connected</h5>
-                <p>Join our community of neighbors helping neighbors</p>
-                <div class="button">
-                  <a href="#contact" class="sub-btn" style="background:var(--teal-900);color:white;text-decoration:none;padding:8px 12px;border-radius:5px;">
-                    Contact Us <i class="lni lni-whatsapp"></i>
-                  </a>
+                <div style="color:var(--teal-900); padding:20px 0; font-weight:500;">
+                  <p>Phone: +91 91213 46777</p>
+                  <p>Email: ourfullcircleservices@gmail.com</p>
                 </div>
+
               </div>
               <!-- End Single Widget -->
             </div>
+
           </div>
         </div>
       </div>
@@ -1140,7 +1143,7 @@
     });
 
     // Track scroll position and add/remove 'scrolled' class
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       const navbar = document.querySelector('.navbar-nine');
       if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
