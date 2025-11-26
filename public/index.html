@@ -1,449 +1,1426 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <!--====== Required meta tags ======-->
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="description"
+    content="FullCircle connects neighbours and helpers to get everyday tasks done - errands, companionship, odd jobs and more." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!--====== Title ======-->
   <title>FullCircle - Local Helping Network</title>
-  <meta name="description" content="FullCircle connects neighbours and helpers to get everyday tasks done - errands, companionship, odd jobs and more." />
+
+  <!--====== Favicon Icon ======-->
+  <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/svg" />
+
+  <!--====== Bootstrap css ======-->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+  <!--====== Line Icons css ======-->
+  <link rel="stylesheet" href="assets/css/lineicons.css" />
+
+  <!--====== Tiny Slider css ======-->
+  <link rel="stylesheet" href="assets/css/tiny-slider.css" />
+
+  <!--====== gLightBox css ======-->
+  <link rel="stylesheet" href="assets/css/glightbox.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Custom colors to match FullCircle branding with liquid glass effect -->
   <style>
-    :root{
-      --teal-900:#003d38;
-      --teal-700:#0ea39a;
-      --teal-500:#14b8a6;
-      --teal-300:#6ee7d8;
-      --bg:#f6fdfc;
-      --glass-bg: rgba(255,255,255,0.45);
-      --glass-border: rgba(255,255,255,0.6);
-      --muted:#5f6b6a;
-      --card:#ffffff;
-      --maxw:1200px;
-      --radius-lg:24px;
-      --radius-md:14px;
-      --elevation-1: 0 6px 20px rgba(18, 38, 37, 0.06);
-      --elevation-2: 0 12px 36px rgba(18, 38, 37, 0.08);
+    :root {
+      --teal-900-rgb: rgb(0, 61, 56) --teal-900: #003d38;
+      --teal-700: #0ea39a;
+      --teal-500: #14b8a6;
+      --teal-300: #6ee7d8;
+      --glass-tinted-bg: rgba(14, 163, 154, 0.45);
+      --glass-bg: rgba(255, 255, 255, 0.45);
+      --glass-border: rgba(255, 255, 255, 0.6);
       --glass-blur: 10px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:linear-gradient(180deg, #f0fdfa 0%, var(--bg) 100%);color:var(--teal-900);-webkit-font-smoothing:antialiased;min-height:100vh}
-
-    .site{max-width:var(--maxw);margin:0 auto;padding:16px}
-
-    header{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(135deg,var(--teal-700),var(--teal-500));padding:20px;box-shadow:var(--elevation-2);margin-bottom:20px}
-    header::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,0.03),transparent 40%);pointer-events:none}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:48px;height:48px;border-radius:10px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.95);color:var(--teal-700);font-weight:800;font-size:18px;box-shadow:0 4px 12px rgba(0,0,0,0.08);flex-shrink:0}
-    nav ul{display:flex;gap:8px;align-items:center;margin:0;padding:0;list-style:none;flex-wrap:wrap}
-    nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600;padding:10px 12px;border-radius:10px;font-size:14px;transition:background 200ms ease;-webkit-user-select:none;user-select:none}
-    nav a:active,nav a:hover{background:rgba(255,255,255,0.12)}
-
-    .hero{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;margin-top:12px}
-    .hero h1{font-size:32px;line-height:1.1;margin:0;color:#ffffff;letter-spacing:-0.4px}
-    .hero p{color:rgba(255,255,255,0.92);margin-top:8px;font-size:15px;line-height:1.5}
-    .hero > div:first-child{min-width:0}
-
-    .glass-card{background:var(--glass-bg);backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));border:1px solid var(--glass-border);padding:16px;border-radius:14px;color:var(--teal-900);box-shadow:var(--elevation-1)}
-
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
-    .feature{background:linear-gradient(180deg,rgba(255,255,255,0.75),#ffffff);padding:16px;border-radius:12px;box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
-    .feature svg{display:block;margin-bottom:8px}
-    .feature h3{margin:6px 0 4px;font-size:15px}
-    .feature p{margin:0}
-    .muted{color:var(--muted);font-size:13px;line-height:1.5}
-
-    .how{margin:32px 0}
-    .how h2{font-size:24px;margin-top:0}
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .step{padding:14px;border-radius:10px;background:linear-gradient(180deg,#ffffff,rgba(255,255,255,0.9));box-shadow:0 6px 20px rgba(14,28,27,0.04);border:1px solid rgba(0,0,0,0.03);text-align:center}
-    .step .num{background:linear-gradient(180deg,var(--teal-300),var(--teal-500));width:40px;height:40px;border-radius:10px;display:inline-grid;place-items:center;font-weight:700;color:var(--teal-900);margin:0 auto 8px;font-size:16px}
-    .step h4{margin:6px 0 4px;font-size:14px}
-    .step p{margin:0}
-
-    #services{margin:32px 0}
-    #services > h2{font-size:24px;margin-top:0;margin-bottom:20px}
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
-    .service-card{padding:16px;border-radius:10px;background:linear-gradient(180deg,#ffffff,#f8fffd);box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
-    .service-card h3{margin:0 0 6px;font-size:15px}
-    .service-card p{margin:0}
-
-    .contact{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;align-items:start}
-    .contact-card{padding:16px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.85),#ffffff);box-shadow:var(--elevation-1);border:1px solid rgba(0,0,0,0.03)}
-    .contact-card h2{margin-top:0;font-size:20px}
-    .contact-row{display:flex;gap:12px;align-items:flex-start;margin-top:10px;flex-wrap:wrap}
-    .contact-label{min-width:85px;font-weight:700;font-size:13px}
-    .contact-value{flex:1;min-width:120px;word-break:break-word}
-
-    .cta-strip{margin:24px 0;padding:16px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(90deg,rgba(20,184,166,0.14),rgba(110,231,216,0.12));border:1px solid rgba(20,184,166,0.08);flex-wrap:wrap}
-    .cta-strip > div:first-child{flex:1;min-width:200px}
-    .cta-strip > div:last-child{display:flex;gap:10px;flex-wrap:wrap}
-    .cta-strip strong{display:block;font-size:15px}
-
-    footer{margin-top:32px;padding:16px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0.9));display:flex;justify-content:space-between;align-items:center;gap:12px;box-shadow:var(--elevation-1);flex-wrap:wrap}
-    footer > div:first-child{flex:1;min-width:150px}
-    footer > div:last-child{font-size:12px;text-align:right}
-
-    .pill{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.7);font-weight:700;font-size:13px}
-
-    .highlight{animation:highlight-pulse 900ms cubic-bezier(.16,.84,.34,1)}
-    @keyframes highlight-pulse{0%{transform:translateY(0) scale(1);box-shadow:0 0 0 rgba(20,184,166,0)}30%{transform:translateY(-6px) scale(1.02);box-shadow:0 18px 40px rgba(20,184,166,0.12)}100%{transform:translateY(0) scale(1);box-shadow:0 0 0 rgba(20,184,166,0)}}
-
-    a.btn{display:inline-block;padding:11px 16px;border-radius:10px;text-decoration:none;font-weight:600;background:var(--teal-900);color:white;font-size:13px;transition:opacity 200ms ease;-webkit-user-select:none;user-select:none;border:1px solid transparent;touch-action:manipulation}
-    a.btn:active,a.btn:hover{opacity:0.9}
-
-    @media (max-width:1024px){
-      .site{padding:14px}
-      header{padding:18px}
-      .hero{gap:16px}
-      .hero h1{font-size:28px}
-      .features{gap:12px}
-      .steps{gap:10px}
-      .services{gap:10px}
-      .contact{gap:14px}
     }
 
-    @media (max-width:768px){
-      .site{padding:12px;margin:0}
-      header{padding:16px;border-radius:12px;margin-bottom:16px}
-      .logo{width:44px;height:44px;font-size:16px}
-      .brand div:last-child{font-size:16px}
-      .brand div:last-child > div:first-child{font-weight:700}
-      .brand div:last-child > div:last-child{font-size:11px}
-      nav a{padding:8px 10px;font-size:13px}
-      .pill{padding:6px 12px;font-size:12px}
-      .hero{grid-template-columns:1fr;gap:14px;margin-top:8px}
-      .hero h1{font-size:24px;line-height:1.15}
-      .hero p{font-size:14px}
-      .features{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
-      .feature{padding:12px}
-      .feature h3{font-size:14px;margin:4px 0 2px}
-      .feature p{font-size:12px}
-      .how{margin:24px 0}
-      .how h2{font-size:20px}
-      .steps{grid-template-columns:repeat(2,1fr);gap:10px}
-      .step{padding:12px}
-      .step .num{width:36px;height:36px;font-size:14px;margin-bottom:6px}
-      .step h4{font-size:13px}
-      .step p{font-size:12px}
-      .services{grid-template-columns:1fr}
-      .service-card{padding:14px}
-      .service-card h3{font-size:14px}
-      .service-card p{font-size:12px}
-      .contact{grid-template-columns:1fr;gap:12px;margin-top:16px}
-      .contact-card{padding:14px}
-      .contact-card h2{font-size:18px}
-      .contact-row{margin-top:8px}
-      .contact-label{min-width:75px;font-size:12px}
-      .contact-value{font-size:13px}
-      .cta-strip{margin:16px 0;padding:12px;flex-direction:column;align-items:stretch}
-      .cta-strip > div{width:100%}
-      .cta-strip > div:last-child{flex-direction:column}
-      .cta-strip > div:last-child a{width:100%;text-align:center}
-      footer{flex-direction:column;align-items:flex-start;padding:12px;margin-top:24px}
-      footer > div:last-child{width:100%;text-align:left;font-size:11px;margin-top:8px}
+    /* Liquid glass effect for containers */
+    .liquid-glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
-    @media (max-width:480px){
-      .site{padding:10px}
-      header{padding:12px;margin-bottom:12px}
-      .nav{gap:8px}
-      .logo{width:40px;height:40px;font-size:14px}
-      .brand{gap:8px}
-      .brand div:last-child{font-size:14px}
-      .brand div:last-child > div:first-child{font-weight:700}
-      .brand div:last-child > div:last-child{font-size:10px}
-      nav ul{gap:4px}
-      nav a{padding:6px 8px;font-size:12px}
-      .pill{padding:5px 10px;font-size:11px}
-      .hero{gap:12px;margin-top:6px}
-      .hero h1{font-size:20px;line-height:1.2}
-      .hero p{font-size:13px;margin-top:6px}
-      main{margin-top:12px}
-      .glass-card{padding:12px;border-radius:12px}
-      .features{grid-template-columns:1fr;gap:8px;margin-top:12px}
-      .feature{padding:10px}
-      .feature svg{width:32px;height:32px;margin-bottom:6px}
-      .feature h3{font-size:13px;margin:2px 0 2px}
-      .feature p{font-size:11px}
-      .muted{font-size:12px}
-      .how{margin:16px 0}
-      .how h2{font-size:18px;margin-bottom:12px}
-      .steps{grid-template-columns:1fr;gap:8px}
-      .step{padding:10px}
-      .step .num{width:32px;height:32px;font-size:12px;margin-bottom:4px}
-      .step h4{font-size:12px;margin:4px 0 2px}
-      .step p{font-size:11px}
-      .services{gap:8px}
-      .service-card{padding:10px}
-      .service-card h3{font-size:13px;margin-bottom:4px}
-      .service-card p{font-size:11px}
-      .contact{gap:10px;margin-top:12px}
-      .contact-card{padding:10px}
-      .contact-card h2{font-size:16px;margin-bottom:6px}
-      .contact-row{margin-top:6px;flex-wrap:wrap}
-      .contact-label{min-width:60px;font-size:11px}
-      .contact-value{font-size:12px}
-      .cta-strip{margin:12px 0;padding:10px}
-      .cta-strip strong{font-size:13px}
-      .cta-strip .muted{font-size:11px}
-      .cta-strip > div:last-child{gap:8px}
-      .cta-strip a.btn{padding:9px 12px;font-size:12px}
-      footer{padding:10px;margin-top:16px}
-      footer strong{display:block;font-size:13px}
-      footer .muted{font-size:11px}
+    .liquid-glass::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      pointer-events: none;
+      border-radius: 16px;
     }
 
-    @media (max-width:360px){
-      .site{padding:8px}
-      header{padding:10px}
-      .logo{width:36px;height:36px;font-size:12px}
-      .brand div:last-child{font-size:12px}
-      nav a{padding:5px 6px;font-size:11px}
-      .hero h1{font-size:18px}
-      .hero p{font-size:12px}
-      .feature h3{font-size:12px}
-      .feature p{font-size:10px}
-      .step h4{font-size:11px}
-      .contact-label{min-width:55px;font-size:10px}
-      .contact-value{font-size:11px}
-      a.btn{padding:8px 10px;font-size:11px}
+    /* Consistent sizing for features section */
+    .features .feature {
+      height: 100%;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .features .row {
+      gap: 14px;
+    }
+
+    /* Consistent sizing for how-it-works section */
+    .how .steps .step {
+      height: 100%;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .how .steps .row {
+      gap: 12px;
+    }
+
+    /* Enhanced header with liquid glass effect */
+    .header-area {
+      background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+    }
+
+    /* Liquid glass buttons */
+    .primary-btn,
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+      border: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .primary-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.4), transparent);
+      z-index: -1;
+      transition: all 0.3s ease;
+    }
+
+    .primary-btn:hover::before {
+      background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), transparent);
+    }
+
+    .primary-btn:hover,
+    .primary-btn:focus,
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background: linear-gradient(135deg, var(--teal-500), var(--teal-700));
+    }
+
+    /* Liquid glass service cards */
+    .single-services {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .single-services::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      pointer-events: none;
+      border-radius: 16px;
+    }
+
+    .single-services:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px 0 rgba(31, 38, 135, 0.15);
+      border-color: rgba(20, 184, 166, 0.3);
+    }
+
+    .service-icon {
+      /* background: linear-gradient(135deg, var(--teal-700), var(--teal-500)) !important; */
+      color: white;
+      border-radius: 12px;
+      position: relative;
+      z-index: 1;
+      min-height: 48px;
+      /* reduced from 60px */
+      width: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+    }
+
+    /* icon sizing inside service-icon - prefer CSS over inline styles */
+    .service-icon i,
+    .service-icon svg {
+      font-size: 32px;
+      /* width: 20px;
+      height: 20px; */
+    }
+
+    .service-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Liquid glass contact items */
+    .contact-item {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      pointer-events: none;
+      border-radius: 16px;
+    }
+
+    /* Liquid glass footer */
+    .footer-widget {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-widget::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      pointer-events: none;
+      border-radius: 16px;
+    }
+
+    /* Liquid glass form elements */
+    .form-control {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      color: var(--teal-900);
+    }
+
+    .form-control:focus {
+      border-color: var(--teal-500);
+      box-shadow: 0 0 0 0.2rem rgba(20, 184, 166, 0.25);
+      background: var(--glass-bg);
+    }
+
+    /* Other elements with liquid glass effect */
+    .pricing-style-fourteen,
+    .btn {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-style-fourteen::before,
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      pointer-events: none;
+      border-radius: 16px;
+    }
+
+    /* Text elements */
+    .lni,
+    .text-primary {
+      color: var(--teal-500) !important;
+    }
+
+    .section-title-five .content h2,
+    .section-title-five .content h6 {
+      color: var(--teal-900);
+    }
+
+    /* Text inside glass elements */
+    .liquid-glass *,
+    .single-services *,
+    .contact-item *,
+    .footer-widget *,
+    .sidebar-content * {
+      color: var(--teal-900);
+    }
+
+    /* Consistent card sizing for services section */
+    .services .container .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      /* tighter gap */
+    }
+
+    .services .single-services {
+      height: 100%;
+      min-height: 160px;
+      /* reduced more to make cards noticeably smaller */
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      /* tighter padding */
+    }
+
+    /* subtle entrance animation and polished transitions */
+    .single-services {
+      opacity: 0;
+      transform: translateY(6px);
+      animation: fadeInUp .36s ease forwards;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Avoid motion for users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .single-services {
+        animation: none;
+        transition: none;
+      }
+    }
+
+    /* Hover effects only on devices that support hover */
+    @media (hover: hover) and (pointer: fine) {
+      .single-services:hover {
+        transform: translateY(-6px);
+      }
+    }
+
+    /* On very small screens reduce height and tighten spacing further */
+    @media (max-width: 576px) {
+      .services .single-services {
+        min-height: 130px;
+        padding: 8px;
+      }
+
+      .service-icon {
+        min-height: 40px;
+        width: 40px;
+      }
+
+      .service-icon i,
+      .service-icon svg {
+        font-size: 32px;
+        /* width: 18px;
+        height: 18px; */
+      }
+
+      /* tighter spacing and touch feedback on small screens */
+      .single-services {
+        margin-bottom: 6px;
+      }
+
+      .single-services:active {
+        transform: translateY(-2px) scale(0.995);
+      }
+    }
+
+    /* reduce text sizes inside the small cards */
+    .single-services .service-content h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .single-services .service-content p {
+      font-size: 0.9rem;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .services .service-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Consistent card sizing for contact items */
+    .contact-item-wrapper .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .contact-item {
+      height: 100%;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Consistent card sizing for footer widgets */
+    .footer-top .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .footer-widget {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Override any default blue colors in the template */
+    .btn-outline-primary {
+      color: var(--teal-500);
+      border-color: var(--teal-500);
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+    }
+
+    .btn-outline-primary:hover {
+      background: var(--teal-500);
+      color: white;
+    }
+
+    /* Liquid glass scroll-top button */
+    .scroll-top {
+      background: var(--glass-tinted-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.12);
+    }
+
+    .scroll-top::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      pointer-events: none;
+      border-radius: 50%;
+      color: var(--white);
+    }
+
+    .scroll-top:hover {
+      background: var(--glass-bg);
+      transform: translateY(-3px);
+      border-color: var(--teal-500);
+      color: var(--teal-500);
+    }
+
+    .scroll-top i {
+      color: var(--teal-500);
+      font-size: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    a,
+    .nav-link {
+      color: var(--teal-500);
+    }
+
+    a:hover,
+    .nav-link:hover {
+      color: var(--teal-700);
+    }
+
+    /* Navbar styling - initially transparent or with light background */
+    .navbar-nine {
+      background: transparent;
+      color: white;
+      transition: all 0.4s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    /* Teal background when at top and not scrolled */
+    .navbar-nine:not(.scrolled) {
+      background: var(--teal-700);
+      color: white;
+    }
+
+    /* Liquid glass effect when scrolled */
+    .navbar-nine.scrolled {
+      background: var(--glass-tinted-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--teal-300);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      position: relative;
+      overflow: hidden;
+      color: var(--teal-900);
+    }
+
+    .navbar-nine.scrolled::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(20, 184, 166, 0.05) 70%);
+      pointer-events: none;
+    }
+
+    .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.85) !important;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: white !important;
+    }
+
+    .navbar-nine.scrolled .navbar-nav .nav-link {
+      color: var(--teal-900) !important;
+    }
+
+    .navbar-nine.scrolled .navbar-nav .nav-link:hover {
+      color: var(--teal-700) !important;
+    }
+
+    /* Sidebar with liquid glass effect */
+    .sidebar-content {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      pointer-events: none;
+      border-radius: 16px;
+    }
+
+    /* ===== Vertical Timeline Styles ===== */
+    .timeline-wrapper {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    /* Center vertical line */
+    .timeline-wrapper::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 28px;
+      bottom: 28px;
+      width: 3px;
+      background: linear-gradient(180deg, var(--teal-500), var(--teal-700));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      margin-bottom: 40px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    /* Remove bottom margin from last item */
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Alternating left-right layout */
+    .timeline-item:nth-child(odd) {
+      flex-direction: row;
+    }
+
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      flex-shrink: 0;
+    }
+
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+      border: 4px solid white;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 4px 16px rgba(14, 163, 154, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .step-number {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(14, 163, 154, 0.5);
+    }
+
+    .timeline-content {
+      width: calc(50% - 40px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .timeline-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
+      pointer-events: none;
+      border-radius: 12px;
+    }
+
+    .timeline-item:hover .timeline-card {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px 0 rgba(31, 38, 135, 0.15);
+      border-color: rgba(20, 184, 166, 0.3);
+    }
+
+    .timeline-card h4 {
+      color: var(--teal-900);
+      margin-bottom: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-card p {
+      color: var(--teal-900);
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 1;
+      line-height: 1.5;
+    }
+
+    .timeline-description {
+      color: rgba(0, 61, 56, 0.75) !important;
+      font-size: 0.9rem;
+    }
+
+    .timeline-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal-500);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-link:hover {
+      color: var(--teal-700);
+      gap: 12px;
+    }
+
+    .timeline-link i {
+      font-size: 18px;
+    }
+
+    /* Mobile responsive - stack timeline vertically */
+    @media (max-width: 992px) {
+      .timeline-wrapper::before {
+        left: 20px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        flex-direction: column !important;
+      }
+
+      .timeline-marker {
+        left: 20px;
+        transform: translateX(-50%);
+      }
+
+           .timeline-content {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+        box-sizing: border-box;
+      }
+
+      /* hide any accidental horizontal overflow inside the timeline on small screens */
+      .timeline-wrapper {
+        overflow-x: hidden;
+      }
+      .step-number {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .timeline-wrapper {
+        padding: 10px 0;
+      }
+
+      .timeline-item {
+        margin-bottom: 32px;
+      }
+
+      .timeline-wrapper::before {
+        left: 16px;
+      }
+
+      .timeline-marker {
+        left: 16px;
+      }
+
+        /* Make sure timeline content fits within viewport on very small screens */
+      .timeline-content {
+        width: calc(100% - 72px);
+        margin-left: 72px;
+        box-sizing: border-box;
+      }
+
+      .timeline-card {
+        padding: 16px;
+      }
+
+      .timeline-card h4 {
+        font-size: 1rem;
+      }
+
+      .timeline-card p {
+        font-size: 0.85rem;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="site">
-    <header>
-      <div class="nav">
-        <div class="brand">
-          <div class="logo" aria-hidden="true">FC</div>
-          <div style="color:rgba(255,255,255,0.95)">
-            <div style="font-size:18px;font-weight:700">FullCircle</div>
-            <div style="font-size:12px;opacity:0.92">Local helping network</div>
-          </div>
-        </div>
-        <nav aria-label="Main navigation">
-          <ul>
-            <li><a href="#how" class="nav-link">How it works</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-            <li><a class="pill nav-link" href="#contact">Get started</a></li>
-          </ul>
-        </nav>
-      </div>
 
-      <div class="hero">
-        <div>
-          <h1>Neighbours who help - real people, real help.</h1>
-          <p>Book short tasks or recurring help from trusted local helpers: errands, elderly support, deliveries, housekeeping and more - managed over WhatsApp and phone.</p>
+  <!--====== NAVBAR NINE PART START ======-->
 
-          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-            <a class="btn nav-link" href="#contact">Message on WhatsApp</a>
-            <a class="btn nav-link" href="#services" style="background:transparent;color:var(--teal-900);border:1px solid rgba(0,0,0,0.06)">See services</a>
-          </div>
-        </div>
+  <section class="navbar-area navbar-nine">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.html" style="display: flex; align-items: center; gap: 12px;">
+              <img style="width:48px" src="assets/images/logo-dark.png" alt="#" />
+              <span style="color:white">FullCircle</span>
+            </a>
+            <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
+              aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
 
-        <div class="glass-card" aria-hidden="false">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:8px;flex-wrap:wrap">
-            <strong style="font-size:14px">Quick match</strong>
-            <span class="muted" style="font-size:12px">Verified helpers</span>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <div style="display:flex;gap:10px;align-items:center">
-              <div style="width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.85),#fff);box-shadow:var(--elevation-1);font-weight:700;color:var(--teal-700);flex-shrink:0;font-size:14px">A</div>
-              <div style="min-width:0">
-                <div style="font-weight:600;font-size:13px;word-break:break-word">Groceries pickup</div>
-                <div class="muted" style="font-size:12px">Same-day options</div>
-              </div>
+            <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="page-scroll active" href="#hero-area">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="page-scroll" href="#get-started">Get Started</a>
+                </li>
+                <li class="nav-item">
+                  <a class="page-scroll" href="#services">Services</a>
+                </li>
+              </ul>
             </div>
 
-            <div style="display:flex;gap:10px;align-items:center">
-              <div style="width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(180deg,rgba(255,255,255,0.95),#fff);box-shadow:var(--elevation-1);font-weight:700;color:var(--teal-700);flex-shrink:0;font-size:14px">B</div>
-              <div style="min-width:0">
-                <div style="font-weight:600;font-size:13px;word-break:break-word">Elderly companion</div>
-                <div class="muted" style="font-size:12px">Short visits or scheduled care</div>
-              </div>
+            <div class="navbar-btn d-none d-lg-inline-block hidden">
+              <a class="menu-bar" href="#side-menu-left"><i class="lni lni-menu"></i></a>
             </div>
-
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;gap:8px;flex-wrap:wrap">
-              <small class="muted" style="font-size:11px">Only vetted helpers shown</small>
-              <a href="#services" class="nav-link" style="text-decoration:none;font-weight:600;color:var(--teal-700);font-size:12px;padding:0">Learn more</a>
-            </div>
-          </div>
+          </nav>
+          <!-- navbar -->
         </div>
       </div>
-    </header>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </section>
 
-    <main style="margin-top:12px">
-      <section class="features" aria-label="Features">
-        <article class="feature">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L20 7v6c0 5-4 9-8 9s-8-4-8-9V7l8-5z" stroke="var(--teal-700)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>Trusted helpers</h3>
-          <p class="muted">Profile checks, ratings and local references - pick someone you can trust.</p>
-        </article>
+  <!--====== NAVBAR NINE PART ENDS ======-->
 
-        <article class="feature">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18" stroke="var(--teal-700)" stroke-width="1.4" stroke-linecap="round"/></svg>
-          <h3>WhatsApp-first</h3>
-          <p class="muted">Book and message helpers using WhatsApp - no new app required.</p>
-        </article>
+  <!--====== SIDEBAR PART START ======-->
 
-        <article class="feature">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6v6l4 2" stroke="var(--teal-700)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>Fast matches</h3>
-          <p class="muted">Short tasks matched to nearby helpers in minutes - or schedule ahead.</p>
-        </article>
-      </section>
-
-      <section id="how" class="how" aria-labelledby="how-heading">
-        <h2 id="how-heading">How it works</h2>
-        <div class="steps" role="list">
-          <div class="step" role="listitem">
-            <div class="num">1</div>
-            <h4 style="margin:8px 0 6px">Request</h4>
-            <p class="muted">Send a short WhatsApp message with your request, address and preferred time.</p>
-          </div>
-
-          <div class="step" role="listitem">
-            <div class="num">2</div>
-            <h4 style="margin:8px 0 6px">Match</h4>
-            <p class="muted">We assign a nearby vetted helper suitable for the task.</p>
-          </div>
-
-          <div class="step" role="listitem">
-            <div class="num">3</div>
-            <h4 style="margin:8px 0 6px">Confirm</h4>
-            <p class="muted">Confirm timing, price and any special instructions directly with the helper.</p>
-          </div>
-
-          <div class="step" role="listitem">
-            <div class="num">4</div>
-            <h4 style="margin:8px 0 6px">Complete</h4>
-            <p class="muted">Task completed - rate the helper and request them again if you liked the service.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="services" aria-labelledby="services-section-heading">
-        <h2 id="services-section-heading">How We Can Help</h2>
-        <div class="services">
-        <div class="service-card">
-          <h3 id="services-heading">Care & Companionship</h3>
-          <p class="muted">Elderly support, companionship visits, hospital visits, and motivational support (non-medical care).</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Children & Family Assistance</h3>
-          <p class="muted">Child supervision, school pick & drop, and family home errands support.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Emergency Support</h3>
-          <p class="muted">Medical emergency delivery, rescue assistance, blood pickup, and urgent item delivery.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Essential Errands</h3>
-          <p class="muted">Grocery runs, market visits, bulk transport, water cylinder pickup and gift delivery.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Event & Occasion Support</h3>
-          <p class="muted">Decoration help, event serving, guest management, and moving heavy items for occasions.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Financial & Administrative Help</h3>
-          <p class="muted">Bill payments, form filling, bank work assistance and administrative support.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>General On-field Assistance</h3>
-          <p class="muted">Queue standing, late-night pickup, photography services, and on-site supervision.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Home & Shop Support</h3>
-          <p class="muted">House watching, shop organizing, temporary supervision, and skill-based maintenance work.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Personal Productivity & Lifestyle</h3>
-          <p class="muted">Home setup, fitness buddy, wardrobe organization, and personal errands.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Pet Care Services</h3>
-          <p class="muted">Dog and cat walking, pet feeding, veterinary visit escorts, and pet transportation.</p>
-        </div>
-
-        <div class="service-card">
-          <h3>Transport & Mobility</h3>
-          <p class="muted">Passenger transport, personal chauffeur services for daily or planned trips.</p>
-        </div>
-        </div>
-      </section>
-
-      <div class="cta-strip">
-        <div>
-          <strong style="display:block;font-size:14px">Ready to try FullCircle?</strong>
-          <div class="muted" style="font-size:13px">Message us on WhatsApp with your request - we'll match a helper nearby.</div>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <a class="btn nav-link" href="#contact">Message on WhatsApp</a>
-          <a class="btn nav-link" href="#services" style="background:transparent;color:var(--teal-900);border:1px solid rgba(0,0,0,0.06)">See services</a>
-        </div>
+  <div class="sidebar-left">
+    <div class="sidebar-close">
+      <a class="close" href="#close"><i class="lni lni-close"></i></a>
+    </div>
+    <div class="sidebar-content">
+      <div class="sidebar-logo">
+        <a href="index.html">
+          <span
+            style="display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--teal-700);color:white;font-weight:800;font-size:16px;">FC</span>
+          <div style="color:var(--teal-900); font-weight:700; margin-top:8px;">FullCircle</div>
+        </a>
       </div>
-
-      <section id="contact" class="contact" aria-labelledby="contact-heading">
-        <div class="contact-card">
-          <h2 id="contact-heading">Contact details</h2>
-          <p class="muted">We respond to WhatsApp messages and emails during business hours (Mon–Sat, 9:00–18:00).</p>
-          <div class="contact-row"><div class="contact-label">WhatsApp</div><div class="contact-value">+91 91213 45777</div></div>
-          <div class="contact-row"><div class="contact-label">Email</div><div class="contact-value">ourfullcircleservices@gmail.com</div></div>
-          <div class="contact-row"><div class="contact-label">Phone</div><div class="contact-value">+91 91213 45777</div></div>
-          <div class="contact-row"><div class="contact-label">Address</div><div class="contact-value">Plot 12, Local Lane, Hyderabad, Telangana, India</div></div>
-        </div>
-
-        <aside class="glass-card" aria-label="Quick message template">
-          <h3 style="margin-top:0;font-size:15px">Need help right away?</h3>
-          <p class="muted" style="font-size:13px">Send a WhatsApp message with:</p>
-          <pre style="background:transparent;border:0;padding:0;margin:0;font-family:inherit;color:var(--muted);word-wrap:break-word;white-space:pre-wrap;font-size:12px;line-height:1.4">Hi - I need [service] at [your address] today between [time]</pre>
-          <p class="muted" style="margin-top:8px;font-size:12px"><em>Example: Hi - I need groceries pickup at 12 Green Street, today between 4–6pm</em></p>
-        </aside>
-      </section>
-
-      <footer>
-        <div>
-          <strong>FullCircle</strong>
-          <div class="muted">Connecting neighbours since 2025</div>
-        </div>
-        <div class="muted">© FullCircle - All rights reserved</div>
-      </footer>
-    </main>
+      <p class="text">Connecting neighbors and helpers for everyday tasks - errands, companionship, odd jobs and more.
+      </p>
+      <!-- logo -->
+      <div class="sidebar-menu">
+        <h5 class="menu-title">Quick Links</h5>
+        <ul>
+          <li><a href="#how" class="nav-link">How it works</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <!-- menu -->
+      <div class="sidebar-social align-items-center justify-content-center">
+        <h5 class="social-title">Follow Us On</h5>
+        <ul>
+          <li>
+            <a href="https://wa.me/919121346777" target="_blank"><i class="lni lni-whatsapp"></i></a>
+          </li>
+          <li>
+            <a href="javascript:void(0)"><i class="lni lni-phone"></i></a>
+          </li>
+        </ul>
+      </div>
+      <!-- sidebar social -->
+    </div>
+    <!-- content -->
   </div>
+  <div class="overlay-left"></div>
+
+  <!--====== SIDEBAR PART ENDS ======-->
+
+  <!-- Start header Area -->
+  <section id="hero-area" class="header-area header-eight">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="header-content">
+            <h1>To make everyday work accessible to everyone</h1>
+            <p>
+              Book short tasks help from trusted local helpers: errands, elderly support, deliveries, housekeeping and
+              more - managed over WhatsApp and phone.
+            </p>
+            <div class="button">
+                <a href="#get-started" class="btn primary-btn page-scroll">Get Started</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-12">
+          <div class="header-image">
+            <img src="assets/images/header/hero-image.jpg" alt="#" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End header Area -->
+
+  <!-- ===== feature section start ===== -->
+  <section class="services-area services-eight">
+    <!--======  Start Section Title Five ======-->
+    <div class="section-title-five">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+              <h2 class="fw-bold">Why Choose FullCircle</h2>
+            </div>
+          </div>
+        </div>
+        <!-- row -->
+      </div>
+      <!-- container -->
+    </div>
+    <!--======  End Section Title Five ======-->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-user"></i>
+            </div>
+            <div class="service-content">
+              <h4>Trusted &amp; Verified Helpers</h4>
+              <p>Helpers are profile-checked, rated by neighbors, and locally referenced for peace of mind.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-shield"></i>
+            </div>
+            <div class="service-content">
+              <h4>Safety-First Approach</h4>
+              <p>We prioritize safety with clear guidelines, secure handoffs, and responsive support if issues arise.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-whatsapp"></i>
+            </div>
+            <div class="service-content">
+              <h4>Quick Response on WhatsApp</h4>
+              <p>Message us directly on WhatsApp for fast matches and real-time coordination—no new app needed.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-wallet"></i>
+            </div>
+            <div class="service-content">
+              <h4>Simple Pricing</h4>
+              <p>Transparent, easy-to-understand pricing so you know the cost up front—no surprises.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-users"></i>
+            </div>
+            <div class="service-content">
+              <h4>Community-Driven Service</h4>
+              <p>Local helpers and neighbors shape our network—repeat bookings and local referrals build trust.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== feature section end ===== -->
+
+  <!-- ===== How to Get Started section start ===== -->
+  <section id="get-started" class="services-area services-eight">
+    <!--======  Start Section Title Five ======-->
+    <div class="section-title-five">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+              <h2 class="fw-bold">How to Get Started</h2>
+              <p>Simple steps to connect with our helpers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--======  End Section Title Five ======-->
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <!-- Vertical Timeline -->
+          <div class="timeline-wrapper">
+            <!-- Step 1 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="step-number">1</span>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-card">
+                  <h4>Save the Number</h4>
+                  <p><a href="tel:+919121346777"><strong>+91 91213 46777</strong></a></p>
+                  <p class="timeline-description">Add our WhatsApp number to your contacts for quick access.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="step-number">2</span>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-card">
+                  <h4>Send "Hi" on WhatsApp</h4>
+                  <p class="timeline-description">Start a conversation with us. We'll respond quickly and guide you through the next steps.</p>
+                  <a href="https://wa.me/919121346777" class="timeline-link" target="_blank">
+                    <i class="lni lni-whatsapp"></i> Open WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="step-number">3</span>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-card">
+                  <h4>Browse Our Service Catalogue</h4>
+                  <p class="timeline-description">Explore the range of services we offer. From errands to companionship, find what you need.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="step-number">4</span>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-card">
+                  <h4>Call Us Directly for Help</h4>
+                  <p><a href="tel:+919121346777"><strong>+91 91213 46777</strong></a></p>
+                  <p class="timeline-description">Prefer to talk? Call us anytime for personalized assistance and quick support.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="step-number">5</span>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-card">
+                  <h4>Confirm the Task & Get Helper Assigned</h4>
+                  <p class="timeline-description">Tell us the details of your task. We'll confirm the requirements and assign a verified helper suited for the job.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <span class="step-number">6</span>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-card">
+                  <h4>Pay After the Job is Done</h4>
+                  <p class="timeline-description">Complete peace of mind. You only pay after the task is completed successfully (as applicable).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Vertical Timeline -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== How to Get Started section end ===== -->
+
+  <!-- ===== service-area start ===== -->
+  <section id="services" class="services-area services-eight">
+    <!--======  Start Section Title Five ======-->
+    <div class="section-title-five">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+              <h2 class="fw-bold">How We Can Help</h2>
+              <p>
+                We connect you with trusted helpers for various tasks in your daily life.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- row -->
+      </div>
+      <!-- container -->
+    </div>
+    <!--======  End Section Title Five ======-->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-heart"></i>
+            </div>
+            <div class="service-content">
+              <h4>Care & Companionship</h4>
+              <p>
+                Elderly support, companionship visits, hospital visits, and motivational support (non-medical care).
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-users"></i>
+            </div>
+            <div class="service-content">
+              <h4>Children & Family Assistance</h4>
+              <p>
+                Child supervision, school pick & drop, and family home errands support.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-ambulance"></i>
+            </div>
+            <div class="service-content">
+              <h4>Emergency Support</h4>
+              <p>
+                Medical emergency delivery, rescue assistance, blood pickup, and urgent item delivery.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-shopping-basket"></i>
+            </div>
+            <div class="service-content">
+              <h4>Essential Errands</h4>
+              <p>
+                Grocery runs, market visits, bulk transport, water cylinder pickup and gift delivery.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-gift"></i>
+            </div>
+            <div class="service-content">
+              <h4>Event & Occasion Support</h4>
+              <p>
+                Decoration help, event serving, guest management, and moving heavy items for occasions.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-wallet"></i>
+            </div>
+            <div class="service-content">
+              <h4>Financial & Administrative Help</h4>
+              <p>
+                Bill payments, form filling, bank work assistance and administrative support.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-grid-alt"></i>
+            </div>
+            <div class="service-content">
+              <h4>General On-field Assistance</h4>
+              <p>
+                Queue standing, late-night pickup, photography services, and on-site supervision.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-home"></i>
+            </div>
+            <div class="service-content">
+              <h4>Home & Shop Support</h4>
+              <p>
+                House watching, shop organizing, temporary supervision, and skill-based maintenance work.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-briefcase"></i>
+            </div>
+            <div class="service-content">
+              <h4>Personal Productivity & Lifestyle</h4>
+              <p>
+                Home setup, fitness buddy, wardrobe organization, and personal errands.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-heart"></i>
+            </div>
+            <div class="service-content">
+              <h4>Pet Care Services</h4>
+              <p>
+                Dog and cat walking, pet feeding, veterinary visit escorts, and pet transportation.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-car"></i>
+            </div>
+            <div class="service-content">
+              <h4>Transport & Mobility</h4>
+              <p>
+                Passenger transport, personal chauffeur services for daily or planned trips.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== service-area end ===== -->
+
+
+  <!-- ========================= contact-section start ========================= -->
+
+  <!-- ========================= contact-section end ========================= -->
+
+  <!-- Start Footer Area -->
+  <footer class="call-action" style="margin-top: 40px;">
+    <!-- Start Footer Top -->
+    <div class="container">
+      <div class="inner-content">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 col-12">
+            <!-- Single Widget -->
+            <div class="f-about text-center" style="padding: 20px; display: inline-block; text-align: left;">
+              <div class="logo text-center">
+                <a href="index.html">
+                  <img style="width:48px" src="assets/images/logo-dark.png" alt="#" />
+                  <div style="color:var(--white); font-weight:500; font-size: x-large; margin-top:8px;">FullCircle</div>
+                </a>
+              </div>
+              <p class="text-center" style="margin: 15px 0;">
+                To make everyday work accessible to everyone.
+              </p>
+              <p class="copyright-text text-center" style="margin: 20px 0 15px 0; color: var(--teal-500);">
+                <span>© 2025 FullCircle.</span> All rights reserved.
+              </p>
+              <div class="text-center" style="color:var(--teal-900); font-weight:500;">
+                <p style="margin: 5px 0;">Phone: <a href="tel:+919121346777">+91 91213 46777</a></p>
+                <p style="margin: 5px 0;">Email: <a href="mailto:ourfullcircleservices@gmail.com">ourfullcircleservices@gmail.com</a></p>
+              </div>
+            </div>
+            <!-- End Single Widget -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ End Footer Top -->
+  </footer>
+  <!--/ End Footer Area -->
+
+  <a href="#" class="scroll-top">
+    <i class="lni lni-chevron-up"></i>
+  </a>
+
+  <!--====== js ======-->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/glightbox.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/tiny-slider.js"></script>
+
   <script>
-    const links = Array.from(document.querySelectorAll('a.nav-link'))
-    const header = document.querySelector('header')
-    function scrollToTarget(el){
-      const rect = el.getBoundingClientRect()
-      const offset = header ? header.offsetHeight + 16 : 0
-      const top = window.scrollY + rect.top - offset
-      window.scrollTo({top,behavior:'smooth'})
-      el.classList.add('highlight')
-      setTimeout(()=>el.classList.remove('highlight'),900)
-    }
-    links.forEach(l=>{
-      const href = l.getAttribute('href')
-      if(href && href.startsWith('#')){
-        l.addEventListener('click',e=>{
-          e.preventDefault()
-          const id = href.slice(1)
-          const target = id?document.getElementById(id):document.body
-          if(target) scrollToTarget(target)
-        })
+    //===== close navbar-collapse when a  clicked
+    let navbarTogglerNine = document.querySelector(
+      ".navbar-nine .navbar-toggler"
+    );
+    navbarTogglerNine.addEventListener("click", function () {
+      navbarTogglerNine.classList.toggle("active");
+    });
+
+    // ==== left sidebar toggle
+    let sidebarLeft = document.querySelector(".sidebar-left");
+    let overlayLeft = document.querySelector(".overlay-left");
+    let sidebarClose = document.querySelector(".sidebar-close .close");
+
+    overlayLeft.addEventListener("click", function () {
+      sidebarLeft.classList.toggle("open");
+      overlayLeft.classList.toggle("open");
+    });
+    sidebarClose.addEventListener("click", function () {
+      sidebarLeft.classList.remove("open");
+      overlayLeft.classList.remove("open");
+    });
+
+    // ===== navbar nine sideMenu
+    let sideMenuLeftNine = document.querySelector(".navbar-nine .menu-bar");
+
+    sideMenuLeftNine.addEventListener("click", function () {
+      sidebarLeft.classList.add("open");
+      overlayLeft.classList.add("open");
+    });
+
+    // Track scroll position and add/remove 'scrolled' class
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar-nine');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
       }
-    })
+    });
+
+    //========= glightbox
+    GLightbox({
+      'href': 'https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM',
+      'type': 'video',
+      'source': 'youtube', //vimeo, youtube or local
+      'width': 900,
+      'autoplayVideos': true,
+    });
   </script>
 </body>
+
 </html>
