@@ -466,7 +466,7 @@
 
     /* Liquid glass scroll-top button */
     .scroll-top {
-      background: var(--glass-bg);
+      background: var(--glass-tinted-bg);
       backdrop-filter: blur(var(--glass-blur));
       -webkit-backdrop-filter: blur(var(--glass-blur));
       border: 1px solid var(--glass-border);
@@ -494,12 +494,14 @@
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) 70%);
       pointer-events: none;
       border-radius: 50%;
+      color: var(--white);
     }
 
     .scroll-top:hover {
       background: var(--glass-bg);
       transform: translateY(-3px);
       border-color: var(--teal-500);
+      color: var(--teal-500);
     }
 
     .scroll-top i {
@@ -1062,37 +1064,32 @@
   <!-- ========================= contact-section end ========================= -->
 
   <!-- Start Footer Area -->
-  <footer class="call-action">
+  <footer class="call-action" style="margin-top: 40px;">
     <!-- Start Footer Top -->
     <div class="container">
-      <div class="">
-        <div class="inner-content">
-          <div class="row">
-            <div class="col-lg-4 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class=" f-about">
-                <div class="logo">
-                  <a href="index.html">
-                    <img style="width:48px" src="assets/images/logo-dark.png" alt="#" />
-
-                    <div style="color:var(--teal-900); font-weight:700; margin-top:8px;">FullCircle</div>
-                  </a>
-                </div>
-                <p>
-                  To make everyday work accessible to everyone.
-                </p>
-                <p class="copyright-text">
-                  <span>© 2025 FullCircle.</span> All rights reserved.
-                </p>
-                <div style="color:var(--teal-900); padding:20px 0; font-weight:500;">
-                  <p>Phone: +91 91213 46777</p>
-                  <p>Email: ourfullcircleservices@gmail.com</p>
-                </div>
-
+      <div class="inner-content">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-12">
+            <!-- Single Widget -->
+            <div class="f-about" style="padding: 20px;">
+              <div class="logo">
+                <a href="index.html">
+                  <img style="width:48px" src="assets/images/logo-dark.png" alt="#" />
+                  <div style="color:var(--white); font-weight:500; font-size: x-large; margin-top:8px;">FullCircle</div>
+                </a>
               </div>
-              <!-- End Single Widget -->
+              <p style="margin: 15px 0;;">
+                To make everyday work accessible to everyone.
+              </p>
+              <p class="copyright-text" style="margin: 20px 0 15px 0; color: var(--teal-500);">
+                <span>© 2025 FullCircle.</span> All rights reserved.
+              </p>
+              <div style="color:var(--teal-900); font-weight:500;">
+                <p style="margin: 5px 0;">Phone: +91 91213 46777</p>
+                <p style="margin: 5px 0;">Email: ourfullcircleservices@gmail.com</p>
+              </div>
             </div>
-
+            <!-- End Single Widget -->
           </div>
         </div>
       </div>
