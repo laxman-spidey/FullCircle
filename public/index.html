@@ -871,6 +871,47 @@
         font-size: 18px;
       }
     }
+
+    /* Floating WhatsApp Button Styles */
+    .floating-whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #25D366; /* WhatsApp green color */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      opacity: 1;
+      transform: translateY(0);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .floating-whatsapp-btn i {
+      font-size: 28px;
+      color: white !important;
+    }
+
+    .floating-whatsapp-btn:hover {
+      background-color: #128C7E; /* Darker WhatsApp green on hover */
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Hidden state for the floating button */
+    .floating-whatsapp-btn.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      visibility: hidden;
+    }
   </style>
 </head>
 
@@ -990,7 +1031,7 @@
         </div>
         <div class="col-lg-6 col-md-12 col-12">
           <div class="header-image">
-            <img src="assets/images/helper.png" alt="#" />
+            <img src="assets/images/helper.jpeg" alt="#" />
           </div>
         </div>
       </div>
@@ -1414,6 +1455,11 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/tiny-slider.js"></script>
 
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919121346777" class="floating-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <i class="lni lni-whatsapp"></i>
+  </a>
+
   <script>
     //===== close navbar-collapse when a  clicked
     let navbarTogglerNine = document.querySelector(
@@ -1462,6 +1508,43 @@
       'source': 'youtube', //vimeo, youtube or local
       'width': 900,
       'autoplayVideos': true,
+    });
+
+    // Floating WhatsApp Button functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const floatingBtn = document.querySelector('.floating-whatsapp-btn');
+      const whatsappBtn = document.querySelector('a[href="https://wa.me/919121346777"]');
+
+      // Function to check if element is in viewport
+      function isElementInViewport(el) {
+        if (!el) return false; // If element doesn't exist, return false
+
+        const rect = el.getBoundingClientRect();
+        const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+
+        // Consider element visible if at least 50% of it is in view
+        return (
+          rect.top <= windowHeight * 0.5 &&
+          rect.bottom >= windowHeight * 0.5
+        );
+      }
+
+      // Function to handle scroll events
+      function handleScroll() {
+        // Show the floating button if main WhatsApp button is not in viewport
+        // or if user has scrolled down significantly (so header might be collapsed)
+        if (!isElementInViewport(whatsappBtn) && window.scrollY > 100) {
+          floatingBtn.classList.remove('hidden');
+        } else {
+          floatingBtn.classList.add('hidden');
+        }
+      }
+
+      // Initial check
+      handleScroll();
+
+      // Add scroll event listener
+      window.addEventListener('scroll', handleScroll);
     });
   </script>
 </body>
