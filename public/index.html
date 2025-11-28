@@ -1520,20 +1520,18 @@
         if (!el) return false; // If element doesn't exist, return false
 
         const rect = el.getBoundingClientRect();
-        const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
 
-        // Consider element visible if at least 50% of it is in view
-        return (
-          rect.top <= windowHeight * 0.5 &&
-          rect.bottom >= windowHeight * 0.5
-        );
+        // Element is in viewport if it's not completely above or below the visible area
+        return rect.top < window.innerHeight && rect.bottom > 0;
       }
 
       // Function to handle scroll events
       function handleScroll() {
-        // Show the floating button if main WhatsApp button is not in viewport
-        // or if user has scrolled down significantly (so header might be collapsed)
-        if (!isElementInViewport(whatsappBtn) && window.scrollY > 100) {
+        // Show the floating button only when main WhatsApp button is not in viewport
+        // and user has scrolled down far enough that header is out of view
+        const whatsappBtnVisible = isElementInViewport(whatsappBtn);
+
+        if (!whatsappBtnVisible && window.scrollY > 150) {
           floatingBtn.classList.remove('hidden');
         } else {
           floatingBtn.classList.add('hidden');
