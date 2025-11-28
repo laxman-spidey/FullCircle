@@ -112,37 +112,75 @@
       pointer-events: none;
     }
 
-    /* Liquid glass buttons */
-    .primary-btn,
+    /* Material You style buttons - overriding default .btn styles */
+    .btn, .primary-btn,
     .btn-primary {
-      background: linear-gradient(135deg, var(--teal-700), var(--teal-500));
+      background: var(--teal-500);
       border: none;
+      border-radius: 8px !important;
+      color: white;
+      padding: 12px 24px;
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       z-index: 1;
+      display: inline-block;
+      text-decoration: none;
     }
 
-    .primary-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, rgba(255, 255, 255, 0.4), transparent);
-      z-index: -1;
-      transition: all 0.3s ease;
-    }
-
-    .primary-btn:hover::before {
-      background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), transparent);
-    }
-
-    .primary-btn:hover,
+    .btn:hover, .primary-btn:hover,
     .primary-btn:focus,
     .btn-primary:hover,
     .btn-primary:focus {
-      background: linear-gradient(135deg, var(--teal-500), var(--teal-700));
+      background: var(--teal-700);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.22);
+      transform: translateY(-2px);
+      text-decoration: none;
+      color: white;
+    }
+
+    /* WhatsApp quick message button following Material You standards */
+    .whatsapp-btn {
+      background: #075E54; /* official WhatsApp dark green */
+      border: none;
+      border-radius: 8px !important;
+      color: white;
+      padding: 12px 24px;
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .whatsapp-btn i {
+      font-size: 18px;
+      line-height: 1;
+      color: white;
+    }
+
+    /* Force icon color white inside the WhatsApp CTA to override template rules */
+    .whatsapp-btn i, .whatsapp-btn .lni, .whatsapp-btn svg {
+      color: #ffffff !important;
+    }
+
+    .whatsapp-btn:hover,
+    .whatsapp-btn:focus {
+      background: #054C45; /* darker shade of WhatsApp green for consistency */
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.22);
+      transform: translateY(-2px);
     }
 
     /* Liquid glass service cards */
@@ -941,7 +979,12 @@
               more - managed over WhatsApp and phone.
             </p>
             <div class="button">
-                <a href="#get-started" class="btn primary-btn page-scroll">Get Started</a>
+                  <div class="d-flex flex-column flex-md-row gap-3 align-items-center justify-content-center">
+                    <a href="#get-started" class="btn primary-btn page-scroll w-100 w-md-auto">Get Started</a>
+                    <a href="https://wa.me/919121346777" class="whatsapp-btn w-100 w-md-auto d-flex align-items-center justify-content-center" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp">
+                      <i class="lni lni-whatsapp"></i>Chat on WhatsApp
+                    </a>
+                  </div>
             </div>
           </div>
         </div>
