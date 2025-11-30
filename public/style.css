@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap");
 /*===========================
-  COMMON css 
+  COMMON css
 ===========================*/
 :root {
   --font-family: "Inter", sans-serif;
@@ -387,7 +387,7 @@ p {
 
 
 /*===========================
-  NAVBAR css 
+  NAVBAR css
 ===========================*/
 .navbar-toggler:focus {
   box-shadow: none;
@@ -1149,7 +1149,7 @@ top: 116%;
 
 
 /*===========================
-  services css 
+  services css
 ===========================*/
 .services-eight {
   padding: 100px 0;
@@ -1908,4 +1908,143 @@ top: 116%;
 
 .hidden {
   display: none !important;
+}
+
+/* ===== App Showcase Section CSS ===== */
+.app-showcase-content {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-showcase-content h3 {
+  color: var(--primary);
+}
+
+.app-showcase-content p {
+  color: var(--dark-1);
+  margin: 15px 0;
+}
+
+.app-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive adjustments for app showcase section */
+@media (max-width: 767px) {
+  .app-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+
+  .app-showcase-content {
+    min-height: 250px;
+    padding: 30px 15px !important;
+  }
+
+  .app-showcase-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .app-showcase-content p {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .app-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  .app-showcase-content {
+    min-height: 220px;
+    padding: 20px 10px !important;
+  }
+
+  .app-showcase-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .app-showcase-content p {
+    font-size: 0.85rem;
+    padding: 0 5px;
+    margin: 10px 0;
+  }
+}
+
+/* ===== App Showcase Section with Image CSS ===== */
+.app-showcase-content {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-showcase-content h3 {
+  color: var(--primary);
+}
+
+.app-showcase-content p {
+  color: var(--dark-1);
+  margin: 15px 0;
+}
+
+.app-showcase-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+/* Responsive adjustments for app showcase section with image */
+@media (max-width: 767px) {
+  .app-showcase-image {
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .app-showcase-content {
+    min-height: 250px;
+    padding: 30px 15px !important;
+  }
+
+  .app-showcase-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .app-showcase-content p {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .app-showcase-image {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .app-showcase-content {
+    min-height: 220px;
+    padding: 20px 10px !important;
+  }
+
+  .app-showcase-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .app-showcase-content p {
+    font-size: 0.85rem;
+    padding: 0 5px;
+    margin: 10px 0;
+  }
 }
