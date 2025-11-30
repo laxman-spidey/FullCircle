@@ -968,7 +968,7 @@ top: 116%;
   margin-top: 40px;
 }
 .header-eight .primary-btn {
-  margin-right: 12px;
+  /* margin-right: 12px; */
   background-color: var(--white);
   color: var(--primary);
   border: 1px solid transparent;

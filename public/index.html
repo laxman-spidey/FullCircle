@@ -42,7 +42,8 @@
   <!-- Custom colors to match FullCircle branding with liquid glass effect -->
   <style>
     :root {
-      --teal-900-rgb: rgb(0, 61, 56) --teal-900: #003d38;
+      --teal-900-rgb: rgb(0, 61, 56);
+      --teal-900: #003d38;
       --teal-700: #0ea39a;
       --teal-500: #14b8a6;
       --teal-300: #6ee7d8;
@@ -158,11 +159,11 @@
 
     /* WhatsApp quick message button following Material You standards */
     .whatsapp-btn {
-      background: #075E54;
+      background: var(--teal-300);
       /* official WhatsApp dark green */
       border: none;
       border-radius: 8px !important;
-      color: white;
+      color: var(--teal-900);
       padding: 12px 24px;
       font-weight: 500;
       font-size: 14px;
@@ -179,14 +180,14 @@
     .whatsapp-btn i {
       font-size: 18px;
       line-height: 1;
-      color: white;
+      color: var(--teal-900);
     }
 
     /* Force icon color white inside the WhatsApp CTA to override template rules */
     .whatsapp-btn i,
     .whatsapp-btn .lni,
     .whatsapp-btn svg {
-      color: #ffffff !important;
+      color: var(--teal-900) !important;
     }
 
     .whatsapp-btn:hover,
@@ -197,6 +198,11 @@
       color: white;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.22);
       transform: translateY(-2px);
+    }
+    .whatsapp-btn:hover i,
+    .whatsapp-btn:hover .lni,
+    .whatsapp-btn:hover svg {
+      color: var(--white) !important;
     }
 
     /* Liquid glass service cards */
@@ -825,7 +831,7 @@
 
       .timeline-marker {
         left: 20px;
-        transform: translateX(-50%);
+        /* transform: translateX(-50%); */
       }
 
       .timeline-content {
