@@ -33,7 +33,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E99RMTBYZB"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-E99RMTBYZB');
@@ -123,7 +123,8 @@
     }
 
     /* Material You style buttons - overriding default .btn styles */
-    .btn, .primary-btn,
+    .btn,
+    .primary-btn,
     .btn-primary {
       background: var(--teal-500);
       border: none;
@@ -143,7 +144,8 @@
       text-decoration: none;
     }
 
-    .btn:hover, .primary-btn:hover,
+    .btn:hover,
+    .primary-btn:hover,
     .primary-btn:focus,
     .btn-primary:hover,
     .btn-primary:focus {
@@ -156,7 +158,8 @@
 
     /* WhatsApp quick message button following Material You standards */
     .whatsapp-btn {
-      background: #075E54; /* official WhatsApp dark green */
+      background: #075E54;
+      /* official WhatsApp dark green */
       border: none;
       border-radius: 8px !important;
       color: white;
@@ -180,13 +183,16 @@
     }
 
     /* Force icon color white inside the WhatsApp CTA to override template rules */
-    .whatsapp-btn i, .whatsapp-btn .lni, .whatsapp-btn svg {
+    .whatsapp-btn i,
+    .whatsapp-btn .lni,
+    .whatsapp-btn svg {
       color: #ffffff !important;
     }
 
     .whatsapp-btn:hover,
     .whatsapp-btn:focus {
-      background: #054C45; /* darker shade of WhatsApp green for consistency */
+      background: #054C45;
+      /* darker shade of WhatsApp green for consistency */
       text-decoration: none;
       color: white;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.22);
@@ -822,7 +828,7 @@
         transform: translateX(-50%);
       }
 
-           .timeline-content {
+      .timeline-content {
         width: calc(100% - 80px);
         margin-left: 80px;
         box-sizing: border-box;
@@ -832,6 +838,7 @@
       .timeline-wrapper {
         overflow-x: hidden;
       }
+
       .step-number {
         width: 48px;
         height: 48px;
@@ -856,7 +863,7 @@
         left: 16px;
       }
 
-        /* Make sure timeline content fits within viewport on very small screens */
+      /* Make sure timeline content fits within viewport on very small screens */
       .timeline-content {
         width: calc(100% - 72px);
         margin-left: 72px;
@@ -890,7 +897,8 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background-color: #25D366; /* WhatsApp green color */
+      background-color: #25D366;
+      /* WhatsApp green color */
       color: white;
       display: flex;
       align-items: center;
@@ -911,7 +919,8 @@
     }
 
     .floating-whatsapp-btn:hover {
-      background-color: #128C7E; /* Darker WhatsApp green on hover */
+      background-color: #128C7E;
+      /* Darker WhatsApp green on hover */
       transform: scale(1.1);
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
@@ -1030,12 +1039,14 @@
               more - managed over WhatsApp and phone.
             </p>
             <div class="button">
-                  <div class="d-flex flex-column flex-md-row gap-3 align-items-center justify-content-center">
-                    <a href="#get-started" class="btn primary-btn page-scroll w-100 w-md-auto">Get Started</a>
-                    <a href="https://wa.me/919121346777" class="whatsapp-btn w-100 w-md-auto d-flex align-items-center justify-content-center" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp">
-                      <i class="lni lni-whatsapp"></i>Chat on WhatsApp
-                    </a>
-                  </div>
+              <div class="d-flex flex-column flex-md-row gap-3 align-items-center justify-content-center">
+                <a href="#get-started" class="btn primary-btn page-scroll w-100 w-md-auto">Get Started</a>
+                <a href="https://wa.me/919121346777"
+                  class="whatsapp-btn w-100 w-md-auto d-flex align-items-center justify-content-center" target="_blank"
+                  rel="noopener noreferrer" aria-label="Message us on WhatsApp">
+                  <i class="lni lni-whatsapp"></i>Chat on WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1177,7 +1188,8 @@
               <div class="timeline-content">
                 <div class="timeline-card">
                   <h4>Send "Hi" on WhatsApp</h4>
-                  <p class="timeline-description">Start a conversation with us. We'll respond quickly and guide you through the next steps.</p>
+                  <p class="timeline-description">Start a conversation with us. We'll respond quickly and guide you
+                    through the next steps.</p>
                   <a href="https://wa.me/919121346777" class="timeline-link" target="_blank">
                     <i class="lni lni-whatsapp"></i> Open WhatsApp
                   </a>
@@ -1193,7 +1205,8 @@
               <div class="timeline-content">
                 <div class="timeline-card">
                   <h4>Browse Our Service Catalogue</h4>
-                  <p class="timeline-description">Explore the range of services we offer. From errands to companionship, find what you need.</p>
+                  <p class="timeline-description">Explore the range of services we offer. From errands to companionship,
+                    find what you need.</p>
                 </div>
               </div>
             </div>
@@ -1207,7 +1220,8 @@
                 <div class="timeline-card">
                   <h4>Call Us Directly for Help</h4>
                   <p><a href="tel:+919121346777"><strong>+91 91213 46777</strong></a></p>
-                  <p class="timeline-description">Prefer to talk? Call us anytime for personalized assistance and quick support.</p>
+                  <p class="timeline-description">Prefer to talk? Call us anytime for personalized assistance and quick
+                    support.</p>
                 </div>
               </div>
             </div>
@@ -1220,7 +1234,8 @@
               <div class="timeline-content">
                 <div class="timeline-card">
                   <h4>Confirm the Task & Get Helper Assigned</h4>
-                  <p class="timeline-description">Tell us the details of your task. We'll confirm the requirements and assign a verified helper suited for the job.</p>
+                  <p class="timeline-description">Tell us the details of your task. We'll confirm the requirements and
+                    assign a verified helper suited for the job.</p>
                 </div>
               </div>
             </div>
@@ -1233,7 +1248,8 @@
               <div class="timeline-content">
                 <div class="timeline-card">
                   <h4>Pay After the Job is Done</h4>
-                  <p class="timeline-description">Complete peace of mind. You only pay after the task is completed successfully (as applicable).</p>
+                  <p class="timeline-description">Complete peace of mind. You only pay after the task is completed
+                    successfully (as applicable).</p>
                 </div>
               </div>
             </div>
@@ -1246,15 +1262,18 @@
   <!-- ===== How to Get Started section end ===== -->
 
   <!-- ===== Coming Soon Banner section start ===== -->
-  <section class="call-action" style="background: linear-gradient(45deg, var(--teal-700), var(--teal-500)); padding: 80px 0; margin: 40px 0; padding-bottom: 0px">
+  <section class="call-action"
+    style="background: linear-gradient(45deg, var(--teal-700), var(--teal-500)); padding: 80px 0; margin: 40px 0; padding-bottom: 0px">
     <div class="container">
       <div class="row align-items-center justify-content-center">
         <div class="col-lg-8 col-md-10">
           <div class="inner-content text-white text-center">
-            <h2 class="mb-3 text-white fw-bold">One  app for all your needs - launching soon</h2>
-            <p class="text-white mb-4 opacity-75">All your neighborhood help needs in one convenient app. Stay tuned for our exciting app launch.</p>
+            <h2 class="mb-3 text-white fw-bold">One app for all your needs - launching soon</h2>
+            <p class="text-white mb-4 opacity-75">All your neighborhood help needs in one convenient app. Stay tuned for
+              our exciting app launch.</p>
             <div class="mt-4">
-              <img src="assets/images/comingsoon.png" alt="App Coming Soon" style="max-width: 60%; height: auto; border-radius: 8px;" />
+              <img src="assets/images/comingsoon.png" alt="App Coming Soon"
+                style="max-width: 60%; height: auto; border-radius: 8px;" />
             </div>
           </div>
         </div>
@@ -1465,13 +1484,16 @@
                 <a href="tel:+919121346777" target="_blank" rel="noopener noreferrer" class="contact-icon-container">
                   <i class="lni lni-phone contact-icon"></i>
                 </a>
-                <a href="mailto:ourfullcircleservices@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-icon-container">
+                <a href="mailto:ourfullcircleservices@gmail.com" target="_blank" rel="noopener noreferrer"
+                  class="contact-icon-container">
                   <i class="lni lni-envelope contact-icon"></i>
                 </a>
-                <a href="https://wa.me/919121346777" target="_blank" rel="noopener noreferrer" class="contact-icon-container">
+                <a href="https://wa.me/919121346777" target="_blank" rel="noopener noreferrer"
+                  class="contact-icon-container">
                   <i class="lni lni-whatsapp contact-icon"></i>
                 </a>
-                <a href="https://instagram.com/our_fullcircle" target="_blank" rel="noopener noreferrer" class="contact-icon-container">
+                <a href="https://instagram.com/our_fullcircle" target="_blank" rel="noopener noreferrer"
+                  class="contact-icon-container">
                   <i class="lni lni-instagram-original contact-icon"></i>
                 </a>
               </div>
@@ -1494,7 +1516,8 @@
   <script src="assets/js/analytics.js"></script>
 
   <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/919121346777" class="floating-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <a href="https://wa.me/919121346777" class="floating-whatsapp-btn" target="_blank" rel="noopener noreferrer"
+    aria-label="Chat with us on WhatsApp">
     <i class="lni lni-whatsapp"></i>
   </a>
 
@@ -1549,7 +1572,7 @@
     });
 
     // Floating WhatsApp Button functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const floatingBtn = document.querySelector('.floating-whatsapp-btn');
       const whatsappBtn = document.querySelector('a[href="https://wa.me/919121346777"]');
 
