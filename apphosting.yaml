@@ -1,0 +1,38 @@
+# This file describes the declarative configuration for Firebase App Hosting.
+# For a complete reference, see https://firebase.google.com/docs/app-hosting/config
+runConfig:
+  minInstances: 0
+  maxInstances: 2
+  concurrency: 10
+  cpu: 2
+  memoryMiB: 512
+  timeoutSeconds: 60
+spec:
+  # Represents the latest backend API version. Do not overwrite this field.
+  apiVersion: apphosting.googleapis.com/v1alpha
+  # The ID of the backend. This is used to identify the backend in the Firebase console.
+  # This must match the ID in your firebase.json file.
+  backendID: fullcircle-37f07
+  # The runtime for the backend. For Node.js, use the format "nodejsXX".
+  runtime: nodejs20
+  # Environment variables for the backend
+  environmentVariables: {}
+  # The build configuration for the backend
+  scripts:
+    runCommand: node app.js
+  build:
+    # The command to build your application
+    # For Node.js applications, this is typically empty if using standard npm start
+    command: ''
+    # The root directory of the application, relative to the repository root
+    root: .
+  # The serving configuration for the backend
+  serving:
+    # The maximum number of instances for the backend
+    # maxInstances: 10
+    # The minimum number of instances for the backend
+    # minInstances: 0
+    # The timeout for requests, in seconds
+    # timeoutSeconds: 60
+    # The environment variables that are available during serving
+    # environmentVariables: {}

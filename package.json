@@ -1,13 +1,24 @@
 {
   "dependencies": {
-    "firebase-tools": "^1.2.0"
+    "axios": "^1.6.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "handlebars": "^4.7.8",
+    "nodemailer": "^6.9.7",
+    "rootpath": "^0.1.2"
   },
   "scripts": {
-    "dev": "http-server ./public",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "server": "node app.js",
+    "test-email": "node test-email.js",
     "firebase": "firebase",
     "deploy": "firebase deploy"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "firebase-tools": "^14.0.0",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.11"
   }
 }

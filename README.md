@@ -1,5 +1,47 @@
 # FullCircle
 
+## Firebase App Hosting Setup
+
+This project is configured for deployment on Firebase App Hosting. The setup includes:
+
+- Backend ID: `default`
+- Runtime: Node.js 20 (`nodejs20`)
+- Region: `us-central1`
+
+### Deployment
+
+To deploy this application to Firebase App Hosting:
+
+1. Make sure you're logged in to Firebase:
+   ```bash
+   firebase login
+   ```
+
+2. Associate with your Firebase project:
+   ```bash
+   firebase use --add
+   ```
+
+3. Deploy the application:
+   ```bash
+   firebase deploy --only apphosting
+   ```
+
+### Local Development
+
+For local development, run:
+```bash
+npm start
+```
+
+The application will start on port 3000 or the PORT environment variable if set.
+
+### Configuration Files
+
+- `firebase.json`: Contains Firebase project configuration including App Hosting settings
+- `firebase.apphosting.yaml`: Declarative configuration for App Hosting backend
+- `app.js`: Main application file with App Hosting-compatible server setup
+
 FullCircle is a web application that connects neighbors and helpers to get everyday tasks done, such as errands, companionship, odd jobs, and more. The service is managed over WhatsApp and phone, providing a simple way for people to get help from trusted local helpers.
 
 ## Development Setup
@@ -40,6 +82,28 @@ The project is configured for Firebase hosting. To deploy:
 1. Install Firebase CLI: `npm install -g firebase-tools`
 2. Login: `firebase login`
 3. Deploy: `firebase deploy`
+
+## Email Configuration
+
+To enable email functionality in this application, you need to set up environment variables for your email account.
+
+### Gmail Setup:
+1. Enable 2-factor authentication on your Google account
+2. Generate an App Password by going to: https://myaccount.google.com/apppasswords
+3. Create a `.env` file in the project root with the following content:
+   ```
+   EMAIL_USER=your_actual_gmail_address@gmail.com
+   EMAIL_PASS=your_16_character_app_password
+   ```
+
+⚠️ **Security Warning**: Never commit your `.env` file or credentials to version control. Ensure your `.gitignore` file includes `.env` to prevent accidental exposure.
+
+### Alternative Email Providers:
+If you want to use other email providers, update the mailer.js file with the appropriate SMTP settings:
+- For Outlook/Hotmail: host: 'smtp-mail.outlook.com', port: 587
+- For Yahoo: host: 'smtp.mail.yahoo.com', port: 587
+
+Make sure to restart the application after setting up the environment variables.
 
 ## Google Analytics Integration
 
