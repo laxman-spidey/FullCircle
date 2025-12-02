@@ -14,9 +14,8 @@
     ]
   },
   "apphosting": [
-    
     {
-      "backendId": "fullcircle",
+      "backendId": "fullcircle-prod",
       "rootDir": "/",
       "ignore": [
         "node_modules",
@@ -24,7 +23,8 @@
         "firebase-debug.log",
         "firebase-debug.*.log",
         "functions"
-      ]
+      ],
+      "alwaysDeployFromSource": true
     }
   ]
 }

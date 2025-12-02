@@ -4,7 +4,7 @@ runConfig:
   minInstances: 0
   maxInstances: 2
   concurrency: 10
-  cpu: 2
+  cpu: 1
   memoryMiB: 512
   timeoutSeconds: 60
 spec:
@@ -12,9 +12,9 @@ spec:
   apiVersion: apphosting.googleapis.com/v1alpha
   # The ID of the backend. This is used to identify the backend in the Firebase console.
   # This must match the ID in your firebase.json file.
-  backendID: fullcircle-37f07
+  backendID: fullcircle-prod
   # The runtime for the backend. For Node.js, use the format "nodejsXX".
-  runtime: nodejs20
+  runtime: nodejs22
   # Environment variables for the backend
   environmentVariables: {}
   # The build configuration for the backend
