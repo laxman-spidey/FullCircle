@@ -55,19 +55,35 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      // If no errors, show success message and reset form
-      alert('Thank you for your feedback! We appreciate your input.');
-
-      // Reset the form
-      feedbackForm.reset();
-
-      // Optional: Send data to backend (this would require a backend endpoint)
-      console.log('Feedback submitted:', {
-        name,
-        email,
-        subject,
+      // If no errors, send data to backend
+      const formData = {
+        fullname: name,  // Changed to match API expectation
+        email: email,
+        subject: subject,
         rating: rating ? rating.value : null,
-        message
+        message: message
+      };
+
+      // Send form data to backend API
+      fetch('/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message) {
+          alert('Thank you for your feedback! We appreciate your input.');
+          feedbackForm.reset();
+        } else {
+          alert('There was an issue submitting your feedback. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting your feedback. Please try again.');
       });
     });
   }
