@@ -57,13 +57,14 @@ app.post('/feedback', function (req, res, next) {
                 fullname: req.body.fullname,
                 email: req.body.email,
                 message: req.body.message,
+                subject: req.body.subject || 'No Subject',
                 rating: req.body.rating || 'N/A'
             };
             var htmlToSend = template(replacements);
             var mailOptions = {
                 from: replacements.email, // sender address
                 to: 'ourfullcircleservices@gmail.com',
-                subject: 'FullCircle Feedback Received',
+                subject: 'FullCircle Feedback Received: ' + (req.body.subject || 'No Subject'),
                 html: htmlToSend
             };
             mailer.sendEmail(mailOptions.to, htmlToSend, mailer.SUBJECTS.FEEDBACK, mailOptions.from);
@@ -81,6 +82,7 @@ app.post('/feedback', function (req, res, next) {
                 fullname: req.body.fullname,
                 email: req.body.email,
                 message: req.body.message,
+                subject: req.body.subject || 'No Subject',
                 rating: req.body.rating || 'N/A'
             };
 
