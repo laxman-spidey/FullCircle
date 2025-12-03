@@ -943,7 +943,7 @@
     /* Star Rating CSS */
     .rating-section {
       text-align: center;
-      margin: 15px 0;
+      margin: 10px 0;
     }
 
     .star-rating {
@@ -958,8 +958,8 @@
 
     .star-rating label {
       color: var(--star-inactive-color);
-      font-size: 2.5rem;
-      padding: 0 0.2rem;
+      font-size: 2rem;
+      padding: 0 0.1rem;
       cursor: pointer;
       transition: color 0.2s;
       line-height: 1;
@@ -969,6 +969,18 @@
     .star-rating label:hover ~ label,
     .star-rating input[type="radio"]:checked ~ label {
       color: var(--star-color);
+    }
+
+    /* Responsive adjustments for mobile */
+    @media (max-width: 767px) {
+      .star-rating label {
+        font-size: 1.8rem;
+        padding: 0 0.05rem;
+      }
+
+      .rating-section {
+        margin: 8px 0;
+      }
     }
   </style>
 </head>
@@ -1504,7 +1516,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          <div class="liquid-glass contact-form-wrapper" style="padding: 40px;">
+          <div class="liquid-glass contact-form-wrapper" style="padding: 25px;">
             <form id="feedbackForm" class="contact-form">
               <div class="row">
                 <div class="col-md-6">
@@ -1517,7 +1529,7 @@
                   <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                 </div>
                 <div class="col-md-12">
-                  <div class="rating-section mb-4">
+                  <div class="rating-section">
                     <label class="form-label">Overall Experience</label>
                     <div class="star-rating">
                       <input type="radio" id="star5" name="rating" value="5" />
@@ -1537,7 +1549,7 @@
                   <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Feedback" required></textarea>
                 </div>
                 <div class="col-md-12 text-center">
-                  <button type="submit" class="btn primary-btn" style="margin-top: 15px;">Submit Feedback</button>
+                  <button type="submit" class="btn primary-btn" style="margin-top: 0;">Submit Feedback</button>
                 </div>
               </div>
             </form>
