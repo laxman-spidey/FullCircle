@@ -1,9 +1,45 @@
 'use client';
 import Head from 'next/head';
+import { useEffect } from 'react';
 import { Button } from '@/components/Button';
+import { Header } from '@/components/Header';
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 
 export default function Home() {
+  useEffect(() => {
+    // Floating Button Logic
+    const handleScroll = () => {
+      const floatingBtn = document.querySelector('.floating-whatsapp-btn');
+      // Use more specific selector if possible or keep logic
+      const whatsappBtn = document.querySelector('.whatsapp-btn'); // Note: Make sure this class exists on the main button if used
+
+      const isElementInViewport = (el: Element | null) => {
+        if (!el) return false;
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+      };
+
+      const whatsappBtnVisible = isElementInViewport(whatsappBtn);
+
+      if (floatingBtn) {
+        // Show floating button after scrolling down a bit (e.g., 150px) 
+        // AND when the main CTA button is NOT visible to avoid redundancy
+        if (window.scrollY > 150 && !whatsappBtnVisible) {
+          floatingBtn.classList.remove('hidden');
+        } else {
+          floatingBtn.classList.add('hidden');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -494,33 +530,7 @@ export default function Home() {
           color: var(--teal-700);
         }
 
-        /* Navbar styling - initially transparent or with light background */
-        .navbar-nine {
-          background: transparent;
-          color: white;
-          transition: all 0.4s ease;
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1000;
-        }
-
-        /* Teal background when at top and not scrolled */
-        .navbar-nine:not(.scrolled) {
-          background: var(--teal-700);
-          color: white;
-        }
-
-        /* Liquid glass effect when scrolled */
-        .navbar-nine.scrolled {
-          background: var(--glass-tinted-bg);
-          backdrop-filter: blur(var(--glass-blur));
-          -webkit-backdrop-filter: blur(var(--glass-blur));
-          border: 1px solid var(--teal-300);
-          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-          position: relative;
-          overflow: hidden;
+        /* Navbar styling moved to globals.css for specificity control */ 
           color: var(--teal-900);
         }
 
@@ -884,95 +894,9 @@ export default function Home() {
       `}</style>
 
       <div>
-        {/*====== NAVBAR NINE PART START ======*/}
+        <Header />
 
-        <section className="navbar-area navbar-nine">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <nav className="navbar navbar-expand-lg">
-                  <a className="navbar-brand" href="#hero-area" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <img style={{ width: '48px' }} src="/assets/images/logo-dark.png" alt="#" />
-                    <span style={{ color: 'white' }}>FullCircle</span>
-                  </a>
-                  <button className="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
-                    aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="toggler-icon"></span>
-                    <span className="toggler-icon"></span>
-                    <span className="toggler-icon"></span>
-                  </button>
-                  <div className="collapse navbar-collapse sub-menu-bar" id="navbarNine">
-                    <ul className="navbar-nav me-auto">
-                      <li className="nav-item">
-                        <a className="page-scroll active" href="#hero-area">Home</a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="page-scroll" href="#get-started">Get Started</a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="page-scroll" href="#services">Services</a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="navbar-btn d-none d-lg-inline-block hidden">
-                    <a className="menu-bar" href="#side-menu-left"><i className="lni lni-menu"></i></a>
-                  </div>
-                </nav>
-                {/* navbar */}
-              </div>
-            </div>
-            {/* row */}
-          </div>
-          {/* container */}
-        </section>
-
-        {/*====== NAVBAR NINE PART ENDS ======*/}
-
-        {/*====== SIDEBAR PART START ======*/}
-
-        <div className="sidebar-left">
-          <div className="sidebar-close">
-            <a className="close" href="#close"><i className="lni lni-close"></i></a>
-          </div>
-          <div className="sidebar-content">
-            <div className="sidebar-logo">
-              <a href="#home">
-                <span
-                  style={{ display: 'inline-grid', placeItems: 'center', width: '40px', height: '40px', borderRadius: '10px', background: 'var(--teal-700)', color: 'white', fontWeight: '800', fontSize: '16px' }}>FC</span>
-                <div style={{ color: 'var(--teal-900)', fontWeight: '700', marginTop: '8px' }}>FullCircle</div>
-              </a>
-            </div>
-            <p className="text">Connecting neighbors and helpers for everyday tasks - errands, companionship, odd jobs and more.
-            </p>
-            {/* logo */}
-            <div className="sidebar-menu">
-              <h5 className="menu-title">Quick Links</h5>
-              <ul>
-                <li><a href="#how" className="nav-link">How it works</a></li>
-                <li><a href="#services" className="nav-link">Services</a></li>
-                <li><a href="#contact" className="nav-link">Contact Us</a></li>
-              </ul>
-            </div>
-            {/* menu */}
-            <div className="sidebar-social align-items-center justify-content-center">
-              <h5 className="social-title">Follow Us On</h5>
-              <ul>
-                <li>
-                  <a href="https://wa.me/919121346777" target="_blank"><i className="lni lni-whatsapp"></i></a>
-                </li>
-                <li>
-                  <a href="javascript:void(0)"><i className="lni lni-phone"></i></a>
-                </li>
-              </ul>
-            </div>
-            {/* sidebar social */}
-          </div>
-          {/* content */}
-        </div>
-        <div className="overlay-left"></div>
-
-        {/*====== SIDEBAR PART ENDS ======*/}
+        {/* Start header Area */}
 
         {/* Start header Area */}
         <section id="hero-area" className="header-area header-eight">
@@ -1530,91 +1454,8 @@ export default function Home() {
 
       <script dangerouslySetInnerHTML={{
         __html: `
-          //===== close navbar-collapse when a  clicked
-          document.addEventListener('DOMContentLoaded', function () {
-            let navbarTogglerNine = document.querySelector(
-              ".navbar-nine .navbar-toggler"
-            );
-            if (navbarTogglerNine) {
-              navbarTogglerNine.addEventListener("click", function () {
-                navbarTogglerNine.classList.toggle("active");
-              });
-            }
-
-            // ==== left sidebar toggle
-            let sidebarLeft = document.querySelector(".sidebar-left");
-            let overlayLeft = document.querySelector(".overlay-left");
-            let sidebarClose = document.querySelector(".sidebar-close .close");
-            let sideMenuLeftNine = document.querySelector(".menu-bar");
-
-            if (overlayLeft) {
-              overlayLeft.addEventListener("click", function () {
-                if (sidebarLeft) sidebarLeft.classList.toggle("open");
-                if (overlayLeft) overlayLeft.classList.toggle("open");
-              });
-            }
-
-            if (sidebarClose) {
-              sidebarClose.addEventListener("click", function () {
-                if (sidebarLeft) sidebarLeft.classList.remove("open");
-                if (overlayLeft) overlayLeft.classList.remove("open");
-              });
-            }
-
-            if (sideMenuLeftNine) {
-              sideMenuLeftNine.addEventListener("click", function () {
-                if (sidebarLeft) sidebarLeft.classList.add("open");
-                if (overlayLeft) overlayLeft.classList.add("open");
-              });
-            }
-
-            // Track scroll position and add/remove 'scrolled' class
-            window.addEventListener('scroll', function () {
-              const navbar = document.querySelector('.navbar-nine');
-              if (navbar) {
-                if (window.scrollY > 50) {
-                  navbar.classList.add('scrolled');
-                } else {
-                  navbar.classList.remove('scrolled');
-                }
-              }
-            });
-
-            // Floating WhatsApp Button functionality
-            const floatingBtn = document.querySelector('.floating-whatsapp-btn');
-            const whatsappBtn = document.querySelector('a[href="https://wa.me/919121346777"]');
-
-            // Function to check if element is in viewport
-            function isElementInViewport(el) {
-              if (!el) return false; // If element doesn't exist, return false
-
-              const rect = el.getBoundingClientRect();
-
-              // Element is in viewport if it's not completely above or below the visible area
-              return rect.top < window.innerHeight && rect.bottom > 0;
-            }
-
-            // Function to handle scroll events
-            function handleScroll() {
-              // Show the floating button only when main WhatsApp button is not in viewport
-              // and user has scrolled down far enough that header is out of view
-              const whatsappBtnVisible = isElementInViewport(whatsappBtn);
-
-              if (floatingBtn && whatsappBtnVisible !== undefined && window.scrollY > 150) {
-                if (!whatsappBtnVisible) {
-                  floatingBtn.classList.remove('hidden');
-                } else {
-                  floatingBtn.classList.add('hidden');
-                }
-              }
-            }
-
-            // Initial check
-            handleScroll();
-
-            // Add scroll event listener
-            window.addEventListener('scroll', handleScroll);
-          });
+          // Gtag or other truly external global scripts can stay here if needed, 
+          // but the UI logic has been moved to useEffect.
         `
       }}></script>
     </>
