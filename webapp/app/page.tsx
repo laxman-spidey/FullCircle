@@ -1,5 +1,7 @@
 'use client';
 import Head from 'next/head';
+import { Button } from '@/components/Button';
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 
 export default function Home() {
   return (
@@ -889,9 +891,9 @@ export default function Home() {
             <div className="row">
               <div className="col-lg-12">
                 <nav className="navbar navbar-expand-lg">
-                  <a className="navbar-brand" href="#hero-area" style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
-                    <img style={{width:'48px'}} src="/assets/images/logo-dark.png" alt="#" />
-                    <span style={{color:'white'}}>FullCircle</span>
+                  <a className="navbar-brand" href="#hero-area" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <img style={{ width: '48px' }} src="/assets/images/logo-dark.png" alt="#" />
+                    <span style={{ color: 'white' }}>FullCircle</span>
                   </a>
                   <button className="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
                     aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
@@ -937,8 +939,8 @@ export default function Home() {
             <div className="sidebar-logo">
               <a href="#home">
                 <span
-                  style={{display:'inline-grid',placeItems:'center',width:'40px',height:'40px',borderRadius:'10px',background:'var(--teal-700)',color:'white',fontWeight:'800',fontSize:'16px'}}>FC</span>
-                <div style={{color:'var(--teal-900)', fontWeight:'700', marginTop:'8px'}}>FullCircle</div>
+                  style={{ display: 'inline-grid', placeItems: 'center', width: '40px', height: '40px', borderRadius: '10px', background: 'var(--teal-700)', color: 'white', fontWeight: '800', fontSize: '16px' }}>FC</span>
+                <div style={{ color: 'var(--teal-900)', fontWeight: '700', marginTop: '8px' }}>FullCircle</div>
               </a>
             </div>
             <p className="text">Connecting neighbors and helpers for everyday tasks - errands, companionship, odd jobs and more.
@@ -985,10 +987,24 @@ export default function Home() {
                   </p>
                   <div className="button">
                     <div className="d-flex flex-column flex-md-row gap-3 align-items-center justify-content-center">
-                      <a href="#get-started" className="btn primary-btn page-scroll w-100 w-md-auto">Get Started</a>
-                      <a href="https://wa.me/919121346777" id="banner-whatsapp-button" className="whatsapp-btn w-100 w-md-auto d-flex align-items-center justify-content-center" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp">
-                        <i className="lni lni-whatsapp"></i>Chat on WhatsApp
-                      </a>
+                      <Button
+                        variant="primary"
+                        size="lg"
+                        className="w-100 w-md-auto"
+                        onClick={() => document.querySelector('#get-started')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        Get Started
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        size="lg"
+                        className="w-100 w-md-auto"
+                        leftIcon={<WhatsAppIcon />}
+                        onClick={() => window.open('https://wa.me/919121346777', '_blank')}
+                        aria-label="Message us on WhatsApp"
+                      >
+                        Chat on WhatsApp
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -1206,7 +1222,7 @@ export default function Home() {
 
         {/* ===== Coming Soon Banner section start ===== */}
         <section className="call-action"
-          style={{background: 'linear-gradient(45deg, var(--teal-700), var(--teal-500))', margin: '40px 0', padding: '40px 0 0'}}>
+          style={{ background: 'linear-gradient(45deg, var(--teal-700), var(--teal-500))', margin: '40px 0', padding: '40px 0 0' }}>
           <div className="container">
             <div className="row align-items-center justify-content-center">
               <div className="col-lg-8 col-md-10">
@@ -1216,7 +1232,7 @@ export default function Home() {
                     our exciting app launch.</p>
                   <div className="mt-4">
                     <img src="/assets/images/comingsoon.png" alt="App Coming Soon"
-                      style={{maxWidth: '60%', height: 'auto', borderRadius: '8px'}} />
+                      style={{ maxWidth: '60%', height: 'auto', borderRadius: '8px' }} />
                   </div>
                 </div>
               </div>
@@ -1410,7 +1426,7 @@ export default function Home() {
             </div>
             <div className="row justify-content-center">
               <div className="col-lg-8">
-                <div className="liquid-glass contact-form-wrapper" style={{padding: '40px'}}>
+                <div className="liquid-glass contact-form-wrapper" style={{ padding: '40px' }}>
                   <form id="feedbackForm" className="contact-form">
                     <div className="row">
                       <div className="col-md-6">
@@ -1443,7 +1459,7 @@ export default function Home() {
                         <textarea className="form-control" id="message" name="message" rows={5} placeholder="Your Feedback" required></textarea>
                       </div>
                       <div className="col-md-12 text-center">
-                        <button type="submit" className="btn primary-btn" style={{marginTop: '15px'}}>Submit Feedback</button>
+                        <button type="submit" className="btn primary-btn" style={{ marginTop: '15px' }}>Submit Feedback</button>
                       </div>
                     </div>
                   </form>

@@ -17,7 +17,7 @@ FullCircle/
 │   │   ├── layout.tsx (Root layout)
 │   │   └── page.tsx (Landing page)
 │   ├── components/
-│   │   ├── ui/ (Atomic - Button.tsx, GlassCard.tsx, IconBox.tsx, StepNumber.tsx)
+│   │   ├── (Atomic - Button.tsx, GlassCard.tsx, IconBox.tsx, StepNumber.tsx)
 │   │   ├── sections/ (Composite - Hero.tsx, ServicesSection.tsx, VerticalTimeline.tsx)
 │   │   └── layout/ (MainLayout.tsx, Navbar.tsx, Sidebar.tsx, Footer.tsx)
 │   ├── lib/
@@ -40,7 +40,7 @@ graph TD
     MainLayout --> Navbar[layout/Navbar.tsx<br/>useScrollEffect, useSidebarToggle]
     MainLayout --> PageContent[app/page.tsx]
     MainLayout --> Footer[layout/Footer.tsx]
-    MainLayout --> FloatingWA[ui/FloatingWhatsAppButton.tsx<br/>useScrollVisibility]
+    MainLayout --> FloatingWA[FloatingWhatsAppButton.tsx<br/>useScrollVisibility]
     
     Navbar -.-> Sidebar[layout/Sidebar.tsx<br/>overlay drawer]
     
@@ -50,16 +50,16 @@ graph TD
     PageContent --> ComingSoon[sections/ComingSoonBanner.tsx]
     PageContent --> ServicesGrid[sections/ServicesGrid.tsx<br/>ServicesCard x12]
     
-    VerticalTimeline --> TLStep[ui/TimelineStep.tsx]:::composite
-    TLStep --> StepNumber[ui/StepNumber.tsx]:::atomic
-    TLStep --> GlassCard[ui/GlassCard.tsx]:::atomic
+    TLStep --> StepNumber[StepNumber.tsx]:::atomic
+    TLStep --> GlassCard[GlassCard.tsx]:::atomic
     
     ServicesCard --> GlassCard
-    ServicesCard --> IconBox[ui/IconBox.tsx]:::atomic
+    ServicesCard --> IconBox[IconBox.tsx]:::atomic
     
-    WhyChoose --> ServicesCard[ui/ServicesCard.tsx]:::composite
+    WhyChoose --> ServicesCard[ServicesCard.tsx]:::composite
     
-    Button[ui/Button.tsx<br/>variants: primary/outline/whatsapp]:::atomic
+    Button[Button.tsx<br/>variants: primary/outline/secondary/ghost/link]:::atomic
+
     
     classDef atomic fill:#e3f2fd,stroke:#2196f3
     classDef composite fill:#f3e5f5,stroke:#9c27b0
@@ -91,6 +91,32 @@ Responsive: Tailwind classes matching existing @media breakpoints
 | 4 | Next.js setup (App Router + TS + Tailwind) | [ ] Pending |
 | ... (full list continues) |
 
+## Button Component Architecture
+
+We will start with the `Button` component as the foundational element.
+
+### File Structure
+```
+components/
+├── Button.tsx        # Main component with variants
+```
+
+### Props Interface
+```typescript
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
+  size?: 'sm' | 'md' | 'lg' | 'icon';
+  isLoading?: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+}
+```
+
+### Accessibility (a11y)
+- Use native `<button>` element.
+- `aria-disabled` when `isLoading` or `disabled`.
+- Keyboard focus rings (visible in Tailwind `ring-` utilities).
+
 ## Implementation Phases (Specialist Order)
 1. **Component Library** (todos 4-6): Atomic → Composite
 2. **Layouts** (todos 7-13): Navbar/Sidebar/Footer/MainLayout
@@ -102,5 +128,21 @@ Responsive: Tailwind classes matching existing @media breakpoints
 - **Icons**: Migrate LineIcons to lucide-react (similar API)
 - **Firebase**: Static export: `next build && next export`
 - **SEO**: Metadata in app/layout.tsx
+
+### Technical Debt: Bootstrap vs Tailwind Conflict
+> [!WARNING]
+> **Issue**: The project currently loads `bootstrap.min.css` which has high-specificity selectors that conflict with Tailwind's utility classes (especially for buttons, inputs, and base resets).
+> 
+> **Current Workaround**:
+> 1. **CSS Import Order**: Bootstrap is imported *before* Tailwind in `globals.css` to allow properly cascaded overrides.
+> 2. **Important Modifiers**: In `components/Button.tsx`, we use Tailwind's `!` modifier (e.g., `!bg-primary`) to force our styles over Bootstrap's.
+> 
+> **Future Mitigation (High Priority)**:
+> - **Goal**: Completely remove `bootstrap.min.css`.
+> - **Strategy**:
+>   - Audit `public/assets/css/bootstrap.min.css` usage.
+>   - Replace Bootstrap Grid (`row`, `col-lg`) with Tailwind Grid/Flex.
+>   - Replace Bootstrap Components (Navbars, Carousels) with custom Tailwind components.
+>   - Once all legacy HTML is refactored to React components, uninstall/delete Bootstrap.
 
 Ready for code mode execution.

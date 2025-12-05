@@ -1,4 +1,7 @@
+@import "../../public/assets/css/bootstrap.min.css";
 @import "tailwindcss";
+@source "../components";
+@source "../app";
 
 /* Define background and foreground colors for Tailwind */
 @theme inline {
@@ -6,6 +9,28 @@
   --color-foreground: #171717;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Map standard CSS variables to Tailwind utilities */
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-primary-700: var(--teal-700);
+  --color-primary-500: var(--teal-500);
+  --color-primary-300: var(--teal-300);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-light: var(--secondary-light);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-light: var(--accent-light);
+  --color-success: var(--success);
+  --color-info: var(--info);
+  --color-caution: var(--caution);
+  --color-error: var(--error);
+
+  --color-white: var(--white);
+  --color-black: var(--black);
+
 }
 
 @media (prefers-color-scheme: dark) {
