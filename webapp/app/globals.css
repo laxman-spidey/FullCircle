@@ -3,6 +3,36 @@
 @source "../components";
 @source "../app";
 
+/* Navbar styling - initially transparent or with light background */
+.navbar-nine {
+  background: transparent;
+  color: white;
+  transition: all 0.4s ease;
+  position: fixed !important;
+  /* Force override style.css */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Teal background when at top and not scrolled */
+.navbar-nine:not(.scrolled) {
+  background: var(--teal-700) !important;
+  color: white;
+}
+
+/* Liquid glass effect when scrolled */
+.navbar-nine.scrolled {
+  background: var(--glass-tinted-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border-bottom: 1px solid var(--teal-300);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15) !important;
+  position: fixed !important;
+  /* redundant but safe */
+}
+
 /* Define background and foreground colors for Tailwind */
 @theme inline {
   --color-background: #ffffff;
