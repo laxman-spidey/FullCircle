@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { clsx } from "clsx";
+import logoDark from "../public/assets/images/logo-dark.png";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,7 +46,7 @@ export function Header() {
         className={clsx(
           "navbar-area navbar-nine",
           isScrolled &&
-            "scrolled bg-[var(--glass-tinted-bg)] backdrop-blur-[var(--glass-blur)] border-b border-[var(--teal-300)] shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] fixed",
+          "scrolled bg-[var(--glass-tinted-bg)] backdrop-blur-[var(--glass-blur)] border-b border-[var(--teal-300)] shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] fixed",
           "",
         )}
       >
@@ -60,7 +61,7 @@ export function Header() {
                 >
                   <img
                     style={{ width: "48px" }}
-                    src="/assets/images/logo-dark.png"
+                    src={logoDark.src}
                     alt="#"
                   />
                   <span style={{ color: "white" }}>FullCircle</span>
@@ -130,14 +131,14 @@ export function Header() {
                     <i className="lni lni-menu"></i>
                   </a>
                 </div>
-              </nav>
+              </nav >
               {/* navbar */}
-            </div>
-          </div>
+            </div >
+          </div >
           {/* row */}
-        </div>
+        </div >
         {/* container */}
-      </section>
+      </section >
       {/*====== NAVBAR NINE PART ENDS ======*/}
 
       {/*====== SIDEBAR PART START ======*/}
