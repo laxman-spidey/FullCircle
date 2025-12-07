@@ -19,10 +19,10 @@ spec:
         # Reference to secrets stored in Google Cloud Secret Manager
         EMAIL_USER:
             secretRef:
-                secretVersion: projects/fullcircle-37f07/secrets/EMAIL_USER_STAGING/versions/latest
+                secretVersion: projects/191965811250/secrets/EMAIL_USER/versions/latest
         EMAIL_PASS:
             secretRef:
-                secretVersion: projects/fullcircle-37f07/secrets/EMAIL_PASS_STAGING/versions/latest
+                secretVersion: projects/191965811250/secrets/EMAIL_PASS/versions/latest
     # The build configuration for the backend
     build:
         # The command to build your application
