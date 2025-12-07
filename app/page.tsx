@@ -1002,10 +1002,10 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6 col-sm-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-user"></i>
+                                        <i className="lni lni-user-4"></i>
                                     </div>
                                     <div className="service-content">
-                                        <h4>Trusted &amp; Verified Helpers</h4>
+                                        <h4>Trusted & Verified Helpers</h4>
                                         <p>
                                             Helpers are profile-checked, rated
                                             by neighbors, and locally referenced
@@ -1018,7 +1018,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6 col-sm-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-shield"></i>
+                                        <i className="lni lni-shield-2"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Safety-First Approach</h4>
@@ -1050,7 +1050,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6 col-sm-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-wallet"></i>
+                                        <i className="lni lni-wallet-1"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Simple Pricing</h4>
@@ -1066,7 +1066,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6 col-sm-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-users"></i>
+                                        <i className="lni lni-user-multiple-4"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Community-Driven Service</h4>
@@ -1357,7 +1357,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-users"></i>
+                                        <i className="lni lni-user-multiple-4"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Children & Family Assistance</h4>
@@ -1372,7 +1372,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-ambulance"></i>
+                                        <i className="lni lni-ambulance-1"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Emergency Support</h4>
@@ -1387,7 +1387,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-shopping-basket"></i>
+                                        <i className="lni lni-basket-shopping-3"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Essential Errands</h4>
@@ -1402,7 +1402,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-gift"></i>
+                                        <i className="lni lni-box-gift-1"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Event & Occasion Support</h4>
@@ -1417,7 +1417,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-wallet"></i>
+                                        <i className="lni lni-wallet-1"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Financial & Administrative Help</h4>
@@ -1432,7 +1432,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-grid-alt"></i>
+                                        <i className="lni lni-dashboard-square-1"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>General On-field Assistance</h4>
@@ -1447,7 +1447,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-home"></i>
+                                        <i className="lni lni-home-2"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Home & Shop Support</h4>
@@ -1462,7 +1462,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-briefcase"></i>
+                                        <i className="lni lni-briefcase-1"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>
@@ -1493,7 +1493,7 @@ export default function Home() {
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
-                                        <i className="lni lni-car"></i>
+                                        <i className="lni lni-car-2"></i>
                                     </div>
                                     <div className="service-content">
                                         <h4>Transport & Mobility</h4>
@@ -1594,7 +1594,7 @@ export default function Home() {
                                                 rel="noopener noreferrer"
                                                 className="contact-icon-container"
                                             >
-                                                <i className="lni lni-envelope contact-icon"></i>
+                                                <i className="lni lni-envelope-1 contact-icon"></i>
                                             </a>
                                             <a
                                                 href="https://wa.me/919121346777"
@@ -1610,7 +1610,7 @@ export default function Home() {
                                                 rel="noopener noreferrer"
                                                 className="contact-icon-container"
                                             >
-                                                <i className="lni lni-instagram-original contact-icon"></i>
+                                                <i className="lni lni-instagram contact-icon"></i>
                                             </a>
                                         </div>
                                     </div>
