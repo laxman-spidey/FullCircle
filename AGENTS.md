@@ -37,7 +37,7 @@ The application uses:
 npm install
 
 # Start development server
-npm run dev
+npm run dev # remember that i'll be anyway running the server in the background, don't try to run it again unless it needs restart 
 
 # Build for production
 npm run build
