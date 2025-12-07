@@ -23,6 +23,9 @@ spec:
         EMAIL_PASS:
             secretRef:
                 secretVersion: projects/191965811250/secrets/EMAIL_PASS/versions/latest
+    serve:
+        # The command to start your application
+        command: "npm start"
     # The build configuration for the backend
     build:
         # The command to build your application
