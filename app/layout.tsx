@@ -53,6 +53,7 @@ export default function RootLayout({
                     href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"
                     rel="stylesheet"
                 />
+                {/* CSS files that need to be available in deployed environment */}
                 <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
                 <link rel="stylesheet" href="/assets/css/lineicons.css" />
                 <link rel="stylesheet" href="/assets/css/tiny-slider.css" />
