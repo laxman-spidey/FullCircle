@@ -4,82 +4,85 @@ import { useEffect } from "react";
 import { Button } from "@/components/Button";
 import { Header } from "@/components/Header";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import FeedbackForm from "@/components/FeedbackForm";
 
 export default function Home() {
-  useEffect(() => {
-    // Floating Button Logic
-    const handleScroll = () => {
-      const floatingBtn = document.querySelector(".floating-whatsapp-btn");
-      // Use more specific selector if possible or keep logic
-      const whatsappBtn = document.querySelector(".whatsapp-btn"); // Note: Make sure this class exists on the main button if used
+    useEffect(() => {
+        // Floating Button Logic
+        const handleScroll = () => {
+            const floatingBtn = document.querySelector(
+                ".floating-whatsapp-btn",
+            );
+            // Use more specific selector if possible or keep logic
+            const whatsappBtn = document.querySelector(".whatsapp-btn"); // Note: Make sure this class exists on the main button if used
 
-      const isElementInViewport = (el: Element | null) => {
-        if (!el) return false;
-        const rect = el.getBoundingClientRect();
-        return rect.top < window.innerHeight && rect.bottom > 0;
-      };
+            const isElementInViewport = (el: Element | null) => {
+                if (!el) return false;
+                const rect = el.getBoundingClientRect();
+                return rect.top < window.innerHeight && rect.bottom > 0;
+            };
 
-      const whatsappBtnVisible = isElementInViewport(whatsappBtn);
+            const whatsappBtnVisible = isElementInViewport(whatsappBtn);
 
-      if (floatingBtn) {
-        // Show floating button after scrolling down a bit (e.g., 150px)
-        // AND when the main CTA button is NOT visible to avoid redundancy
-        if (window.scrollY > 150 && !whatsappBtnVisible) {
-          floatingBtn.classList.remove("hidden");
-        } else {
-          floatingBtn.classList.add("hidden");
-        }
-      }
-    };
+            if (floatingBtn) {
+                // Show floating button after scrolling down a bit (e.g., 150px)
+                // AND when the main CTA button is NOT visible to avoid redundancy
+                if (window.scrollY > 150 && !whatsappBtnVisible) {
+                    floatingBtn.classList.remove("hidden");
+                } else {
+                    floatingBtn.classList.add("hidden");
+                }
+            }
+        };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Initial check
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
-  return (
-    <>
-      <Head>
-        {/*====== Required meta tags ======*/}
-        <meta charSet="utf-8" />
-        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-        <meta
-          name="description"
-          content="FullCircle connects neighbours and helpers to get everyday tasks done - errands, companionship, odd jobs and more."
-        />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+    return (
+        <>
+            <Head>
+                {/*====== Required meta tags ======*/}
+                <meta charSet="utf-8" />
+                <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+                <meta
+                    name="description"
+                    content="FullCircle connects neighbours and helpers to get everyday tasks done - errands, companionship, odd jobs and more."
+                />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                />
 
-        {/*====== Title ======*/}
-        <title>FullCircle - Local Helping Network</title>
+                {/*====== Title ======*/}
+                <title>FullCircle - Local Helping Network</title>
 
-        {/*====== Favicon Icon ======*/}
-        <link
-          rel="shortcut icon"
-          href="/assets/images/favicon.png"
-          type="image/png"
-        />
+                {/*====== Favicon Icon ======*/}
+                <link
+                    rel="shortcut icon"
+                    href="/assets/images/favicon.png"
+                    type="image/png"
+                />
 
-        {/* Google tag (gtag.js) */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-E99RMTBYZB"
-        ></script>
-        <script>{`
+                {/* Google tag (gtag.js) */}
+                <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-E99RMTBYZB"
+                ></script>
+                <script>{`
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
 
             gtag('config', 'G-E99RMTBYZB');
           `}</script>
-      </Head>
+            </Head>
 
-      <style jsx global>{`
+            <style jsx global>{`
         :root {
           --teal-900-rgb: rgb(0, 61, 56);
           --teal-900: #003d38;
@@ -904,750 +907,739 @@ export default function Home() {
         }
       `}</style>
 
-      <div>
-        <Header />
+            <div>
+                <Header />
 
-        {/* Start header Area */}
+                {/* Start header Area */}
 
-        {/* Start header Area */}
-        <section id="hero-area" className="header-area header-eight">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-lg-6 col-md-12 col-12">
-                <div className="header-content">
-                  <h1>To make everyday work accessible to everyone</h1>
-                  <p>
-                    Book short tasks help from trusted local helpers: errands,
-                    elderly support, deliveries, housekeeping and more - managed
-                    over WhatsApp and phone.
-                  </p>
-                  <div className="button">
-                    <div className="d-flex flex-column flex-md-row gap-3 align-items-center justify-content-center">
-                      <Button
-                        variant="primary"
-                        size="lg"
-                        className="w-100 w-md-auto"
-                        onClick={() =>
-                          document
-                            .querySelector("#get-started")
-                            ?.scrollIntoView({ behavior: "smooth" })
-                        }
-                      >
-                        Get Started
-                      </Button>
-                      <Button
-                        variant="whatsapp"
-                        size="lg"
-                        className="w-100 w-md-auto"
-                        leftIcon={<WhatsAppIcon />}
-                        onClick={() =>
-                          window.open("https://wa.me/919121346777", "_blank")
-                        }
-                        aria-label="Message us on WhatsApp"
-                      >
-                        Chat on WhatsApp
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12 col-12">
-                <div className="header-image">
-                  <img src="/assets/images/helper.jpeg" alt="#" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* End header Area */}
-
-        {/* ===== feature section start ===== */}
-        <section className="services-area services-eight">
-          {/*======  Start Section Title Five ======*/}
-          <div className="section-title-five">
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <div className="content">
-                    <h2 className="fw-bold">Why Choose FullCircle</h2>
-                  </div>
-                </div>
-              </div>
-              {/* row */}
-            </div>
-            {/* container */}
-          </div>
-          {/*======  End Section Title Five ======*/}
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-user"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Trusted &amp; Verified Helpers</h4>
-                    <p>
-                      Helpers are profile-checked, rated by neighbors, and
-                      locally referenced for peace of mind.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-shield"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Safety-First Approach</h4>
-                    <p>
-                      We prioritize safety with clear guidelines, secure
-                      handoffs, and responsive support if issues arise.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-whatsapp"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Quick Response on WhatsApp</h4>
-                    <p>
-                      Message us directly on WhatsApp for fast matches and
-                      real-time coordination—no new app needed.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-wallet"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Simple Pricing</h4>
-                    <p>
-                      Transparent, easy-to-understand pricing so you know the
-                      cost up front—no surprises.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6 col-sm-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-users"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Community-Driven Service</h4>
-                    <p>
-                      Local helpers and neighbors shape our network—repeat
-                      bookings and local referrals build trust.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* ===== feature section end ===== */}
-
-        {/* ===== How to Get Started section start ===== */}
-        <section id="get-started" className="services-area services-eight">
-          {/*======  Start Section Title Five ======*/}
-          <div className="section-title-five">
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <div className="content">
-                    <h2 className="fw-bold">How to Get Started</h2>
-                    <p>Simple steps to connect with our helpers</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/*======  End Section Title Five ======*/}
-
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-8">
-                {/* Vertical Timeline */}
-                <div className="timeline-wrapper">
-                  {/* Step 1 */}
-                  <div className="timeline-item">
-                    <div className="timeline-marker">
-                      <span className="step-number">1</span>
-                    </div>
-                    <div className="timeline-content">
-                      <div className="timeline-card">
-                        <h4>Save the Number</h4>
-                        <p>
-                          <a href="tel:+919121346777">
-                            <strong>+91 91213 46777</strong>
-                          </a>
-                        </p>
-                        <p className="timeline-description">
-                          Add our WhatsApp number to your contacts for quick
-                          access.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Step 2 */}
-                  <div className="timeline-item">
-                    <div className="timeline-marker">
-                      <span className="step-number">2</span>
-                    </div>
-                    <div className="timeline-content">
-                      <div className="timeline-card">
-                        <h4>Send "Hi" on WhatsApp</h4>
-                        <p className="timeline-description">
-                          Start a conversation with us. We'll respond quickly
-                          and guide you through the next steps.
-                        </p>
-                        <a
-                          href="https://wa.me/919121346777"
-                          className="timeline-link"
-                          target="_blank"
-                        >
-                          <i className="lni lni-whatsapp"></i> Open WhatsApp
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Step 3 */}
-                  <div className="timeline-item">
-                    <div className="timeline-marker">
-                      <span className="step-number">3</span>
-                    </div>
-                    <div className="timeline-content">
-                      <div className="timeline-card">
-                        <h4>Browse Our Service Catalogue</h4>
-                        <p className="timeline-description">
-                          Explore the range of services we offer. From errands
-                          to companionship, find what you need.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Step 4 */}
-                  <div className="timeline-item">
-                    <div className="timeline-marker">
-                      <span className="step-number">4</span>
-                    </div>
-                    <div className="timeline-content">
-                      <div className="timeline-card">
-                        <h4>Call Us Directly for Help</h4>
-                        <p>
-                          <a href="tel:+919121346777">
-                            <strong>+91 91213 46777</strong>
-                          </a>
-                        </p>
-                        <p className="timeline-description">
-                          Prefer to talk? Call us anytime for personalized
-                          assistance and quick support.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Step 5 */}
-                  <div className="timeline-item">
-                    <div className="timeline-marker">
-                      <span className="step-number">5</span>
-                    </div>
-                    <div className="timeline-content">
-                      <div className="timeline-card">
-                        <h4>Confirm the Task & Get Helper Assigned</h4>
-                        <p className="timeline-description">
-                          Tell us the details of your task. We'll confirm the
-                          requirements and assign a verified helper suited for
-                          the job.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Step 6 */}
-                  <div className="timeline-item">
-                    <div className="timeline-marker">
-                      <span className="step-number">6</span>
-                    </div>
-                    <div className="timeline-content">
-                      <div className="timeline-card">
-                        <h4>Pay After the Job is Done</h4>
-                        <p className="timeline-description">
-                          Complete peace of mind. You only pay after the task is
-                          completed successfully (as applicable).
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* End Vertical Timeline */}
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* ===== How to Get Started section end ===== */}
-
-        {/* ===== Coming Soon Banner section start ===== */}
-        <section
-          className="call-action"
-          style={{
-            background:
-              "linear-gradient(45deg, var(--teal-700), var(--teal-500))",
-            margin: "40px 0",
-            padding: "40px 0 0",
-          }}
-        >
-          <div className="container">
-            <div className="row align-items-center justify-content-center">
-              <div className="col-lg-8 col-md-10">
-                <div className="inner-content text-white text-center">
-                  <h2 className="mb-3 text-white fw-bold">
-                    One app for all your needs - launching soon
-                  </h2>
-                  <p className="text-white mb-4 opacity-75">
-                    All your neighborhood help needs in one convenient app. Stay
-                    tuned for our exciting app launch.
-                  </p>
-                  <div className="mt-4 d-flex justify-content-center">
-                    <img
-                      src="/assets/images/comingsoon.png"
-                      alt="App Coming Soon"
-                      style={{
-                        maxWidth: "60%",
-                        height: "auto",
-                        borderRadius: "8px",
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* ===== Coming Soon Banner section end ===== */}
-
-        {/* ===== service-area start ===== */}
-        <section id="services" className="services-area services-eight">
-          {/*======  Start Section Title Five ======*/}
-          <div className="section-title-five">
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <div className="content">
-                    <h2 className="fw-bold">How We Can Help</h2>
-                    <p>
-                      We connect you with trusted helpers for various tasks in
-                      your daily life.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* row */}
-            </div>
-            {/* container */}
-          </div>
-          {/*======  End Section Title Five ======*/}
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-heart"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Care & Companionship</h4>
-                    <p>
-                      Elderly support, companionship visits, hospital visits,
-                      and motivational support (non-medical care).
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-users"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Children & Family Assistance</h4>
-                    <p>
-                      Child supervision, school pick & drop, and family home
-                      errands support.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-ambulance"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Emergency Support</h4>
-                    <p>
-                      Medical emergency delivery, rescue assistance, blood
-                      pickup, and urgent item delivery.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-shopping-basket"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Essential Errands</h4>
-                    <p>
-                      Grocery runs, market visits, bulk transport, water
-                      cylinder pickup and gift delivery.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-gift"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Event & Occasion Support</h4>
-                    <p>
-                      Decoration help, event serving, guest management, and
-                      moving heavy items for occasions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-wallet"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Financial & Administrative Help</h4>
-                    <p>
-                      Bill payments, form filling, bank work assistance and
-                      administrative support.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-grid-alt"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>General On-field Assistance</h4>
-                    <p>
-                      Queue standing, late-night pickup, photography services,
-                      and on-site supervision.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-home"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Home & Shop Support</h4>
-                    <p>
-                      House watching, shop organizing, temporary supervision,
-                      and skill-based maintenance work.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-briefcase"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Personal Productivity & Lifestyle</h4>
-                    <p>
-                      Home setup, fitness buddy, wardrobe organization, and
-                      personal errands.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-heart"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Pet Care Services</h4>
-                    <p>
-                      Dog and cat walking, pet feeding, veterinary visit
-                      escorts, and pet transportation.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6">
-                <div className="single-services">
-                  <div className="service-icon">
-                    <i className="lni lni-car"></i>
-                  </div>
-                  <div className="service-content">
-                    <h4>Transport & Mobility</h4>
-                    <p>
-                      Passenger transport, personal chauffeur services for daily
-                      or planned trips.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* ===== service-area end ===== */}
-
-        {/* ========================= feedback-section start ========================= */}
-        <section id="feedback" className="services-area services-eight">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-8">
-                <div className="section-title-five">
-                  <div className="content">
-                    <h2 className="fw-bold">Share Your Feedback</h2>
-                    <p>Your input helps us improve our services</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row justify-content-center">
-              <div className="col-lg-8">
-                <div
-                  className="liquid-glass contact-form-wrapper"
-                  style={{ padding: "40px" }}
-                >
-                  <form id="feedbackForm" className="contact-form">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="name"
-                          name="fullname"
-                          placeholder="Your Name"
-                          required
-                        />
-                      </div>
-                      <div className="col-md-6">
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="email"
-                          name="email"
-                          placeholder="Your Email"
-                          required
-                        />
-                      </div>
-                      <div className="col-md-12">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="subject"
-                          name="subject"
-                          placeholder="Subject"
-                          required
-                        />
-                      </div>
-                      <div className="col-md-12">
-                        <div className="rating-section mb-4">
-                          <label className="form-label">
-                            Overall Experience
-                          </label>
-                          <div className="star-rating">
-                            <input
-                              type="radio"
-                              id="star5"
-                              name="rating"
-                              value="5"
-                            />
-                            <label htmlFor="star5" title="5 stars">
-                              ☆
-                            </label>
-                            <input
-                              type="radio"
-                              id="star4"
-                              name="rating"
-                              value="4"
-                            />
-                            <label htmlFor="star4" title="4 stars">
-                              ☆
-                            </label>
-                            <input
-                              type="radio"
-                              id="star3"
-                              name="rating"
-                              value="3"
-                            />
-                            <label htmlFor="star3" title="3 stars">
-                              ☆
-                            </label>
-                            <input
-                              type="radio"
-                              id="star2"
-                              name="rating"
-                              value="2"
-                            />
-                            <label htmlFor="star2" title="2 stars">
-                              ☆
-                            </label>
-                            <input
-                              type="radio"
-                              id="star1"
-                              name="rating"
-                              value="1"
-                            />
-                            <label htmlFor="star1" title="1 star">
-                              ☆
-                            </label>
-                          </div>
+                {/* Start header Area */}
+                <section id="hero-area" className="header-area header-eight">
+                    <div className="container">
+                        <div className="row align-items-center">
+                            <div className="col-lg-6 col-md-12 col-12">
+                                <div className="header-content">
+                                    <h1>
+                                        To make everyday work accessible to
+                                        everyone
+                                    </h1>
+                                    <p>
+                                        Book short tasks help from trusted local
+                                        helpers: errands, elderly support,
+                                        deliveries, housekeeping and more -
+                                        managed over WhatsApp and phone.
+                                    </p>
+                                    <div className="button">
+                                        <div className="d-flex flex-column flex-md-row gap-3 align-items-center justify-content-center">
+                                            <Button
+                                                variant="primary"
+                                                size="lg"
+                                                className="w-100 w-md-auto"
+                                                onClick={() =>
+                                                    document
+                                                        .querySelector(
+                                                            "#get-started",
+                                                        )
+                                                        ?.scrollIntoView({
+                                                            behavior: "smooth",
+                                                        })
+                                                }
+                                            >
+                                                Get Started
+                                            </Button>
+                                            <Button
+                                                variant="whatsapp"
+                                                size="lg"
+                                                className="w-100 w-md-auto"
+                                                leftIcon={<WhatsAppIcon />}
+                                                onClick={() =>
+                                                    window.open(
+                                                        "https://wa.me/919121346777",
+                                                        "_blank",
+                                                    )
+                                                }
+                                                aria-label="Message us on WhatsApp"
+                                            >
+                                                Chat on WhatsApp
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-6 col-md-12 col-12">
+                                <div className="header-image">
+                                    <img
+                                        src="/assets/images/helper.jpeg"
+                                        alt="#"
+                                    />
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div className="col-md-12">
-                        <textarea
-                          className="form-control"
-                          id="message"
-                          name="message"
-                          rows={5}
-                          placeholder="Your Feedback"
-                          required
-                        ></textarea>
-                      </div>
-                      <div className="col-md-12 text-center">
-                        <Button
-                          variant="primary"
-                          type="submit"
-                          style={{ marginTop: "15px" }}
-                        >
-                          Submit Feedback
-                        </Button>
-                      </div>
                     </div>
-                  </form>
-                </div>
-              </div>
+                </section>
+                {/* End header Area */}
+
+                {/* ===== feature section start ===== */}
+                <section className="services-area services-eight">
+                    {/*======  Start Section Title Five ======*/}
+                    <div className="section-title-five">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="content">
+                                        <h2 className="fw-bold">
+                                            Why Choose FullCircle
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* row */}
+                        </div>
+                        {/* container */}
+                    </div>
+                    {/*======  End Section Title Five ======*/}
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-4 col-md-6 col-sm-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-user"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Trusted &amp; Verified Helpers</h4>
+                                        <p>
+                                            Helpers are profile-checked, rated
+                                            by neighbors, and locally referenced
+                                            for peace of mind.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-lg-4 col-md-6 col-sm-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-shield"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Safety-First Approach</h4>
+                                        <p>
+                                            We prioritize safety with clear
+                                            guidelines, secure handoffs, and
+                                            responsive support if issues arise.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-lg-4 col-md-6 col-sm-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-whatsapp"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Quick Response on WhatsApp</h4>
+                                        <p>
+                                            Message us directly on WhatsApp for
+                                            fast matches and real-time
+                                            coordination—no new app needed.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-lg-4 col-md-6 col-sm-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-wallet"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Simple Pricing</h4>
+                                        <p>
+                                            Transparent, easy-to-understand
+                                            pricing so you know the cost up
+                                            front—no surprises.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-lg-4 col-md-6 col-sm-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-users"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Community-Driven Service</h4>
+                                        <p>
+                                            Local helpers and neighbors shape
+                                            our network—repeat bookings and
+                                            local referrals build trust.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {/* ===== feature section end ===== */}
+
+                {/* ===== How to Get Started section start ===== */}
+                <section
+                    id="get-started"
+                    className="services-area services-eight"
+                >
+                    {/*======  Start Section Title Five ======*/}
+                    <div className="section-title-five">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="content">
+                                        <h2 className="fw-bold">
+                                            How to Get Started
+                                        </h2>
+                                        <p>
+                                            Simple steps to connect with our
+                                            helpers
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/*======  End Section Title Five ======*/}
+
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                {/* Vertical Timeline */}
+                                <div className="timeline-wrapper">
+                                    {/* Step 1 */}
+                                    <div className="timeline-item">
+                                        <div className="timeline-marker">
+                                            <span className="step-number">
+                                                1
+                                            </span>
+                                        </div>
+                                        <div className="timeline-content">
+                                            <div className="timeline-card">
+                                                <h4>Save the Number</h4>
+                                                <p>
+                                                    <a href="tel:+919121346777">
+                                                        <strong>
+                                                            +91 91213 46777
+                                                        </strong>
+                                                    </a>
+                                                </p>
+                                                <p className="timeline-description">
+                                                    Add our WhatsApp number to
+                                                    your contacts for quick
+                                                    access.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Step 2 */}
+                                    <div className="timeline-item">
+                                        <div className="timeline-marker">
+                                            <span className="step-number">
+                                                2
+                                            </span>
+                                        </div>
+                                        <div className="timeline-content">
+                                            <div className="timeline-card">
+                                                <h4>Send "Hi" on WhatsApp</h4>
+                                                <p className="timeline-description">
+                                                    Start a conversation with
+                                                    us. We'll respond quickly
+                                                    and guide you through the
+                                                    next steps.
+                                                </p>
+                                                <a
+                                                    href="https://wa.me/919121346777"
+                                                    className="timeline-link"
+                                                    target="_blank"
+                                                >
+                                                    <i className="lni lni-whatsapp"></i>{" "}
+                                                    Open WhatsApp
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Step 3 */}
+                                    <div className="timeline-item">
+                                        <div className="timeline-marker">
+                                            <span className="step-number">
+                                                3
+                                            </span>
+                                        </div>
+                                        <div className="timeline-content">
+                                            <div className="timeline-card">
+                                                <h4>
+                                                    Browse Our Service Catalogue
+                                                </h4>
+                                                <p className="timeline-description">
+                                                    Explore the range of
+                                                    services we offer. From
+                                                    errands to companionship,
+                                                    find what you need.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Step 4 */}
+                                    <div className="timeline-item">
+                                        <div className="timeline-marker">
+                                            <span className="step-number">
+                                                4
+                                            </span>
+                                        </div>
+                                        <div className="timeline-content">
+                                            <div className="timeline-card">
+                                                <h4>
+                                                    Call Us Directly for Help
+                                                </h4>
+                                                <p>
+                                                    <a href="tel:+919121346777">
+                                                        <strong>
+                                                            +91 91213 46777
+                                                        </strong>
+                                                    </a>
+                                                </p>
+                                                <p className="timeline-description">
+                                                    Prefer to talk? Call us
+                                                    anytime for personalized
+                                                    assistance and quick
+                                                    support.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Step 5 */}
+                                    <div className="timeline-item">
+                                        <div className="timeline-marker">
+                                            <span className="step-number">
+                                                5
+                                            </span>
+                                        </div>
+                                        <div className="timeline-content">
+                                            <div className="timeline-card">
+                                                <h4>
+                                                    Confirm the Task & Get
+                                                    Helper Assigned
+                                                </h4>
+                                                <p className="timeline-description">
+                                                    Tell us the details of your
+                                                    task. We'll confirm the
+                                                    requirements and assign a
+                                                    verified helper suited for
+                                                    the job.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Step 6 */}
+                                    <div className="timeline-item">
+                                        <div className="timeline-marker">
+                                            <span className="step-number">
+                                                6
+                                            </span>
+                                        </div>
+                                        <div className="timeline-content">
+                                            <div className="timeline-card">
+                                                <h4>
+                                                    Pay After the Job is Done
+                                                </h4>
+                                                <p className="timeline-description">
+                                                    Complete peace of mind. You
+                                                    only pay after the task is
+                                                    completed successfully (as
+                                                    applicable).
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* End Vertical Timeline */}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {/* ===== How to Get Started section end ===== */}
+
+                {/* ===== Coming Soon Banner section start ===== */}
+                <section
+                    className="call-action"
+                    style={{
+                        background:
+                            "linear-gradient(45deg, var(--teal-700), var(--teal-500))",
+                        margin: "40px 0",
+                        padding: "40px 0 0",
+                    }}
+                >
+                    <div className="container">
+                        <div className="row align-items-center justify-content-center">
+                            <div className="col-lg-8 col-md-10">
+                                <div className="inner-content text-white text-center">
+                                    <h2 className="mb-3 text-white fw-bold">
+                                        One app for all your needs - launching
+                                        soon
+                                    </h2>
+                                    <p className="text-white mb-4 opacity-75">
+                                        All your neighborhood help needs in one
+                                        convenient app. Stay tuned for our
+                                        exciting app launch.
+                                    </p>
+                                    <div className="mt-4 d-flex justify-content-center">
+                                        <img
+                                            src="/assets/images/comingsoon.png"
+                                            alt="App Coming Soon"
+                                            style={{
+                                                maxWidth: "60%",
+                                                height: "auto",
+                                                borderRadius: "8px",
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {/* ===== Coming Soon Banner section end ===== */}
+
+                {/* ===== service-area start ===== */}
+                <section id="services" className="services-area services-eight">
+                    {/*======  Start Section Title Five ======*/}
+                    <div className="section-title-five">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="content">
+                                        <h2 className="fw-bold">
+                                            How We Can Help
+                                        </h2>
+                                        <p>
+                                            We connect you with trusted helpers
+                                            for various tasks in your daily
+                                            life.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* row */}
+                        </div>
+                        {/* container */}
+                    </div>
+                    {/*======  End Section Title Five ======*/}
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-heart"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Care & Companionship</h4>
+                                        <p>
+                                            Elderly support, companionship
+                                            visits, hospital visits, and
+                                            motivational support (non-medical
+                                            care).
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-users"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Children & Family Assistance</h4>
+                                        <p>
+                                            Child supervision, school pick &
+                                            drop, and family home errands
+                                            support.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-ambulance"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Emergency Support</h4>
+                                        <p>
+                                            Medical emergency delivery, rescue
+                                            assistance, blood pickup, and urgent
+                                            item delivery.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-shopping-basket"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Essential Errands</h4>
+                                        <p>
+                                            Grocery runs, market visits, bulk
+                                            transport, water cylinder pickup and
+                                            gift delivery.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-gift"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Event & Occasion Support</h4>
+                                        <p>
+                                            Decoration help, event serving,
+                                            guest management, and moving heavy
+                                            items for occasions.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-wallet"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Financial & Administrative Help</h4>
+                                        <p>
+                                            Bill payments, form filling, bank
+                                            work assistance and administrative
+                                            support.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-grid-alt"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>General On-field Assistance</h4>
+                                        <p>
+                                            Queue standing, late-night pickup,
+                                            photography services, and on-site
+                                            supervision.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-home"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Home & Shop Support</h4>
+                                        <p>
+                                            House watching, shop organizing,
+                                            temporary supervision, and
+                                            skill-based maintenance work.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-briefcase"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>
+                                            Personal Productivity & Lifestyle
+                                        </h4>
+                                        <p>
+                                            Home setup, fitness buddy, wardrobe
+                                            organization, and personal errands.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-heart"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Pet Care Services</h4>
+                                        <p>
+                                            Dog and cat walking, pet feeding,
+                                            veterinary visit escorts, and pet
+                                            transportation.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <div className="single-services">
+                                    <div className="service-icon">
+                                        <i className="lni lni-car"></i>
+                                    </div>
+                                    <div className="service-content">
+                                        <h4>Transport & Mobility</h4>
+                                        <p>
+                                            Passenger transport, personal
+                                            chauffeur services for daily or
+                                            planned trips.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {/* ===== service-area end ===== */}
+
+                {/* ========================= feedback-section start ========================= */}
+                <section id="feedback" className="services-area services-eight">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <div className="section-title-five">
+                                    <div className="content">
+                                        <h2 className="fw-bold">
+                                            Share Your Feedback
+                                        </h2>
+                                        <p>
+                                            Your input helps us improve our
+                                            services
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <div
+                                    className="liquid-glass contact-form-wrapper"
+                                    style={{ padding: "40px" }}
+                                >
+                                    <FeedbackForm />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {/* ========================= feedback-section end ========================= */}
+
+                {/* Start Footer Area */}
+                <footer className="call-action footer-call-action">
+                    {/* Start Footer Top */}
+                    <div className="container">
+                        <div className="inner-content">
+                            <div className="row justify-content-center">
+                                <div className="col-lg-4 col-md-6 col-12">
+                                    {/* Single Widget */}
+                                    <div className="f-about text-center footer-about">
+                                        <div className="logo text-center">
+                                            <a href="#home">
+                                                <img
+                                                    className="footer-logo-img"
+                                                    src="/assets/images/logo-dark.png"
+                                                    alt="#"
+                                                />
+                                                <div className="footer-logo-text">
+                                                    FullCircle
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <p className="text-center footer-text-centered">
+                                            To make everyday work accessible to
+                                            everyone.
+                                        </p>
+                                        <p className="copyright-text text-center footer-copyright-text">
+                                            <span>© 2025 FullCircle.</span> All
+                                            rights reserved.
+                                        </p>
+                                        <div className="footer-connect-heading text-center">
+                                            <p className="footer-connect-text">
+                                                Connect with us
+                                            </p>
+                                        </div>
+                                        <div className="contact-icons text-center mt-3">
+                                            <a
+                                                href="tel:+919121346777"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="contact-icon-container"
+                                            >
+                                                <i className="lni lni-phone contact-icon"></i>
+                                            </a>
+                                            <a
+                                                href="mailto:ourfullcircleservices@gmail.com"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="contact-icon-container"
+                                            >
+                                                <i className="lni lni-envelope contact-icon"></i>
+                                            </a>
+                                            <a
+                                                href="https://wa.me/919121346777"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="contact-icon-container"
+                                            >
+                                                <i className="lni lni-whatsapp contact-icon"></i>
+                                            </a>
+                                            <a
+                                                href="https://instagram.com/our_fullcircle"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="contact-icon-container"
+                                            >
+                                                <i className="lni lni-instagram-original contact-icon"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {/* End Single Widget */}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/*/ End Footer Top */}
+                </footer>
+                {/*/ End Footer Area */}
+
+                {/* Floating WhatsApp Button */}
+                <a
+                    href="https://wa.me/919121346777"
+                    className="floating-whatsapp-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Chat with us on WhatsApp"
+                >
+                    <i className="lni lni-whatsapp"></i>
+                </a>
             </div>
-          </div>
-        </section>
-        {/* ========================= feedback-section end ========================= */}
 
-        {/* Start Footer Area */}
-        <footer className="call-action footer-call-action">
-          {/* Start Footer Top */}
-          <div className="container">
-            <div className="inner-content">
-              <div className="row justify-content-center">
-                <div className="col-lg-4 col-md-6 col-12">
-                  {/* Single Widget */}
-                  <div className="f-about text-center footer-about">
-                    <div className="logo text-center">
-                      <a href="#home">
-                        <img
-                          className="footer-logo-img"
-                          src="/assets/images/logo-dark.png"
-                          alt="#"
-                        />
-                        <div className="footer-logo-text">FullCircle</div>
-                      </a>
-                    </div>
-                    <p className="text-center footer-text-centered">
-                      To make everyday work accessible to everyone.
-                    </p>
-                    <p className="copyright-text text-center footer-copyright-text">
-                      <span>© 2025 FullCircle.</span> All rights reserved.
-                    </p>
-                    <div className="footer-connect-heading text-center">
-                      <p className="footer-connect-text">Connect with us</p>
-                    </div>
-                    <div className="contact-icons text-center mt-3">
-                      <a
-                        href="tel:+919121346777"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="contact-icon-container"
-                      >
-                        <i className="lni lni-phone contact-icon"></i>
-                      </a>
-                      <a
-                        href="mailto:ourfullcircleservices@gmail.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="contact-icon-container"
-                      >
-                        <i className="lni lni-envelope contact-icon"></i>
-                      </a>
-                      <a
-                        href="https://wa.me/919121346777"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="contact-icon-container"
-                      >
-                        <i className="lni lni-whatsapp contact-icon"></i>
-                      </a>
-                      <a
-                        href="https://instagram.com/our_fullcircle"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="contact-icon-container"
-                      >
-                        <i className="lni lni-instagram-original contact-icon"></i>
-                      </a>
-                    </div>
-                  </div>
-                  {/* End Single Widget */}
-                </div>
-              </div>
-            </div>
-          </div>
-          {/*/ End Footer Top */}
-        </footer>
-        {/*/ End Footer Area */}
-
-        {/* Floating WhatsApp Button */}
-        <a
-          href="https://wa.me/919121346777"
-          className="floating-whatsapp-btn"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Chat with us on WhatsApp"
-        >
-          <i className="lni lni-whatsapp"></i>
-        </a>
-      </div>
-
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
           // Gtag or other truly external global scripts can stay here if needed,
           // but the UI logic has been moved to useEffect.
         `,
-        }}
-      ></script>
-    </>
-  );
+                }}
+            ></script>
+        </>
+    );
 }
