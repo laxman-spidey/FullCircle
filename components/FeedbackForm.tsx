@@ -287,7 +287,7 @@ export default function FeedbackForm() {
                     )}
 
                     <Button
-                        variant="primary"
+                        variant="secondary"
                         type="submit"
                         className="mt-2"
                         disabled={isSubmitting}
