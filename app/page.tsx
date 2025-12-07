@@ -947,7 +947,7 @@ export default function Home() {
                                                 Get Started
                                             </Button>
                                             <Button
-                                                variant="whatsapp"
+                                                variant="secondary"
                                                 size="lg"
                                                 className="w-100 w-md-auto"
                                                 leftIcon={<WhatsAppIcon />}
@@ -1551,12 +1551,15 @@ export default function Home() {
                                 <div className="col-lg-4 col-md-6 col-12">
                                     {/* Single Widget */}
                                     <div className="f-about text-center footer-about">
-                                        <div className="logo text-center">
-                                            <a href="#home">
+                                        <div className="logo">
+                                            <a
+                                                className="footer-logo-link"
+                                                href="#home"
+                                            >
                                                 <img
                                                     className="footer-logo-img"
                                                     src="/assets/images/logo-dark.png"
-                                                    alt="#"
+                                                    alt="FullCircle Logo"
                                                 />
                                                 <div className="footer-logo-text">
                                                     FullCircle
