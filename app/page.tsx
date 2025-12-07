@@ -999,7 +999,7 @@ export default function Home() {
                     </div>
                     {/*======  End Section Title Five ======*/}
                     <div className="container">
-                        <div className="row">
+                        <div className="row gy-4">
                             <div className="col-lg-4 col-md-6 col-sm-6">
                                 <div className="single-services">
                                     <div className="service-icon">
@@ -1338,7 +1338,7 @@ export default function Home() {
                     </div>
                     {/*======  End Section Title Five ======*/}
                     <div className="container">
-                        <div className="row">
+                        <div className="row gy-4">
                             <div className="col-lg-4 col-md-6">
                                 <div className="single-services">
                                     <div className="service-icon">
