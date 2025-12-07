@@ -38,13 +38,44 @@ spec:
         concurrency: 10
         cpu: 1
         memoryMiB: 512
-        timeoutSeconds:
-            60
-            # The maximum number of instances for the backend
-            # maxInstances: 10
-            # The minimum number of instances for the backend
-            # minInstances: 0
-            # The timeout for requests, in seconds
-            # timeoutSeconds: 60
-            # The environment variables that are available during serving
-            # environmentVariables: {}
+        timeoutSeconds: 60
+---
+# Staging environment configuration
+runConfig:
+    minInstances: 0
+    maxInstances: 1
+    concurrency: 10
+    cpu: 1
+    memoryMiB: 512
+    timeoutSeconds: 60
+spec:
+    # Represents the latest backend API version. Do not overwrite this field.
+    apiVersion: apphosting.googleapis.com/v1alpha
+    # The ID of the backend. This is used to identify the backend in the Firebase console.
+    backendID: fullcircle-stage
+    # The runtime for the backend. For Node.js, use the format "nodejsXX".
+    runtime: nodejs22
+    # Environment variables for the backend
+    environmentVariables:
+        # Reference to secrets stored in Google Cloud Secret Manager
+        EMAIL_USER:
+            secretRef:
+                secretVersion: projects/fullcircle-37f07/secrets/EMAIL_USER_STAGING/versions/latest
+        EMAIL_PASS:
+            secretRef:
+                secretVersion: projects/fullcircle-37f07/secrets/EMAIL_PASS_STAGING/versions/latest
+    # The build configuration for the backend
+    build:
+        # The command to build your application
+        # For Node.js applications, this is typically empty if using standard npm start
+        command: "npm run build"
+        # The root directory of the application, relative to the repository root
+        root: .
+    # The serving configuration for the backend
+    serving:
+        minInstances: 0
+        maxInstances: 1
+        concurrency: 10
+        cpu: 1
+        memoryMiB: 512
+        timeoutSeconds: 60
