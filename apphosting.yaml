@@ -25,6 +25,9 @@ spec:
             secretRef:
                 secretVersion: projects/191965811250/secrets/EMAIL_PASS/versions/latest
     # The build configuration for the backend
+    serve:
+      # The command to start your application
+      command: "npm start"
     build:
         # The command to build your application
         # For Node.js applications, this is typically empty if using standard npm start
