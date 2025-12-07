@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "lineicons/dist/lineicons.css";
+import "tiny-slider/dist/tiny-slider.css";
+import "glightbox/dist/css/glightbox.min.css";
+import "./styles/custom.css";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -53,12 +58,6 @@ export default function RootLayout({
                     href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"
                     rel="stylesheet"
                 />
-                {/* CSS files that need to be available in deployed environment */}
-                <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-                <link rel="stylesheet" href="/assets/css/lineicons.css" />
-                <link rel="stylesheet" href="/assets/css/tiny-slider.css" />
-                <link rel="stylesheet" href="/assets/css/glightbox.min.css" />
-                <link rel="stylesheet" href="/style.css" />
             </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
