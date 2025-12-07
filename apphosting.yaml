@@ -19,7 +19,7 @@ spec:
   environmentVariables: {}
   # The build configuration for the backend
   scripts:
-    runCommand: node app.js
+    runCommand: npm run dev
   build:
     # The command to build your application
     # For Node.js applications, this is typically empty if using standard npm start

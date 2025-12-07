@@ -1,7 +1,8 @@
-@import "../../public/assets/css/bootstrap.min.css";
 @import "tailwindcss";
 @source "../components";
 @source "../app";
+
+/* Note: Bootstrap CSS is now included via layout.tsx link tag */
 
 /* Navbar styling - initially transparent or with light background */
 .navbar-nine {
