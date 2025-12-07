@@ -45,7 +45,7 @@ export function Header() {
         className={clsx(
           "navbar-area navbar-nine",
           isScrolled &&
-            "bg-teal-500/45 backdrop-blur-10 supports-backdrop-blur:bg-teal-500/45 supports-backdrop-blur:backdrop-blur-10 border-b border-teal-300 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] fixed",
+            "scrolled bg-[var(--glass-tinted-bg)] backdrop-blur-[var(--glass-blur)] border-b border-[var(--teal-300)] shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] fixed",
           "",
         )}
       >
