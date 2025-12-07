@@ -1223,7 +1223,7 @@ export default function Home() {
                     All your neighborhood help needs in one convenient app. Stay
                     tuned for our exciting app launch.
                   </p>
-                  <div className="mt-4">
+                  <div className="mt-4 d-flex justify-content-center">
                     <img
                       src="/assets/images/comingsoon.png"
                       alt="App Coming Soon"
