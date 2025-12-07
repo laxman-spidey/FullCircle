@@ -194,6 +194,16 @@ The project is configured for Firebase hosting:
 - Environment-specific configurations
 - App hosting with Node.js runtime
 
+### Environments
+- **Production**: Deployed as `fullcircle-prod` backend with following configuration:
+  - Runtime: Node.js 22
+  - Scaling: 0-2 instances, concurrency 10
+  - Resources: 1 CPU, 512MB Memory, 60s timeout
+  - Environment Variables: Uses Google Cloud Secret Manager for EMAIL_USER and EMAIL_PASS
+  - Build command: `npm run build`
+
+- **Staging**: Available as `fullcircle-stage` backend with similar configuration to production
+
 #Contribution
 ##commit message
 <githubId>:<commit message>
