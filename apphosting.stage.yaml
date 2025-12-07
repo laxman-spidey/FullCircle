@@ -1,8 +1,8 @@
-# This file describes the declarative configuration for Firebase App Hosting.
+# Staging environment configuration for Firebase App Hosting
 # For a complete reference, see https://firebase.google.com/docs/app-hosting/config
 runConfig:
     minInstances: 0
-    maxInstances: 2
+    maxInstances: 1
     concurrency: 10
     cpu: 1
     memoryMiB: 512
@@ -11,8 +11,7 @@ spec:
     # Represents the latest backend API version. Do not overwrite this field.
     apiVersion: apphosting.googleapis.com/v1alpha
     # The ID of the backend. This is used to identify the backend in the Firebase console.
-    # This must match the ID in your firebase.json file.
-    backendID: fullcircle-prod
+    backendID: fullcircle-stage
     # The runtime for the backend. For Node.js, use the format "nodejsXX".
     runtime: nodejs22
     # Environment variables for the backend
@@ -20,10 +19,10 @@ spec:
         # Reference to secrets stored in Google Cloud Secret Manager
         EMAIL_USER:
             secretRef:
-                secretVersion: projects/fullcircle-37f07/secrets/EMAIL_USER/versions/latest
+                secretVersion: projects/fullcircle-37f07/secrets/EMAIL_USER_STAGING/versions/latest
         EMAIL_PASS:
             secretRef:
-                secretVersion: projects/fullcircle-37f07/secrets/EMAIL_PASS/versions/latest
+                secretVersion: projects/fullcircle-37f07/secrets/EMAIL_PASS_STAGING/versions/latest
     # The build configuration for the backend
     build:
         # The command to build your application
@@ -34,7 +33,7 @@ spec:
     # The serving configuration for the backend
     serving:
         minInstances: 0
-        maxInstances: 2
+        maxInstances: 1
         concurrency: 10
         cpu: 1
         memoryMiB: 512
