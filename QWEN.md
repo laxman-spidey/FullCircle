@@ -143,8 +143,12 @@ npm run firebase:deploy
 - Accessibility features (ARIA labels, keyboard navigation)
 
 ### Environment Configuration
-- Uses dotenv for environment variables
-- Email credentials stored in `.env` file
+- Uses dotenv for local environment variables
+- Email credentials stored in `.env` file with the following required variables:
+  - `EMAIL_USER`: The email address for sending notifications
+  - `EMAIL_PASS`: The app password for the email account
+  - `PORT`: The port number for the server (defaults to 3000)
+- For complete environment variable documentation, see `ENVIRONMENT_VARIABLES.md`
 - Firebase configuration in `firebase.json`
 
 ### Error Handling
@@ -196,13 +200,20 @@ The project is configured for Firebase hosting:
 
 ### Environments
 - **Production**: Deployed as `fullcircle-prod` backend with following configuration:
+  - Configuration file: `apphosting.yaml`
   - Runtime: Node.js 22
   - Scaling: 0-2 instances, concurrency 10
   - Resources: 1 CPU, 512MB Memory, 60s timeout
   - Environment Variables: Uses Google Cloud Secret Manager for EMAIL_USER and EMAIL_PASS
   - Build command: `npm run build`
 
-- **Staging**: Available as `fullcircle-stage` backend with similar configuration to production
+- **Staging**: Deployed as `fullcircle-stage` backend with following configuration:
+  - Configuration file: `apphosting.stage.yaml`
+  - Runtime: Node.js 22
+  - Scaling: 0-1 instances, concurrency 10 (lower than prod for cost efficiency)
+  - Resources: 1 CPU, 512MB Memory, 60s timeout
+  - Environment Variables: Uses Google Cloud Secret Manager for EMAIL_USER_STAGING and EMAIL_PASS_STAGING
+  - Build command: `npm run build`
 
 #Contribution
 ##commit message
