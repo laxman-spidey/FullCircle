@@ -429,13 +429,13 @@ p {
 
 /*===== NAVBAR NINE =====*/
 .navbar-area.navbar-nine {
-    background: var(--primary);
-    padding: 10px 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 9;
+  background: var(--primary);
+  padding: 10px 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .sticky {
