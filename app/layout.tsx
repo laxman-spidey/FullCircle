@@ -6,6 +6,7 @@ import "lineicons/dist/lineicons.css";
 import "tiny-slider/dist/tiny-slider.css";
 import "glightbox/dist/css/glightbox.min.css";
 import "./styles/custom.css";
+import favicon from "../public/assets/images/favicon.png";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -35,18 +36,18 @@ export default function RootLayout({
                     rel="icon"
                     type="image/png"
                     sizes="32x32"
-                    href="/assets/images/favicon.png"
+                    href={favicon.src}
                 />
                 <link
                     rel="icon"
                     type="image/png"
                     sizes="16x16"
-                    href="/assets/images/favicon.png"
+                    href={favicon.src}
                 />
                 <link
                     rel="apple-touch-icon"
                     sizes="180x180"
-                    href="/assets/images/favicon.png"
+                    href={favicon.src}
                 />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link

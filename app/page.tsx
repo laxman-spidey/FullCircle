@@ -4,7 +4,12 @@ import { useEffect } from "react";
 import { Button } from "@/components/Button";
 import { Header } from "@/components/Header";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import Link from "next/link";
+import Script from "next/script";
 import FeedbackForm from "@/components/FeedbackForm";
+import logoDark from "../public/assets/images/logo-dark.png";
+import comingSoon from "../public/assets/images/comingsoon.png";
+import helperImg from "../public/assets/images/helper.jpeg";
 
 export default function Home() {
     useEffect(() => {
@@ -62,11 +67,7 @@ export default function Home() {
                 <title>FullCircle - Local Helping Network</title>
 
                 {/*====== Favicon Icon ======*/}
-                <link
-                    rel="shortcut icon"
-                    href="/assets/images/favicon.png"
-                    type="image/png"
-                />
+                {/*====== Favicon Icon removed (handled in layout) ======*/}
 
                 {/* Google tag (gtag.js) */}
                 <script
@@ -968,7 +969,7 @@ export default function Home() {
                             <div className="col-lg-6 col-md-12 col-12">
                                 <div className="header-image">
                                     <img
-                                        src="/assets/images/helper.jpeg"
+                                        src={helperImg.src}
                                         alt="#"
                                     />
                                 </div>
@@ -1296,7 +1297,7 @@ export default function Home() {
                                     </p>
                                     <div className="mt-4 d-flex justify-content-center">
                                         <img
-                                            src="/assets/images/comingsoon.png"
+                                            src={comingSoon.src}
                                             alt="App Coming Soon"
                                             style={{
                                                 maxWidth: "60%",
@@ -1558,7 +1559,7 @@ export default function Home() {
                                             >
                                                 <img
                                                     className="footer-logo-img"
-                                                    src="/assets/images/logo-dark.png"
+                                                    src={logoDark.src}
                                                     alt="FullCircle Logo"
                                                 />
                                                 <div className="footer-logo-text">
