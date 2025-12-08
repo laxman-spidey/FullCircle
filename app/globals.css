@@ -24,7 +24,7 @@
 
 /* Teal background when at top and not scrolled */
 .navbar-nine:not(.scrolled) {
-    background: var(--teal-700) !important;
+    background: var(--teal-700);
     color: white;
 }
 
