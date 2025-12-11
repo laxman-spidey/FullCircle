@@ -992,21 +992,8 @@ export default function Home() {
                             </div>
                             <div className="col-lg-6 col-md-12 col-12">
                                 <div className="header-image">
-                                    <img src={helperImg.src} alt="#" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                {/* End header Area */}
-
-                {/* ===== Image Slider section start ===== */}
-                <section className="slider-area">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="slider-container">
                                     <ImageSlider
+                                        images={getInfographicImages()}
                                         autoPlay={true}
                                         interval={4000}
                                         showControls={true}
@@ -1018,8 +1005,9 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-                {/* ===== Image Slider section end ===== */}
+                {/* End header Area */}
 
+                
                 {/* ===== feature section start ===== */}
                 <section className="services-area services-eight">
                     {/*======  Start Section Title Five ======*/}
