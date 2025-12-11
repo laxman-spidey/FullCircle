@@ -759,21 +759,14 @@ export default function Home() {
         }
 
         /* Slider container to maintain height */
+        /* Slider container to maintain height */
         .slider-container {
-          min-height: 256px; /* h-64 equivalent */
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          height: auto; /* Let aspect-ratio control height */
+          max-height: 500px; /* Optional: restrain visible size on very large screens if needed, or leave open */
         }
 
-        @media (min-width: 768px) {
-          .slider-container {
-            min-height: 320px; /* md:h-80 equivalent */
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .slider-container {
-            min-height: 384px; /* lg:h-96 equivalent */
-          }
-        }
 
         .slider-container .liquid-glass {
           position: relative;
@@ -991,14 +984,14 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-12 col-12">
-                                <div className="header-image">
+                                <div className="header-image slider-container">
                                     <ImageSlider
                                         images={getInfographicImages()}
                                         autoPlay={true}
                                         interval={4000}
                                         showControls={true}
                                         showIndicators={true}
-                                        className="my-8"
+                                        className="h-full w-full"
                                     />
                                 </div>
                             </div>
@@ -1007,7 +1000,7 @@ export default function Home() {
                 </section>
                 {/* End header Area */}
 
-                
+
                 {/* ===== feature section start ===== */}
                 <section className="services-area services-eight">
                     {/*======  Start Section Title Five ======*/}

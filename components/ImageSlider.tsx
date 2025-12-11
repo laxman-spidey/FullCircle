@@ -80,23 +80,20 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             onMouseLeave={handleMouseLeave}
         >
             {/* Slides container with liquid glass effect */}
-            <div className="relative min-h-[150px] max-h-[250px] w-full liquid-glass overflow-hidden" style={{ height: 'calc(100% - 32px)' }}>
+            <div className="relative w-full liquid-glass overflow-hidden">
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                            index === currentIndex
-                                ? "opacity-100 z-10"
-                                : "opacity-0 z-0"
-                        }`}
+                        className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${index === currentIndex
+                            ? "opacity-100 z-10"
+                            : "opacity-0 z-0"
+                            }`}
                     >
                         <Image
                             src={image}
                             alt={`Slide ${index + 1}`}
                             fill
-                            className="w-full h-full object-cover rounded-lg"
-                            // style={{ height: 'calc(100% - 32px)' }}
-                            // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="w-full h-full object-contain rounded-lg"
                             priority={index === 0}
                         />
                     </div>
@@ -108,7 +105,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 <>
                     <button
                         onClick={goToPrevious}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-[var(--glass-bg)] hover:bg-white text-[var(--teal-900)] rounded-full p-2 shadow-md z-20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--teal-500)] backdrop-blur-[var(--glass-blur)] border border-[var(--glass-border)]"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-[var(--glass-bg)] hover:bg-white text-[var(--teal-900)] rounded-full w-10 h-10 flex items-center justify-center shadow-md z-20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--teal-500)] backdrop-blur-[var(--glass-blur)] border border-[var(--glass-border)] !rounded-full shrink-0 overflow-hidden"
                         aria-label="Previous slide"
                     >
                         <svg
@@ -129,7 +126,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
                     <button
                         onClick={goToNext}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-[var(--glass-bg)] hover:bg-white text-[var(--teal-900)] rounded-full p-2 shadow-md z-20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--teal-500)] backdrop-blur-[var(--glass-blur)] border border-[var(--glass-border)]"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-[var(--glass-bg)] hover:bg-white text-[var(--teal-900)] rounded-full w-10 h-10 flex items-center justify-center shadow-md z-20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--teal-500)] backdrop-blur-[var(--glass-blur)] border border-[var(--glass-border)] !rounded-full shrink-0 overflow-hidden"
                         aria-label="Next slide"
                     >
                         <svg
@@ -157,11 +154,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                         <button
                             key={index}
                             onClick={() => goToSlide(index)}
-                            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                index === currentIndex
-                                    ? "bg-[var(--teal-500)] w-6"
-                                    : "bg-[var(--glass-bg)] hover:bg-white/75 border border-[var(--glass-border)]"
-                            }`}
+                            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                                ? "bg-[var(--teal-500)] w-6"
+                                : "bg-[var(--glass-bg)] hover:bg-white/75 border border-[var(--glass-border)]"
+                                }`}
                             aria-label={`Go to slide ${index + 1}`}
                         />
                     ))}
