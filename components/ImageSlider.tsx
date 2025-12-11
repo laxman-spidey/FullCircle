@@ -80,7 +80,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             onMouseLeave={handleMouseLeave}
         >
             {/* Slides container with liquid glass effect */}
-            <div className="relative h-64 md:h-80 lg:h-96 w-full liquid-glass overflow-hidden">
+            <div className="relative min-h-[150px] max-h-[250px] w-full liquid-glass overflow-hidden" style={{ height: 'calc(100% - 32px)' }}>
                 {images.map((image, index) => (
                     <div
                         key={index}
@@ -95,7 +95,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                             alt={`Slide ${index + 1}`}
                             fill
                             className="w-full h-full object-cover rounded-lg"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            // style={{ height: 'calc(100% - 32px)' }}
+                            // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             priority={index === 0}
                         />
                     </div>
