@@ -1,13 +1,16 @@
 // utils/infographics.ts
-export const getInfographicImages = (): string[] => {
-  // This function returns a list of all infographic image paths
-  // In a real implementation with dynamic imports, you might use webpack's require.context
-  // or a similar approach, but for now we'll return the known paths
+import img1 from '../public/infographics/1-EmergencySupport.jpeg';
+import img2 from '../public/infographics/2-ChildrenAssistance.jpeg';
+import img3 from '../public/infographics/3-Events.jpeg';
+import img4 from '../public/infographics/4-EssentialErrands.jpeg';
+
+export const getInfographicImages = (): Array<{ src: string }> => {
+  // Import images as objects to work with Next.js Image component
   return [
-    '/infographics/1-EmergencySupport.jpeg',
-    '/infographics/2-ChildrenAssistance.jpeg',
-    '/infographics/3-Events.jpeg',
-    '/infographics/4-EssentialErrands.jpeg'
+    img1,
+    img2,
+    img3,
+    img4
   ];
 };
 
@@ -16,9 +19,9 @@ export const importAllInfographics = async () => {
   // This would be the preferred approach if we can import images dynamically
   // For now, returning static paths
   return [
-    { url: '/infographics/1-EmergencySupport.jpeg', name: 'Emergency Support' },
-    { url: '/infographics/2-ChildrenAssistance.jpeg', name: 'Children Assistance' },
-    { url: '/infographics/3-Events.jpeg', name: 'Events Support' },
-    { url: '/infographics/4-EssentialErrands.jpeg', name: 'Essential Errands' }
+    { url: img1.src, name: 'Emergency Support' },
+    { url: img2.src, name: 'Children Assistance' },
+    { url: img3.src, name: 'Events Support' },
+    { url: img4.src, name: 'Essential Errands' }
   ];
 };
