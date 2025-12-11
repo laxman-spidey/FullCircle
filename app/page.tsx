@@ -7,9 +7,11 @@ import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import Link from "next/link";
 import Script from "next/script";
 import FeedbackForm from "@/components/FeedbackForm";
+import ImageSlider from "@/components/ImageSlider";
 import logoDark from "../public/assets/images/logo-dark.png";
 import comingSoon from "../public/assets/images/comingsoon.png";
 import helperImg from "../public/assets/images/helper.jpeg";
+import { getInfographicImages } from "@/lib/infographics";
 
 export default function Home() {
     useEffect(() => {
@@ -756,6 +758,28 @@ export default function Home() {
           font-size: 18px;
         }
 
+        /* Slider container to maintain height */
+        .slider-container {
+          min-height: 256px; /* h-64 equivalent */
+        }
+
+        @media (min-width: 768px) {
+          .slider-container {
+            min-height: 320px; /* md:h-80 equivalent */
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .slider-container {
+            min-height: 384px; /* lg:h-96 equivalent */
+          }
+        }
+
+        .slider-container .liquid-glass {
+          position: relative;
+          overflow: hidden;
+        }
+
         /* Mobile responsive - stack timeline vertically */
         @media (max-width: 992px) {
           .timeline-wrapper::before {
@@ -968,16 +992,33 @@ export default function Home() {
                             </div>
                             <div className="col-lg-6 col-md-12 col-12">
                                 <div className="header-image">
-                                    <img
-                                        src={helperImg.src}
-                                        alt="#"
-                                    />
+                                    <img src={helperImg.src} alt="#" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
                 {/* End header Area */}
+
+                {/* ===== Image Slider section start ===== */}
+                <section className="slider-area">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="slider-container">
+                                    <ImageSlider
+                                        autoPlay={true}
+                                        interval={4000}
+                                        showControls={true}
+                                        showIndicators={true}
+                                        className="my-8"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {/* ===== Image Slider section end ===== */}
 
                 {/* ===== feature section start ===== */}
                 <section className="services-area services-eight">
