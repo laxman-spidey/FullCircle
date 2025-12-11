@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 
 interface ImageSliderProps {
@@ -89,12 +88,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                             : "opacity-0 z-0"
                             }`}
                     >
-                        <Image
+                        <img
                             src={image}
                             alt={`Slide ${index + 1}`}
-                            fill
                             className="w-full h-full object-contain rounded-lg"
-                            priority={index === 0}
                         />
                     </div>
                 ))}
