@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 
 interface ImageSliderProps {
-    images: string[];
+    images: Array<string | { src: string }>; // Accept either string paths or imported image objects
     autoPlay?: boolean;
     interval?: number;
     showControls?: boolean;
@@ -88,10 +89,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                             : "opacity-0 z-0"
                             }`}
                     >
-                        <img
-                            src={image}
+                        <Image
+                            src={typeof image === 'string' ? image : image.src}
                             alt={`Slide ${index + 1}`}
+                            fill
                             className="w-full h-full object-contain rounded-lg"
+                            priority={index === 0}
                         />
                     </div>
                 ))}
