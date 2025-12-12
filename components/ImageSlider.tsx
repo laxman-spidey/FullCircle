@@ -75,12 +75,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
     return (
         <div
-            className={`relative overflow-hidden rounded-lg ${className} ImageSlider`}
+            className={`relative  rounded-lg ${className} ImageSlider`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
             {/* Slides container with liquid glass effect */}
-            <div className="relative w-full liquid-glass overflow-hidden aspect-video">
+            <div className="relative w-full liquid-glass  aspect-video">
                 {images.map((image, index) => (
                     <div
                         key={index}
@@ -117,7 +117,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 <>
                     <button
                         onClick={goToPrevious}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-[var(--glass-bg)] hover:bg-white text-[var(--teal-900)] rounded-full w-10 h-10 flex items-center justify-center shadow-md z-20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--teal-500)] backdrop-blur-[var(--glass-blur)] border border-[var(--glass-border)] !rounded-full shrink-0 overflow-hidden"
+                        className="absolute -left-5 top-1/2 -translate-y-1/2 bg-[var(--glass-bg)] hover:bg-white text-[var(--teal-900)] rounded-full w-10 h-10 flex items-center justify-center shadow-md z-20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--teal-500)] backdrop-blur-[var(--glass-blur)] border border-[var(--glass-border)] !rounded-full shrink-0 overflow-hidden"
                         aria-label="Previous slide"
                     >
                         <svg
@@ -138,7 +138,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
                     <button
                         onClick={goToNext}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-[var(--glass-bg)] hover:bg-white text-[var(--teal-900)] rounded-full w-10 h-10 flex items-center justify-center shadow-md z-20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--teal-500)] backdrop-blur-[var(--glass-blur)] border border-[var(--glass-border)] !rounded-full shrink-0 overflow-hidden"
+                        className="absolute -right-5 top-1/2 -translate-y-1/2 bg-[var(--glass-bg)] hover:bg-white text-[var(--teal-900)] rounded-full w-10 h-10 flex items-center justify-center shadow-md z-20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--teal-500)] backdrop-blur-[var(--glass-blur)] border border-[var(--glass-border)] !rounded-full shrink-0 overflow-hidden"
                         aria-label="Next slide"
                     >
                         <svg
@@ -161,13 +161,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
             {/* Indicators */}
             {showIndicators && images.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
                     {images.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => goToSlide(index)}
                             className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                                ? "bg-[var(--teal-500)] w-6"
+                                ? "bg-[var(--white)] w-6"
                                 : "bg-[var(--glass-bg)] hover:bg-white/75 border border-[var(--glass-border)]"
                                 }`}
                             aria-label={`Go to slide ${index + 1}`}
