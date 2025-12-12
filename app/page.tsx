@@ -770,7 +770,6 @@ export default function Home() {
 
         .slider-container .liquid-glass {
           position: relative;
-          overflow: hidden;
         }
 
         /* Mobile responsive - stack timeline vertically */
