@@ -17,18 +17,18 @@ import img12 from '../public/infographics/12-CareCompanionship.jpeg';
 export const getInfographicImages = (): Array<{ src: string }> => {
   // Import images as objects to work with Next.js Image component
   return [
-    img2,
-    img3,
-    img4,
-    img5,
-    img6,
-    img7,
-    img1,
-    img8,
-    img9,
-    img10,
-    img11,
-    img12
+    img2, // Children Assistance
+    img3, // Events Support
+    img4, // Essential Errands
+    img5, // Financial Administration
+    img6, // Health & Safety
+    img7, // Home & Shop Support
+    img1, // Emergency Support
+    img8, // Personal Productivity & Lifestyle
+    img9, // Pet Care Services
+    img10, // Transport & Mobility
+    img11, // General On-field Assistance
+    img12 // Care & Companionship
   ];
 };
 

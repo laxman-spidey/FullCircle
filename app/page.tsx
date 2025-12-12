@@ -761,10 +761,10 @@ export default function Home() {
         /* Slider container to maintain height */
         /* Slider container to maintain height */
         .slider-container {
-          width: 100%;
           aspect-ratio: 1 / 1;
+          margin: auto;
           height: auto; /* Let aspect-ratio control height */
-          max-height: 500px; /* Optional: restrain visible size on very large screens if needed, or leave open */
+          max-height: 350px; /* Optional: restrain visible size on very large screens if needed, or leave open */
         }
 
 
