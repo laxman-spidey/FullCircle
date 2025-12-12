@@ -80,7 +80,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             onMouseLeave={handleMouseLeave}
         >
             {/* Slides container with liquid glass effect */}
-            <div className="relative w-full liquid-glass overflow-hidden">
+            <div className="relative w-full liquid-glass overflow-hidden aspect-video">
                 {images.map((image, index) => (
                     <div
                         key={index}
@@ -89,11 +89,23 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                             : "opacity-0 z-0"
                             }`}
                     >
+                        {/* Blurred background image */}
+                        <div className="absolute inset-0 overflow-hidden rounded-lg z-0">
+                            <Image
+                                src={typeof image === 'string' ? image : image.src}
+                                alt={`Slide ${index + 1} background`}
+                                fill
+                                className="w-full h-full object-cover brightness-[0.9] saturate-150 blur-sm"
+                                priority={false}
+                            />
+                        </div>
+
+                        {/* Main image */}
                         <Image
                             src={typeof image === 'string' ? image : image.src}
                             alt={`Slide ${index + 1}`}
                             fill
-                            className="w-full h-full object-contain rounded-lg"
+                            className="w-full h-full object-contain rounded-lg z-10"
                             priority={index === 0}
                         />
                     </div>
